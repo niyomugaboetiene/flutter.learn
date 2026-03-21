@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
      body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/images/3079588.jpg'),
+        Center(child: Image.asset('assets/images/3079588.jpg', width: 120, height: 120)),
         Text('Hello'),
         Icon(Icons.home)
       ],
