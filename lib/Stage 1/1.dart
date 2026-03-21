@@ -12,9 +12,22 @@ class Home extends StatelessWidget {
         title: const Text('Home Page')
       ),
       
-      body: const Center(
-        child: Text('Welcome to home page')
-      ),
+      // body:  Center(
+      //  child: Text('Welcome to home page'),
+      //  child: Image.network('https://via.placeholder.com/150'),
+      //  child: Image.asset('SRC'),
+      //  child:  Icon(Icons.heart_broken),
+        
+      // ),
+
+     body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset('assets/images/3079588.jpg'),
+        Text('Hello'),
+        Icon(Icons.home)
+      ],
+     ),
     );
   }
 }
