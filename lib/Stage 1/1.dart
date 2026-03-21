@@ -20,14 +20,48 @@ class Home extends StatelessWidget {
         
       // ),
 
-     body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(child: Image.asset('assets/images/3079588.jpg', width: 120, height: 120)),
-        Text('Hello'),
-        Icon(Icons.home, size: 12,)
-      ],
-     ),
+    //  body: Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     Center(child: Image.asset('assets/images/3079588.jpg', width: 120, height: 120)),
+    //     Text('Hello'),
+    //     Icon(Icons.home, size: 12,)
+    //   ],
+    //  ),
+
+    body: Center(
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        ),
+
+        child: SizedBox(
+          width: 150,
+
+          child: Column(
+            children: [
+              Image.asset(
+                '/assets/images/3079588.jpg', scale: 1,
+                height: 150, width: 150, fit: BoxFit.cover,
+              ),
+              const SizedBox(height: 20),
+
+              const Text(
+                'Etiene Niyomugabo',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+               const SizedBox(height: 5),
+
+               const Text(
+                'FLutter Learner and Developer',
+                style: TextStyle(fontSize: 16, color: Colors.green),
+               )
+            ],
+          ),
+        ),
+      ),
+    ),
     );
   }
 }
