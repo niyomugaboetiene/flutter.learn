@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children:  <Widget>[
              Text(
               'Hello flutter',
+              style: TextStyle(color: Colors.cyan, fontFamily: 'serif', fontSize: 20, fontWeight: FontWeight.bold),
             ),
             
           ],
