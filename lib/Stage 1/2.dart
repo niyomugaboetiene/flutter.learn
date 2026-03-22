@@ -12,17 +12,28 @@ class Layout extends StatelessWidget {
       Scaffold(
       appBar: AppBar(title: const Text("Layout Example")),
 
-      body: Container(
+      body: Center(child: Container(
         width: 200,
         height: 100,
         color: Colors.blue,
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.black, width: 3),
+          boxShadow: const [
+            BoxShadow(
+            color: Colors.black12,
+          )
+          ]
+        ),
+      
 
         child: const Text(
           'Container Example',
           style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
         ),
-      ),
+        ) 
+       ),
     ));
   }
 }
