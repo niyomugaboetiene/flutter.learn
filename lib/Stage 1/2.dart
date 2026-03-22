@@ -15,14 +15,16 @@ class Layout extends StatelessWidget {
       body: Center(child: Container(
         width: 200,
         height: 100,
-        color: Colors.blue,
         alignment: Alignment.center,
         decoration: BoxDecoration(
+          color: Colors.blue,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.black, width: 3),
+          border: Border.all(color: Colors.blueGrey, width: 1),
           boxShadow: const [
             BoxShadow(
             color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(2, 2)
           )
           ]
         ),
