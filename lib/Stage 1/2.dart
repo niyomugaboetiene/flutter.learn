@@ -20,7 +20,7 @@ class Layout extends StatelessWidget {
 
         child: const Text(
           'Container Example',
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
         ),
       ),
     ));
