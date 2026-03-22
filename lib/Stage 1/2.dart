@@ -12,29 +12,39 @@ class Layout extends StatelessWidget {
       Scaffold(
       appBar: AppBar(title: const Text("Layout Example")),
 
-      body: Center(child: Container(
-        width: 200,
-        height: 100,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.blueGrey, width: 1),
-          boxShadow: const [
-            BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: Offset(2, 2)
-          )
-          ]
-        ),
+      body: Center(
+        child:
+      //  Container(
+        // width: 200,
+        // height: 100,
+        // alignment: Alignment.center,
+        // decoration: BoxDecoration(
+        //   color: Colors.blue,
+        //   borderRadius: BorderRadius.circular(20),
+        //   border: Border.all(color: Colors.blueGrey, width: 1),
+        //   boxShadow: const [
+        //     BoxShadow(
+        //     color: Colors.black12,
+        //     blurRadius: 8,
+        //     offset: Offset(2, 2)
+        //   )
+        //   ]
+        // ),
       
 
-        child: const Text(
-          'Container Example',
-          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
-        ),
-        ) 
+        // child: const Text(
+        //   'Container Example',
+        //   style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
+        // ),
+        // ) 
+        Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.circular(4)
+          ),
+          child: Text('Hello Flutter'),
+        )
        ),
     ));
   }
