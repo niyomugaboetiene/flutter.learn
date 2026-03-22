@@ -10,8 +10,19 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return (
       Scaffold(
-        appBar: AppBar(title: Text("Layout Example")),
-      )
-    )
+      appBar: AppBar(title: const Text("Layout Example")),
+
+      body: Container(
+        width: 200,
+        height: 100,
+        color: Colors.blue,
+        alignment: Alignment.center,
+
+        child: const Text(
+          'Container Example',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    ));
   }
 }
