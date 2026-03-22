@@ -36,10 +36,14 @@ class Layout extends StatelessWidget {
               // )
               Container(
         // padding: EdgeInsets.all(10),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        margin: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             color: Colors.green, borderRadius: BorderRadius.circular(4)),
-        child: Text('Hello Flutter', style: TextStyle(color: Colors.white),),
+        child: const Text(
+          'Hello Flutter',
+          style: TextStyle(color: Colors.white),
+        ),
       )),
     ));
   }
