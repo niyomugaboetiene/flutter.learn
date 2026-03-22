@@ -8,44 +8,39 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (
-      Scaffold(
+    return (Scaffold(
       appBar: AppBar(title: const Text("Layout Example")),
-
       body: Center(
-        child:
-      //  Container(
-        // width: 200,
-        // height: 100,
-        // alignment: Alignment.center,
-        // decoration: BoxDecoration(
-        //   color: Colors.blue,
-        //   borderRadius: BorderRadius.circular(20),
-        //   border: Border.all(color: Colors.blueGrey, width: 1),
-        //   boxShadow: const [
-        //     BoxShadow(
-        //     color: Colors.black12,
-        //     blurRadius: 8,
-        //     offset: Offset(2, 2)
-        //   )
-        //   ]
-        // ),
-      
+          child:
+              //  Container(
+              // width: 200,
+              // height: 100,
+              // alignment: Alignment.center,
+              // decoration: BoxDecoration(
+              //   color: Colors.blue,
+              //   borderRadius: BorderRadius.circular(20),
+              //   border: Border.all(color: Colors.blueGrey, width: 1),
+              //   boxShadow: const [
+              //     BoxShadow(
+              //     color: Colors.black12,
+              //     blurRadius: 8,
+              //     offset: Offset(2, 2)
+              //   )
+              //   ]
+              // ),
 
-        // child: const Text(
-        //   'Container Example',
-        //   style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
-        // ),
-        // ) 
-        Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(4)
-          ),
-          child: Text('Hello Flutter'),
-        )
-       ),
+              // child: const Text(
+              //   'Container Example',
+              //   style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
+              // ),
+              // )
+              Container(
+        // padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        decoration: BoxDecoration(
+            color: Colors.green, borderRadius: BorderRadius.circular(4)),
+        child: Text('Hello Flutter', style: TextStyle(color: Colors.white),),
+      )),
     ));
   }
 }
