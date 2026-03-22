@@ -14,20 +14,21 @@ class Cards extends StatelessWidget {
           elevation: 5,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
           child: SizedBox(
-            width: 200,
+            width: 290,
+            height: 180,
             child: Column(
               children: [
                 Row(
                   children: [
                     Image.asset('assets/images/3079588.jpg', width: 120, height: 120),
-                    const SizedBox(height: 20),
+                    const SizedBox(width: 10),
 
-                    const Text('Machine learning allow computer to learn from the pattern',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Expanded(
+                      child:  Text('Machine learning allow computer to learn from the pattern',
+                       style: TextStyle(fontWeight: FontWeight.bold)),    
+                    )
+
               ]),
-
-
-                const SizedBox(height: 20),
                 const Text('Machine Learning',
                   style: TextStyle(color: Colors.blue, fontSize: 20)),
             ]
