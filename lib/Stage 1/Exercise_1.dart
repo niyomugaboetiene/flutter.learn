@@ -25,7 +25,7 @@ class Cards extends StatelessWidget {
 
                     const Expanded(
                       child:  Text('Machine learning allow computer to learn from the pattern',
-                       style: TextStyle(fontWeight: FontWeight.bold)),    
+                       style: TextStyle(fontWeight: FontWeight.bold)),
                     )
 
               ]),
