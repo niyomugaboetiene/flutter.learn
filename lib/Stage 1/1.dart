@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                '/assets/images/3079588.jpg', scale: 1,
+                'assets/images/3079588.jpg', scale: 1,
                 height: 150, width: 150, fit: BoxFit.cover,
               ),
               const SizedBox(height: 20),
