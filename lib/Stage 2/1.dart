@@ -21,7 +21,7 @@ class Lists extends StatelessWidget {
           //   )
 
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: 10,
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text("Item $index"),
