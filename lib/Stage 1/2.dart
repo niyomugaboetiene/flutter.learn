@@ -48,18 +48,22 @@ class Layout extends StatelessWidget {
                 // ),
 
                 Stack(children: [
-          Container(width: 200, color: Colors.blue, height: 200),
-          Positioned(
-            top: 50,
-            right: 50,
-            child: Container(
-              width: 100,
-              height: 100,
-              color: Colors.amber,
-            ),
-          )
+                     Container(width: 200, color: Colors.blue, height: 200),
+                     Positioned(
+                         top: 50,
+                         right: 50,
+                         child: Container(
+                             width: 100,
+                             height: 100,
+                             color: Colors.amber,
+                         ),
+                      )
           //   Container(width: 150, color: Colors.green, height: 150),
           //   Container(width: 100, color: Colors.amber, height: 100),
-        ]))));
+        ]
+        )
+       )
+      )
+    );
   }
 }
