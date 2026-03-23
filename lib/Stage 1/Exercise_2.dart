@@ -7,9 +7,11 @@ class Exercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stack Example'
+        title: const Text('Stack Example'),
         ),
-        
+
+        body: Container(
+          width: 250, height: 250, color: Colors.grey,
         ),
     );
   }
