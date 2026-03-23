@@ -16,12 +16,13 @@ class Exercise extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: 250, height: 150, color: Colors.blue,
+                width: 150, height: 150, color: Colors.blue,
+                padding: EdgeInsets.all(20),
               ),
             
               const Align(
                 alignment: Alignment.bottomRight,
-                child: Icon(Icons.heat_pump_rounded, color: Colors.red),
+                child: Icon(Icons.favorite, size: 40, color: Colors.red),
               ),
 
               const Align(

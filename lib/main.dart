@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_concepts/Stage 1/1.dart';
 import 'package:flutter_concepts/Stage 1/Exercise_1.dart';
 import 'package:flutter_concepts/Stage 1/2.dart';
+import 'package:flutter_concepts/Stage 1/Exercise_2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
        title: 'My App',
-       home:  Layout(),   
+       home:  Exercise(),   
     );
   }
 }
