@@ -8,14 +8,19 @@ class Buttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Buttons')),
+      appBar: AppBar(title: const Text('Buttons')),
       body: Center(
-      child: ElevatedButton(
+      //  ElevatedButton(
+      //   onPressed: () => {},
+      //   child: const Text("Click me"),
+      //   style: ElevatedButton.styleFrom(
+      //       backgroundColor: Colors.blue, padding: const EdgeInsets.all(20)),
+      // ),
+      child: TextButton(
         onPressed: () => {},
-        child: const Text("Click me"),
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue, padding: const EdgeInsets.all(20)),
-      ),
+        child: const Text("Cancel", style: TextStyle(color: Colors.red)),
+
+      )
     )
     );
   }
