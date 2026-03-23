@@ -20,14 +20,23 @@ class Lists extends StatelessWidget {
           //     ],
           //   )
 
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text("Item $index"),
-              );
-            },
-          ),
+        //   child: ListView.builder(
+        //     itemCount: 10,
+        //     itemBuilder: (context, index) {
+        //       return ListTile(
+        //         title: Text("Item $index"),
+        //       );
+        //     },
+        //   ),
+
+        child: GridView.count(
+            crossAxisCount: 2, // 2 column
+            children: [
+                Container(color: Colors.red),
+                Container(color: Colors.green),
+                Container(color: Colors.blue)
+            ],
+        ),
         )
       );
   }
