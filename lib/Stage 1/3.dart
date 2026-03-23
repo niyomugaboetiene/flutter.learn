@@ -16,11 +16,16 @@ class Buttons extends StatelessWidget {
       //   style: ElevatedButton.styleFrom(
       //       backgroundColor: Colors.blue, padding: const EdgeInsets.all(20)),
       // ),
-      child: TextButton(
-        onPressed: () => {},
-        child: const Text("Cancel", style: TextStyle(color: Colors.red)),
+      // child: TextButton(
+      //   onPressed: () => {},
+      //   child: const Text("Cancel", style: TextStyle(color: Colors.red)),
 
-      )
+      // )
+
+      child: IconButton(
+        onPressed: () => {},
+        icon: const Icon(Icons.home, size: 40, color: Colors.blue,),
+      ),
     )
     );
   }
