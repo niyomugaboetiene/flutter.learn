@@ -20,11 +20,11 @@ class _TextState extends State<TextFields> {
       //   ),
       // ),
 
-      body: Row(
+      body: Column(
         children: [
           TextField(
             controller: nameController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 hintText: "Enter your name"
             ),
          ),
@@ -33,7 +33,7 @@ class _TextState extends State<TextFields> {
           onPressed: () {
             print("Nmae ${nameController.text}");
           }, 
-          child: Text("Submit")
+          child: const Text("Submit")
         )
         ],  
       )
