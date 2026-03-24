@@ -1,4 +1,4 @@
-// ListView & GridView
+// ListView & GridView, SingleChildScrollView
 
 import 'package:flutter/material.dart';
 
@@ -55,15 +55,24 @@ class Lists extends StatelessWidget {
                 //    )
 
                 SingleChildScrollView(
-                  child: Column(
+                  // child: Column(
+                  //   children: [
+                  //     for (int i = 0; i < 20; i ++)
+                  //        Container(
+                  //         margin: const EdgeInsets.all(10),
+                  //         padding: const EdgeInsets.all(10),
+                  //         color: Colors.blue,
+                  //         child: Text("Item $i"),
+                  //        )
+                  //   ],
+                  // ),
+
+                 scrollDirection: Axis.horizontal,
+                  child: Row(
                     children: [
-                      for (int i = 0; i < 20; i ++)
-                         Container(
-                          margin: const EdgeInsets.all(5),
-                          padding: const EdgeInsets.all(5),
-                          color: Colors.blue,
-                          child: Text("Item $i"),
-                         )
+                      Container(width: 100, color: Colors.green),
+                      Container(width: 100, color: Colors.red),
+                      Container(width: 100, color: Colors.amber),
                     ],
                   ),
                   )
