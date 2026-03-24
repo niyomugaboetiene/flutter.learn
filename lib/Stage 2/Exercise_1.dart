@@ -7,29 +7,32 @@ class Exercise1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Grid View")),
-      // body: ListView.builder(
-      //   itemCount: 10,
-      //   itemBuilder: (context, index) {
-      //       return Container(
-      //         color: Colors.blue,
-      //         child: Center(
-      //           child: Text("Box $index"),
-      //         ),
-      //       );
-      //   }),
-
-      body: GridView.builder(
-          itemCount: 12,
-          gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          itemBuilder: (context, index) {
-           return Center(
-              child: Container(
-                color: Colors.blue,
-                child: Center(child: Text("Box $index")),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              color: Colors.blue,
+              child: Center(
+                child: Text("Box $index"),
               ),
             );
-          }),
+        }),
+
+      // body: GridView.builder(
+      //     itemCount: 12,
+      //     gridDelegate:
+      //     const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      //     itemBuilder: (context, index) {
+      //      return Center(
+      //         child: Container(
+      //           margin: const EdgeInsets.all(10),
+      //           color: Colors.red,
+      //           child: Center(child: Text("Box $index")),
+      //         ),
+      //       );
+      //     }),
     );
   }
 }
