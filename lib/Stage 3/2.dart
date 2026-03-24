@@ -20,7 +20,7 @@ class _TextState extends State<TextFields> {
       //   ),
       // ),
 
-      body: const Row(
+      body: Row(
         children: [
           TextField(
             controller: nameController,
