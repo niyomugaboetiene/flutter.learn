@@ -11,9 +11,12 @@ class Exercise1 extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              color: Colors.blue,
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10)
+              ),
               child: Center(
                 child: Text("Box $index"),
               ),
