@@ -22,10 +22,12 @@ class _MyStatefullWidget extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Counter")),
-        body: Center(
-          floatingActionBUtton: FloatingActionButton(onPressed: increase, child: Icon(Icon.add)),
-        )
+        appBar: AppBar(title: const Text("Counter")),
+        body: Center(child: Text("$number")),
+        floatingActionButton: FloatingActionButton(
+          onPressed: increase,
+          child: const Icon(Icons.add),
+        ),
       );
   }
 }
