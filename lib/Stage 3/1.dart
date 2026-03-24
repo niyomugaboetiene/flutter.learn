@@ -36,13 +36,11 @@ class _MyStatefullWidget extends State<MyWidget> {
         body: Center(child: Text("$number")),
         floatingActionButton: Row(
           children: [
-            Container(
-               child: FloatingActionButton(
-                   onPressed: increase,
-                   child: const Icon(Icons.add),
-               ),
-            )
-
+             FloatingActionButton(
+                 onPressed: increase,
+                 child: const Icon(Icons.add),
+             ),
+             
              FloatingActionButton(
                  onPressed: reset,
                  child: const Icon(Icons.refresh),
