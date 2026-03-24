@@ -28,6 +28,13 @@ class _TextState extends State<TextFields> {
                 hintText: "Enter your name"
             ),
          ),
+
+         ElevatedButton(
+          onPressed: () {
+            print("Nmae ${nameController.text}");
+          }, 
+          child: Text("Submit")
+        )
         ],  
       )
     );
