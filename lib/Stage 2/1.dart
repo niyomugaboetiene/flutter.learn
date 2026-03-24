@@ -39,20 +39,34 @@ class Lists extends StatelessWidget {
                 //     ],
                 // ),
 
-                GridView.builder(
-                    itemCount: 8,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(10),
-                        color: Colors.blue,
-                        child: Center(
-                          child: Text("Item $index"),
-                        ),
-                      );
-                    }
-                   )
+                // GridView.builder(
+                //     itemCount: 8,
+                //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                //     crossAxisCount: 2),
+                //     itemBuilder: (context, index) {
+                //       return Container(
+                //         margin: const EdgeInsets.all(10),
+                //         color: Colors.blue,
+                //         child: Center(
+                //           child: Text("Item $index"),
+                //         ),
+                //       );
+                //     }
+                //    )
+
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      for (int i = 0; i < 20; i ++)
+                         Container(
+                          margin: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
+                          color: Colors.blue,
+                          child: Text("Item $i"),
+                         )
+                    ],
+                  ),
+                  )
                  )
                 );
   }
