@@ -11,8 +11,14 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyStatefullWidget extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+  int number = 0;
+
+  void increase() {
+    setState(() {
+      number++;
+    });
   }
+
+  @override
+  Widget build(BuildContext context) {}
 }
