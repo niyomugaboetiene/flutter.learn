@@ -20,14 +20,15 @@ class _TextState extends State<TextFields> {
       //   ),
       // ),
 
-      body: const TextField(
+      body: const Row(children: [
+TextField(
         controller: nameController,
         decoration: InputDecoration(
           hintText: "Enter your name"
         ),
       ),
-
-      
+      ],  
+    )
     );
   }
 }
