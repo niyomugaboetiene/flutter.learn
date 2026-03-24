@@ -8,17 +8,16 @@ class TextFields extends StatefulWidget {
 }
 
 class _TextState extends State<TextFields> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Text State")),
-      body: TextField(
+      appBar: AppBar(title: const Text("Text State")),
+      body: const TextField(
         decoration: InputDecoration(
-         hintText: 'Enter your name',
-         label: 'Name'
+          hintText: 'Enter your name',
+          labelText: 'Name'
         ),
       ),
-    )
+    );
   }
 }
