@@ -21,6 +21,11 @@ class _MyStatefullWidget extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Numer $number");
+    return Scaffold(
+        appBar: AppBar(title: Text("Counter")),
+        body: Center(
+          floatingActionBUtton: FloatingActionButton(onPressed: increase, child: Icon(Icon.add)),
+        )
+      );
   }
 }
