@@ -17,6 +17,16 @@ class _MyStatefullWidget extends State<MyWidget> {
     setState(() {
       number++;
     });
+  } 
+   void decrease() {
+    setState(() {
+      number--;
+    });
+  }  
+  void reset() {
+    setState(() {
+      number = number = 0;
+    });
   }
 
   @override
