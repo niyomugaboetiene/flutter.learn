@@ -17,12 +17,14 @@ class _MyStatefullWidget extends State<MyWidget> {
     setState(() {
       number++;
     });
-  } 
-   void decrease() {
+  }
+
+  void decrease() {
     setState(() {
       number--;
     });
-  }  
+  }
+
   void reset() {
     setState(() {
       number = number = 0;
@@ -34,24 +36,24 @@ class _MyStatefullWidget extends State<MyWidget> {
     return Scaffold(
         appBar: AppBar(title: const Text("Counter")),
         body: Center(child: Text("$number")),
-        floatingActionButton: Row(
-          children: [
-             FloatingActionButton(
-                 onPressed: increase,
-                 child: const Icon(Icons.add),
-             ),
-             
-             FloatingActionButton(
-                 onPressed: reset,
-                 child: const Icon(Icons.refresh),
-             ),
-             
-             FloatingActionButton(
-                 onPressed: decrease,
-                 child: const Icon(Icons.remove),
-             ), 
-          ],
-      )
-      );
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              FloatingActionButton(
+                onPressed: increase,
+                child: const Icon(Icons.add),
+              ),
+              FloatingActionButton(
+                onPressed: reset,
+                child: const Icon(Icons.refresh),
+              ),
+              FloatingActionButton(
+                onPressed: decrease,
+                child: const Icon(Icons.remove),
+              ),
+            ],
+          ),
+        ));
   }
 }
