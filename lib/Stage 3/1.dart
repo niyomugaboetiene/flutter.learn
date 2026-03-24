@@ -20,5 +20,7 @@ class _MyStatefullWidget extends State<MyWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Text("Numer $number");
+  }
 }
