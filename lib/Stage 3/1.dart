@@ -45,12 +45,15 @@ class _MyStatefullWidget extends State<MyWidget> {
                 child: const Icon(Icons.add),
               ),
 
-              const SizedBox(height: 20),
-              
+              const SizedBox(width: 20),
+
               FloatingActionButton(
                 onPressed: reset,
                 child: const Icon(Icons.refresh),
               ),
+
+              const SizedBox(width: 20),
+              
               FloatingActionButton(
                 onPressed: decrease,
                 child: const Icon(Icons.remove),
