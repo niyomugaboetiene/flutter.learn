@@ -23,10 +23,13 @@ class _MyExercise extends State<Exercise2> {
         title: const Text("Reminding"),
       ),
       body: Center(child: Text("$count")),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        child: FloatingActionButton(
         onPressed: () => {increment()},
-        child: const Text("Increment"),
+        child: const Icon(Icons.add),
       ),
+      ) 
     );
   }
 }
