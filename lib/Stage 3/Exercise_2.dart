@@ -32,7 +32,7 @@ class _MyExercise extends State<Exercise2> {
         //     child: const Icon(Icons.add),
         //   ),
         // )
-        body: Row(
+        body: Column(
           children: [
              TextField(
                 controller: nameController,
@@ -45,10 +45,26 @@ class _MyExercise extends State<Exercise2> {
 
         TextField(
           controller: ageController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: "Enter your age",
             labelText: "Age"
           ),
+        ),
+
+        const SizedBox(height: 10,),
+
+        ElevatedButton(
+          onPressed: () {}, 
+          child: Text("Submit")
+          ),
+
+        Container(
+          child:  Column(
+            children: [
+                Text("Your Name ${nameController.text}"),
+                Text("Your Name ${ageController.text}")
+            ]
+            ),
         )
         ],
     )
