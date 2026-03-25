@@ -11,6 +11,8 @@ class _MyExercise extends State<Exercise2> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   int count = 0;
+  String? name;
+  String? age;
 
   void increment() {
     setState(() {
@@ -34,40 +36,43 @@ class _MyExercise extends State<Exercise2> {
         // )
         body: Column(
           children: [
-             TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                labelText: "Name",
-                hintText: "Enter your name"
-          ),
-        ),
-        const SizedBox(height: 10),
-
-        TextField(
-          controller: ageController,
-          decoration: const InputDecoration(
-            hintText: "Enter your age",
-            labelText: "Age"
-          ),
-        ),
-
-        const SizedBox(height: 10,),
-
-        ElevatedButton(
-          onPressed: () {}, 
-          child: Text("Submit")
-          ),
-
-        Container(
-          child:  Column(
-            children: [
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                  labelText: "Name", hintText: "Enter your name"),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: ageController,
+              decoration: const InputDecoration(
+                  hintText: "Enter your age", labelText: "Age"),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    name = nameController.text;
+                    age = ageController.text;
+                  });
+                },
+                child: const Text("Submit")),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.greenAccent,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(children: [
                 Text("Your Name ${nameController.text}"),
                 Text("Your Name ${ageController.text}")
-            ]
-            ),
-        )
-        ],
-    )
-    );
+              ]),
+            )
+          ],
+        ));
   }
 }
