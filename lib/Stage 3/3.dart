@@ -40,6 +40,7 @@ class _FomrState extends State<FOrm> {
                   child: Text("Submit"))
             ],
           ),
-        ));
+        )
+      );
   }
 }
