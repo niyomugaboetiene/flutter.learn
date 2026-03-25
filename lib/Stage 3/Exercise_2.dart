@@ -62,7 +62,8 @@ class _MyExercise extends State<Exercise2> {
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
+              width: 150,
               decoration: BoxDecoration(
                 color: Colors.greenAccent,
                 borderRadius: BorderRadius.circular(12),
