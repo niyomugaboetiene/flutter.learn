@@ -70,7 +70,7 @@ class _MyExercise extends State<Exercise2> {
               ),
               child: Column(children: [
                 Text("Your Name ${nameController.text}"),
-                Text("Your Name ${ageController.text}")
+                Text("Your Age ${ageController.text}")
               ]),
             )
           ],
