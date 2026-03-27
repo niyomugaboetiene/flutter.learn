@@ -8,13 +8,13 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("FIrst screen")),
+      appBar: AppBar(title: const Text("FIrst screen")),
       body: ElevatedButton(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SecondScreen(),
+              builder: (context) => const SecondScreen(),
             ),
           );
         },
@@ -25,15 +25,16 @@ class FirstScreen extends StatelessWidget {
 }
 
 class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Second Screen")),
+      appBar: AppBar(title: const Text("Second Screen")),
       body: ElevatedButton(
         onPressed: () {
           Navigator.pop(context);
         },
-        child: Text("Back"),
+        child: const Text("Back"),
       ),
     );
   }
