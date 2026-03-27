@@ -11,7 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final String task;
+   String? task;
+
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
