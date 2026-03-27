@@ -14,11 +14,26 @@ class FirstScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const SecondScreen(),
+              builder: (context) => SecondScreen(),
             ),
           );
         },
         child: const Text("Navigate"),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Second Screen")),
+      body: ElevatedButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text("Back"),
       ),
     );
   }
