@@ -2,24 +2,24 @@
 
 import 'package:flutter/material.dart';
 
-
 class FirstScreen extends StatelessWidget {
-  const FirstScreen({ super.key });
+  const FirstScreen({super.key});
 
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("FIrst screen")),
       body: ElevatedButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-             builder:(context) => const SecondScreen();
+              builder: (context) => const SecondScreen(),
             ),
-           )
+          );
         },
+        child: const Text("Navigate"),
       ),
-    )
+    );
   }
 }
