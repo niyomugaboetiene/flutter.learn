@@ -2,13 +2,18 @@
 // • Add Task screen: Enter new tasks and pass back to home.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+      const HomeScreen({super.key});
+
+      @override
+      State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final String task;
-  const HomeScreen({super.key, required this.task});
-
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: const Text("List task")),
       body: Column(
@@ -18,11 +23,14 @@ class HomeScreen extends StatelessWidget {
               onPressed: () async {
                 final newTask = await Navigator.push(context,
                 
-                    MaterialPageRoute(builder: (context) => SecondScreen()));
+                    MaterialPageRoute(
+                      builder: (context) => SecondScreen()
+                    ),
+                    );
               },
               icon: const Icon(Icons.add)),
              Container(
-            child:  Text("Task today $newtask"),
+            child:  Text("Task today "),
           ),
         ],
       ),
