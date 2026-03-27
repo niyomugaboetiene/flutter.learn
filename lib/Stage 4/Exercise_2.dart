@@ -4,35 +4,37 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-      const HomeScreen({super.key});
+  const HomeScreen({super.key});
 
-      @override
-      State<HomeScreen> createState() => _HomeScreenState();
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   String? task;
+  String? task;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: const Text("List task")),
       body: Column(
         children: [
-
           IconButton(
               onPressed: () async {
-                final newTask = await Navigator.push(context,
-                
-                    MaterialPageRoute(
-                      builder: (context) => SecondScreen()
-                    ),
-                    );
+                final newTask = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
+                );
+
+                if (newTask != null) {
+                  setState(() {
+                    task = newTask;
+                  });
+                }
               },
               icon: const Icon(Icons.add)),
-             Container(
-            child:  Text("Task today "),
+          Container(
+            child: Text("Task today $task"),
           ),
         ],
       ),
