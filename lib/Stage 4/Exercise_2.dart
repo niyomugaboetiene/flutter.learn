@@ -33,12 +33,12 @@ class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
 
   @override
-  State<SecondScreen> createState => _Second();
+  State<SecondScreen> createState() => _Second();
 }
 
 class _Second extends State<SecondScreen> {
 
-  final TextInputControl nameController = TextInputControl();
+  final TextEditingController taskController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,13 @@ class _Second extends State<SecondScreen> {
       appBar: AppBar(title: Text("Add Task")),
       body: Column(
         children: [
-          
+          TextField(
+            controller:  taskController,
+            decoration: InputDecoration(
+              hintText: "Enter your task today",
+              labelText: "Task"
+            ),
+          )
         ],
       ),
     )
