@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class HomeScreen extends StatelessWidget {
-  final String? task;
+  final String task;
   const HomeScreen({super.key, required this.task});
 
   Widget build(BuildContext context) {
@@ -13,15 +13,17 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text("List task")),
       body: Column(
         children: [
-          Container(
-            child: const Text("Task today $task"),
-          ),
+
           IconButton(
-              onPressed: () {
-                Navigator.push(context,
+              onPressed: () async {
+                final newTask = await Navigator.push(context,
+                
                     MaterialPageRoute(builder: (context) => SecondScreen()));
               },
-              icon: const Icon(Icons.add))
+              icon: const Icon(Icons.add)),
+             Container(
+            child:  Text("Task today $newtask"),
+          ),
         ],
       ),
     );
@@ -37,7 +39,6 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _Second extends State<SecondScreen> {
-
   final TextEditingController taskController = TextEditingController();
 
   @override
@@ -47,14 +48,21 @@ class _Second extends State<SecondScreen> {
       body: Column(
         children: [
           TextField(
-            controller:  taskController,
+            controller: taskController,
             decoration: InputDecoration(
-              hintText: "Enter your task today",
-              labelText: "Task"
-            ),
-          )
+                hintText: "Enter your task today", labelText: "Task"),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            HomeScreen(task: taskController.text)));
+              },
+              child: const Text("Add"))
         ],
       ),
-    )
+    );
   }
 }
