@@ -66,11 +66,10 @@ class _Second extends State<SecondScreen> {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            HomeScreen(task: taskController.text)));
+                Navigator.pop(
+                  context,
+                  task: taskController.text
+                );
               },
               child: const Text("Add"))
         ],
