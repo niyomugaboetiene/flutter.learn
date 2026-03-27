@@ -10,10 +10,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("List task")),
-      body: Container(
-        child: Text(
-          "Task today $task"
-        ),
+      body: Column(
+        children: [
+          Container(
+            child: Text("Task today $task"),
+          ),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SecondScreen()));
+              },
+              icon: Icon(Icons.add))
+        ],
       ),
     );
   }
