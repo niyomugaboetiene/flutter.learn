@@ -27,7 +27,9 @@ class Post {
 
 Future<List<Post>> fetchPost() async {
   final response =
-      await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+      await http.get(
+        Uri.parse("https://jsonplaceholder.typicode.com/posts")
+      );
 
   final List data = jsonDecode(response.body);
 
