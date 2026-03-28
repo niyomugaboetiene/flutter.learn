@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 2/Exercise_1.dart';
 // import 'package:flutter_concepts/Stage 2/2.dart';
 // import 'package:flutter_concepts/Stage 3/1.dart';
-// import 'package:flutter_concepts/Stage 3/2.dart';
+import 'package:flutter_concepts/Stage 3/2.dart';
 // import 'package:flutter_concepts/Stage 3/Exercise_2.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
 import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
@@ -24,8 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  const MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => TextFields(),
+        '/task': (context) => HomeScreen()
+      },
        title: 'My App',
-       home:  HomeScreen(),   
+      //  home:  HomeScreen(),   
     );
   }
 }
