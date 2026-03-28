@@ -13,9 +13,11 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 3/Exercise_2.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
 import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
+import 'package:flutter_concepts/Stage 5/1.dart';
 
 void main() {
   runApp(const MyApp());
+  fetchData();
 }
 
 class MyApp extends StatelessWidget {
@@ -23,13 +25,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const MaterialApp(
+    return const MaterialApp(
       // initialRoute: '/',
       // routes: {
       //   '/add': () =>  TextFields()
       // },
-       title: 'My App',
-       home:  HomeScreen(),   
+      title: 'My App',
+      home: HomeScreen(),
     );
   }
 }
