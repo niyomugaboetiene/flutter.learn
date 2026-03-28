@@ -1,5 +1,8 @@
 // * http package
 
+import 'dart:ffi';
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -27,11 +30,65 @@ class Post {
 
 Future<List<Post>> fetchPost() async {
   final response =
-      await http.get(
-        Uri.parse("https://jsonplaceholder.typicode.com/posts")
-      );
+      await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
 
   final List data = jsonDecode(response.body);
 
   return data.map((json) => Post.fromJson(json)).toList();
+}
+
+class PostScreen extends StatefulWidget {
+  const PostScreen({super.key});
+
+  @override
+  State<PostScreen> createState() => _PostScreenState();
+}
+
+class _PostScreenState extends State<PostScreen> {
+  late Future<List<Post>> futurePost;
+
+  @override
+  void initState() {
+    super.initState();
+    futurePost = fetchPost();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Posts"),
+      ),
+      body: FutureBuilder<List<Post>>(
+        future: futurePost,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("Error: ${snapshot.error}"),
+            );
+          }
+
+          final posts = snapshot.data!;
+
+          return ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (context, index) {
+              final post = posts[index];
+
+              return ListTile(
+                title: Text(post.title),
+                subtitle: Text(post.body),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }
