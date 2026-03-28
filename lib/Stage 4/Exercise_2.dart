@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () async {
                 final newTask = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SecondScreen()),
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
                 );
 
                 if (newTask != null) {
