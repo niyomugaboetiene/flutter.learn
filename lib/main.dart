@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 2/Exercise_1.dart';
 // import 'package:flutter_concepts/Stage 2/2.dart';
 // import 'package:flutter_concepts/Stage 3/1.dart';
-import 'package:flutter_concepts/Stage 3/2.dart';
+// import 'package:flutter_concepts/Stage 3/2.dart';
 // import 'package:flutter_concepts/Stage 3/Exercise_2.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
-// import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
+import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,12 +24,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  const MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/add': () =>  TextFields()
-      },
+      // initialRoute: '/',
+      // routes: {
+      //   '/add': () =>  TextFields()
+      // },
        title: 'My App',
-      //  home:  HomeScreen(),   
+       home:  HomeScreen(),   
     );
   }
 }
+
+
+// then navigate
+// Navigator.pushnamed(context, '/add)
+// 
