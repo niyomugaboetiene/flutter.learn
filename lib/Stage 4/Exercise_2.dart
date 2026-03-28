@@ -4,14 +4,14 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.task});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? task;
+  String task = "";
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +66,7 @@ class _Second extends State<SecondScreen> {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.pop(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            HomeScreen(task: taskController.text)));
+                Navigator.pop(context, taskController.text);
               },
               child: const Text("Add"))
         ],
