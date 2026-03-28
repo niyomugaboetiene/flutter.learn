@@ -17,7 +17,7 @@ import 'package:flutter_concepts/Stage 5/1.dart';
 
 void main() {
   runApp(const MyApp());
-  fetchData(); // from API
+  fetchPost(); // from API
 }
 
 class MyApp extends StatelessWidget {
