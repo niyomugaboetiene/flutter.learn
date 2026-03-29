@@ -30,9 +30,12 @@ Future<List<Post>> fetchPost() async {
   final response =
       await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
 
-  final List data = jsonDecode(response.body);
-
-  return data.map((json) => Post.fromJson(json)).toList();
+  if (response.statusCode == 200) {
+    final List data = jsonDecode(response.body);
+    return data.map((json) => Post.fromJson(json)).toList();
+  } else {
+    throw Exception("Unkown error");
+  }
 }
 
 class PostScreen extends StatefulWidget {
@@ -43,7 +46,7 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-  late Future<List<Post>> futurePost;
+  late Future<List<Post>> futurePost; // it will hold our API data
 
   @override
   void initState() {
