@@ -1,3 +1,6 @@
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 class Weather {
   final String cityName;
   final String tamperature;
@@ -31,7 +34,18 @@ class Weather {
         main: json['main'][0]['main'],
         icon: json['main'][0]['icon'],
         windSpeed: json['wind']['speed'].toDouble(),
-        country: json['sys']['country']
-    );
-  } 
+        country: json['sys']['country']);
+  }
+}
+
+Future<List<Weather>> fetchWeather() async {
+  final weatherData = await http.get(Uri.parse(
+      "https://api.openweathermap.org/data/2.5/weather?q=London&appid=755481f6cc2d8cc1b46fd328278b7dc6"));
+
+  if (weatherData.statusCode == 200) {
+    final List data = jsonDecode(weatherData.body);
+    return data.map((json) => Weather.fromJson(json)).toList();
+  } else {
+    throw Exception("Unknown error");
+  }
 }
