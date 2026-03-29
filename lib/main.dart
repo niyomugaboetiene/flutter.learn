@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
 // import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
 import 'package:flutter_concepts/Stage 5/1.dart';
+import 'Stage 5/WeatherApp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: PostScreen(),
+      home: WeatherScreen(),
     );
   }
 }
