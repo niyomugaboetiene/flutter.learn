@@ -95,8 +95,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
             itemBuilder: (context, index) {
               final weather = weathers[index];
 
-              return const ListTile(
-                
+              return  ListTile(
+                title: Text(weather.cityName),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                     Text("Temperature ${weather.tamperature}"),
+                     Text("Feels Like ${weather.feelsLike}"),
+                     Text("Humidity ${weather.humidity}"),
+                     Text("Condition ${weather.main}"),
+                     Text("Description ${weather.description}"),
+                     Text("Wind speed ${weather.windSpeed}"),
+                     Text("Country ${weather.country}")
+                  ],
+                ),
               );
             },
           );
