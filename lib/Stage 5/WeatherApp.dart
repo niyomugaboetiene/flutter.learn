@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -47,5 +48,22 @@ Future<List<Weather>> fetchWeather() async {
     return data.map((json) => Weather.fromJson(json)).toList();
   } else {
     throw Exception("Unknown error");
+  }
+}
+
+class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  late Future<List<Weather>> futureWeather;
+
+  @override
+  void initState() {
+    super.initState();
+    futureWeather = fetchWeather();
   }
 }
