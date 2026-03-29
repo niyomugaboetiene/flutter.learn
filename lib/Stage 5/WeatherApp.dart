@@ -25,13 +25,13 @@ class Weather {
     return Weather(
         cityName: json['name'],
         tamperature: json['main']['temp'].toDouble(),
-        feelsLike: json['main']['feels_like'],
-        humidity: json['humidity'],
-        description: json['description'],
-        main: json['main'],
-        icon: json['icon'],
-        windSpeed: json['windSpeed'],
-        country: json['country']
+        feelsLike: json['main']['feels_like'].toDouble(),
+        humidity: json['main']['humidity'],
+        description: json['weather'][0]['description'],
+        main: json['main'][0]['main'],
+        icon: json['main'][0]['icon'],
+        windSpeed: json['wind']['speed'].toDouble(),
+        country: json['sys']['country']
     );
   } 
 }
