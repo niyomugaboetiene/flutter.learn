@@ -78,8 +78,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
         future: futureWeather,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: const CircularProgressIndicator(),
+            return const Center(
+              child:  CircularProgressIndicator(),
             );
           }
 
