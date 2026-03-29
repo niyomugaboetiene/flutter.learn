@@ -80,6 +80,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   child: const  CircularProgressIndicator(),
                 );
               }
+
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text("Error ${snapshot.error}"),
+                );
+              }
+
+              final weathers = snapshot.data;
              },
       ),
     )
