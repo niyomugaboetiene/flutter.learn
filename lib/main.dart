@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 3/2.dart';
 // import 'package:flutter_concepts/Stage 3/Exercise_2.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
-import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
+// import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
 import 'package:flutter_concepts/Stage 5/1.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: HomeScreen(),
+      home: PostScreen(),
     );
   }
 }

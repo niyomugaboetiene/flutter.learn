@@ -1,7 +1,5 @@
 // * http package
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,7 +8,7 @@ import 'dart:convert';
 //   final response =
 //       await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
 
-//   // print(response.body);
+// print(response.body);
 //   final data = jsonDecode(response.body);
 //   print(data[0]['title']);
 // }
