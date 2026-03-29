@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class Weather {
   final String cityName;
-  final String tamperature;
+  final String temperature;
   final String feelsLike;
   final int humidity;
   final String description;
@@ -15,7 +15,7 @@ class Weather {
 
   Weather({
     required this.cityName,
-    required this.tamperature,
+    required this.temperature,
     required this.feelsLike,
     required this.humidity,
     required this.description,
@@ -25,27 +25,28 @@ class Weather {
     required this.country,
   });
 
-  factory Weather.fromJson(Map<String, dynamic> json) {
-    return Weather(
-        cityName: json['name'],
-        tamperature: json['main']['temp'].toDouble(),
-        feelsLike: json['main']['feels_like'].toDouble(),
-        humidity: json['main']['humidity'],
-        description: json['weather'][0]['description'],
-        main: json['main'][0]['main'],
-        icon: json['main'][0]['icon'],
-        windSpeed: json['wind']['speed'].toDouble(),
-        country: json['sys']['country']);
-  }
+factory Weather.fromJson(Map<String, dynamic> json) {
+  return Weather(
+    cityName: json['name'],
+    temperature: json['main']['temp'].toDouble(),
+    feelsLike: json['main']['feels_like'].toDouble(),
+    humidity: json['main']['humidity'],
+    description: json['weather'][0]['description'],
+    main: json['weather'][0]['main'],   
+    icon: json['weather'][0]['icon'],  
+    windSpeed: json['wind']['speed'].toDouble(),
+    country: json['sys']['country'],
+  );
+}
 }
 
-Future<List<Weather>> fetchWeather() async {
+Future<Weather> fetchWeather() async {
   final weatherData = await http.get(Uri.parse(
       "https://api.openweathermap.org/data/2.5/weather?q=London&appid=755481f6cc2d8cc1b46fd328278b7dc6"));
 
   if (weatherData.statusCode == 200) {
-    final List data = jsonDecode(weatherData.body);
-    return data.map((json) => Weather.fromJson(json)).toList();
+    final data = jsonDecode(weatherData.body);
+    return Weather.fromJson(data);
   } else {
     throw Exception("Unknown error");
   }
@@ -59,7 +60,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  late Future<List<Weather>> futureWeather;
+  late Future<Weather> futureWeather;
 
   @override
   void initState() {
@@ -73,7 +74,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       appBar: AppBar(
         title: const Text("Weather"),
       ),
-      body: FutureBuilder<List<Weather>>(
+      body: FutureBuilder<Weather>(
         future: futureWeather,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -100,7 +101,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text("Temperature ${weather.tamperature}"),
+                     Text("Temperature ${weather.temperature}"),
                      Text("Feels Like ${weather.feelsLike}"),
                      Text("Humidity ${weather.humidity}"),
                      Text("Condition ${weather.main}"),
