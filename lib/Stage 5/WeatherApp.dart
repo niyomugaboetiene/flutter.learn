@@ -4,8 +4,8 @@ import 'dart:convert';
 
 class Weather {
   final String cityName;
-  final String temperature;
-  final String feelsLike;
+  final double temperature;
+  final double feelsLike;
   final int humidity;
   final String description;
   final String main;
@@ -89,29 +89,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
             );
           }
 
-          final weathers = snapshot.data!;
-
-          return ListView.builder(
-            itemCount: weathers.length,
-            itemBuilder: (context, index) {
-              final weather = weathers[index];
-
-              return  ListTile(
-                title: Text(weather.cityName),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                     Text("Temperature ${weather.temperature}"),
-                     Text("Feels Like ${weather.feelsLike}"),
-                     Text("Humidity ${weather.humidity}"),
-                     Text("Condition ${weather.main}"),
-                     Text("Description ${weather.description}"),
-                     Text("Wind speed ${weather.windSpeed}"),
-                     Text("Country ${weather.country}")
-                  ],
-                ),
-              );
-            },
+        final weather = snapshot.data!;
+ 
+       return ListTile(
+        title: Text(weather.cityName),
+        subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Temperature: ${weather.temperature}"),
+            Text("Feels Like: ${weather.feelsLike}"),
+            Text("Humidity: ${weather.humidity}"),
+            Text("Condition: ${weather.main}"),
+            Text("Description: ${weather.description}"),
+            Text("Wind speed: ${weather.windSpeed}"),
+            Text("Country: ${weather.country}"),
+         ],
+          ),
           );
         },
       ),
