@@ -66,4 +66,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
     super.initState();
     futureWeather = fetchWeather();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Weather"),),
+    )
+  }
 }
