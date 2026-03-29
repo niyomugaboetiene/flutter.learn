@@ -71,6 +71,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Weather"),),
+
+      body: FutureBuilder<List<Weather>>(
+             future: futureWeather,
+             builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: const  CircularProgressIndicator(),
+                );
+              }
+             },
+      ),
     )
   }
 }
