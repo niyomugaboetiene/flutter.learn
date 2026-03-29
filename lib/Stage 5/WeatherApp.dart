@@ -70,26 +70,38 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Weather"),),
-
-      body: FutureBuilder<List<Weather>>(
-             future: futureWeather,
-             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: const  CircularProgressIndicator(),
-                );
-              }
-
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text("Error ${snapshot.error}"),
-                );
-              }
-
-              final weathers = snapshot.data;
-             },
+      appBar: AppBar(
+        title: const Text("Weather"),
       ),
-    )
+      body: FutureBuilder<List<Weather>>(
+        future: futureWeather,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: const CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("Error ${snapshot.error}"),
+            );
+          }
+
+          final weathers = snapshot.data!;
+
+          return ListView.builder(
+            itemCount: weathers.length,
+            itemBuilder: (context, index) {
+              final weather = weathers[index];
+
+              return const ListTile(
+                
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
