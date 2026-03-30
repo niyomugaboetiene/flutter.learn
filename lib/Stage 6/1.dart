@@ -75,6 +75,7 @@ class _PreferenceState extends State<Preference> {
                 child: Text("Save")),
 
                 Container(
+                  padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10)
