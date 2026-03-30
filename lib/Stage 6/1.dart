@@ -56,8 +56,9 @@ class _PreferenceState extends State<Preference> {
                   await prefs.setString('username', username.text);
                 },
                 child: Text("Save") 
-                )
+            )
           ],
-        ));
+        )
+      );
   }
 }
