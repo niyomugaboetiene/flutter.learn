@@ -37,12 +37,20 @@ class Preference extends StatefulWidget {
 
 class _PreferenceState extends State<Preference> {
   final TextEditingController usernameController = TextEditingController();
-  final String username = "";
+   String username = "";
 
   @override
   void initState() {
     super.initState();
-    
+    loadData();
+  }
+
+  void loadData() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      username = prefs.getString('username') ?? "No name";
+    });
   }
 
   @override
