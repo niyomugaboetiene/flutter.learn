@@ -72,7 +72,17 @@ class _PreferenceState extends State<Preference> {
 
                   await prefs.setString('username', usernameController.text);
                 },
-                child: Text("Save"))
+                child: Text("Save")),
+
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Text(
+                    "Your current Preference is $username"
+                  ),
+                )
           ],
         ));
   }
