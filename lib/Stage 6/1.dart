@@ -53,9 +53,9 @@ class _PreferenceState extends State<Preference> {
                 onPressed: () async {
                   final prefs = await SharedPreferences.getInstance();
 
-                  await prefs.setString('username', username.text)
+                  await prefs.setString('username', username.text);
                 },
-                child: child
+                child: Text("Save") 
                 )
           ],
         ));
