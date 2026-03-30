@@ -11,6 +11,7 @@ class Themes extends StatefulWidget {
 class _ThemeState extends State<Themes> {
   bool isDark = false;
 
+@override
   void initState() {
     super.initState();
     loadTheme();
@@ -46,11 +47,13 @@ class _ThemeState extends State<Themes> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(height: 10),
             Text(
               isDark ? "Dark mode 🌙" : "Light mode ☀️",
               style: TextStyle(
                   color: isDark ? Colors.white : Colors.black, fontSize: 20),
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: toggleTheme, 
               child: Text("Toggle theme")

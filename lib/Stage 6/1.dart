@@ -81,6 +81,7 @@ class _PreferenceState extends State<Preference> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10)
                   ),
+                  
                   child: Text(
                     "Your current Preference is $username",
                     style: TextStyle(color: Colors.white),
