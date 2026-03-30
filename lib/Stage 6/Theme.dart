@@ -33,4 +33,34 @@ class _ThemeState extends State<Theme> {
 
     prefs.setBool('isDark', isDark);
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: isDark ? Colors.black : Colors.white,
+      appBar: AppBar(
+        title: Text("Theme app"),
+        backgroundColor: isDark ? Colors.grey : Colors.blue,
+      ),
+
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+              isDark ? "Dark mode 🌙" : "Light mode ☀️",
+              style: TextStyle(
+                color: isDark ? Colors.white : Colors.black,
+                fontSize: 20
+              ),
+            ),
+
+            ElevatedButton(
+              onPressed: toggleTheme, 
+              child: Text("Toggle theme")
+              )
+          ],
+        ),
+      ),
+    )
+  }
 }
