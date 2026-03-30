@@ -37,7 +37,7 @@ class Preference extends StatefulWidget {
 
 class _PreferenceState extends State<Preference> {
   final TextEditingController usernameController = TextEditingController();
-   String username = "";
+  String username = "";
 
   @override
   void initState() {
@@ -51,6 +51,8 @@ class _PreferenceState extends State<Preference> {
     setState(() {
       username = prefs.getString('username') ?? "No name";
     });
+
+    print(username);
   }
 
   @override
