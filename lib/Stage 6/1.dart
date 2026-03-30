@@ -14,8 +14,14 @@ void preference() async {
   await prefs.setBool('isLoggedIn', true);
 
 // reading the data
-
   final String? name = await prefs.getString('name') ?? "no name";
   final int? age = await prefs.getInt('age') ?? 0;
   final bool isLogged = await prefs.getBool('isLoggedIn') ?? false;
+
+  // removing data
+  // 1.removing all data
+  await prefs.clear();
+
+  // 2. removing specific data
+  await prefs.remove('name');
 }
