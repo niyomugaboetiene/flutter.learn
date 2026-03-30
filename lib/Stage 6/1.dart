@@ -46,9 +46,13 @@ class _PreferenceState extends State<Preference> {
         children: [
            TextField(
                controller: username,
-        decoration: InputDecoration(
-            hintText: "Enter your username", labelText: "Username"),
-      ),
+               decoration: InputDecoration(
+                  hintText: "Enter your username",
+                  labelText: "Username"
+                ),
+            ),
+
+            El
         ],
         ) 
     );
