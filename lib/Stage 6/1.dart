@@ -41,20 +41,23 @@ class _PreferenceState extends State<Preference> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Preference Screen")),
-      body: Column(
-        children: [
-           TextField(
-               controller: username,
-               decoration: InputDecoration(
-                  hintText: "Enter your username",
-                  labelText: "Username"
-                ),
+        appBar: AppBar(title: Text("Preference Screen")),
+        body: Column(
+          children: [
+            TextField(
+              controller: username,
+              decoration: InputDecoration(
+                  hintText: "Enter your username", labelText: "Username"),
             ),
+            ElevatedButton(
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
 
-            El
-        ],
-        ) 
-    );
+                  await prefs.setString('username', username.text)
+                },
+                child: child
+                )
+          ],
+        ));
   }
 }
