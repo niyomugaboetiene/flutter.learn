@@ -42,25 +42,21 @@ class _ThemeState extends State<Theme> {
         title: Text("Theme app"),
         backgroundColor: isDark ? Colors.grey : Colors.blue,
       ),
-
       body: Center(
         child: Column(
           children: [
             Text(
               isDark ? "Dark mode 🌙" : "Light mode ☀️",
               style: TextStyle(
-                color: isDark ? Colors.white : Colors.black,
-                fontSize: 20
-              ),
+                  color: isDark ? Colors.white : Colors.black, fontSize: 20),
             ),
-
             ElevatedButton(
               onPressed: toggleTheme, 
               child: Text("Toggle theme")
-              )
+            )
           ],
         ),
       ),
-    )
+    );
   }
 }
