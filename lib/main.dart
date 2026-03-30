@@ -13,12 +13,16 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 3/Exercise_2.dart';
 // import 'package:flutter_concepts/Stage 4/1.dart';
 // import 'package:flutter_concepts/Stage 4/Exercise_2.dart';
-import 'package:flutter_concepts/Stage 5/1.dart';
-import 'Stage 5/WeatherApp.dart';
+// import 'package:flutter_concepts/Stage 5/1.dart';
+// import 'Stage 5/WeatherApp.dart';
+import 'package:flutter_concepts/Stage 6/1.dart';
 
+// void main() {
+//   runApp(const MyApp());
+//   fetchPost(); // from API
+// }
 void main() {
   runApp(const MyApp());
-  fetchPost(); // from API
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: WeatherScreen(),
+      home: Preference(),
     );
   }
 }

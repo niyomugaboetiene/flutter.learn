@@ -36,7 +36,14 @@ class Preference extends StatefulWidget {
 }
 
 class _PreferenceState extends State<Preference> {
-  final TextEditingController username = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final String username = "";
+
+  @override
+  void initState() {
+    super.initState();
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,7 @@ class _PreferenceState extends State<Preference> {
         body: Column(
           children: [
             TextField(
-              controller: username,
+              controller: usernameController,
               decoration: InputDecoration(
                   hintText: "Enter your username", labelText: "Username"),
             ),
@@ -53,12 +60,10 @@ class _PreferenceState extends State<Preference> {
                 onPressed: () async {
                   final prefs = await SharedPreferences.getInstance();
 
-                  await prefs.setString('username', username.text);
+                  await prefs.setString('username', usernameController.text);
                 },
-                child: Text("Save") 
-            )
+                child: Text("Save"))
           ],
-        )
-      );
+        ));
   }
 }
