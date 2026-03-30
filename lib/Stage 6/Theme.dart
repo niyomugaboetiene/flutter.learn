@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Theme extends StatefulWidget {
-  const Theme({super.key});
+class Themes extends StatefulWidget {
+  const Themes({super.key});
 
   @override
-  State<Theme> createState() => _ThemeState();
+  State<Themes> createState() => _ThemeState();
 }
 
-class _ThemeState extends State<Theme> {
+class _ThemeState extends State<Themes> {
   bool isDark = false;
 
   void initState() {
@@ -44,6 +44,7 @@ class _ThemeState extends State<Theme> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               isDark ? "Dark mode 🌙" : "Light mode ☀️",
