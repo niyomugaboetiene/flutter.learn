@@ -53,6 +53,10 @@ void hiveOperatiob() async {
   var singleTask = taskBox.getAt(0);
   singleTask!.isDone = true;
   taskBox.putAt(0, singleTask);
+
+  // delete the task
+
+  taskBox.deleteAt(0);
 }
 
 // flutter packages pub run build_runner build: this command generate .g.dart file
