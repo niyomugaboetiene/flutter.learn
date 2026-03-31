@@ -38,3 +38,6 @@ void hiveOperatiob() async {
 
         Task({ required this.title, this.isDone = false });
   }
+
+  // flutter packages pub run build_runner build: this command generate .g.dart file
+  // dart run build_runner build --delete-conflicting-outputs: generate the .g.dart file with the same folder of your  model
