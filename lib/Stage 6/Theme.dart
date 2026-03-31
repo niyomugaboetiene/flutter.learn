@@ -40,7 +40,7 @@ class _ThemeState extends State<Themes> {
     return Scaffold(
       backgroundColor: isDark ? Colors.black : Colors.white,
       appBar: AppBar(
-        title: Text("Theme app"),
+        title: const Text("Theme app"),
         backgroundColor: isDark ? Colors.grey : Colors.blue,
       ),
       body: Center(
@@ -56,7 +56,7 @@ class _ThemeState extends State<Themes> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: toggleTheme, 
-              child: Text("Toggle theme")
+              child: const Text("Toggle theme")
             )
           ],
         ),
