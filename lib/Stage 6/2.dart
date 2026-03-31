@@ -14,4 +14,10 @@ void hiveOperatiob() async {
   box.put('age', 2);
 
   // 2. load the data
+  var name = box.get('name');
+  var age = box.get('age');
+
+  // delete data
+  box.delete('name');
+  box.deleteAt(0); // delete the value of first index
 }
