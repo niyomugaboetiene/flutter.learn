@@ -18,11 +18,22 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 6/1.dart';
 import 'package:flutter_concepts/Stage 6/Theme.dart';
 
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 // void main() {
 //   runApp(const MyApp());
 //   fetchPost(); // from API
 // }
-void main() {
+void main() async {
+  // * Hive configuration
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  await Hive.openBox('MyBox'); // open a box (storage)
+
   runApp(const MyApp());
 }
 
