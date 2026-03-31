@@ -20,4 +20,5 @@ void hiveOperatiob() async {
   // delete data
   box.delete('name');
   box.deleteAt(0); // delete the value of first index
+  box.clear(); // removes everything in the box
 }
