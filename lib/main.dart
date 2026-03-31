@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 // import 'Stage 5/WeatherApp.dart';
 // import 'package:flutter_concepts/Stage 6/1.dart';
 import 'package:flutter_concepts/Stage 6/Theme.dart';
+import 'package:flutter_concepts/Stage%206/2.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -28,12 +29,16 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   // * Hive configuration
 
-  WidgetsFlutterBinding.ensureInitialized(); // ensure flutter in fully initialized before the app runs
+  WidgetsFlutterBinding
+      .ensureInitialized(); // ensure flutter in fully initialized before the app runs
 
   await Hive.initFlutter(); // initialize Hive for flutter
 
-  await Hive.openBox('MyBox'); // open a box (storage)
+  // await Hive.openBox('MyBox'); // open a box (storage)
 
+  // Register my adapter
+  Hive.registerAdapter(TaskAdapter());
+  await Hive.openBox<Task>('task');
   runApp(const MyApp());
 }
 
