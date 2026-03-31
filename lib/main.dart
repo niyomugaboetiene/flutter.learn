@@ -28,9 +28,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   // * Hive configuration
 
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); // ensure flutter in fully initialized before the app runs
 
-  await Hive.initFlutter();
+  await Hive.initFlutter(); // initialize Hive for flutter
 
   await Hive.openBox('MyBox'); // open a box (storage)
 
