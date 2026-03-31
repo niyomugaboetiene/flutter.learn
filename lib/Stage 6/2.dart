@@ -48,6 +48,12 @@ void hiveOperatiob() async {
   for (var t in taskList) {
     print(t.title);
   }
+
+// update task
+  var singleTask = taskBox.getAt(0);
+  singleTask!.isDone = true;
+  taskBox.putAt(0, singleTask);
 }
+
 // flutter packages pub run build_runner build: this command generate .g.dart file
 // dart run build_runner build --delete-conflicting-outputs: generate the .g.dart file with the same folder of your  model
