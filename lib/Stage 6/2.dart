@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-part 'task.g.dart'; // used for code generation;
+part 'task.g.dart'; // used for code generation -> it is like translator which convert your model class into format hive can store;
 
 // the other configuration are done in maain.dart
 void hiveOperatiob() async {
@@ -28,7 +28,7 @@ void hiveOperatiob() async {
  
 }
  // * storing object: you will need a model class and TypeAdapter
-  @HiveType(typeId: 0)
+  @HiveType(typeId: 0) // unique typeId for this model class
   class Task {
         @HiveField(0)
         String title;
