@@ -5,4 +5,13 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 // the other configuration are done in maain.dart
-var box = Hive.box('MyBox'); // box is storage which will store your data
+void hiveOperatiob() async {
+  var box =
+      await Hive.box('MyBox'); // box is storage which will store your data
+  // Basic operation
+  // 1. Save data
+  box.put('name', 'etiene');
+  box.put('age', 2);
+
+  // 2. load the data
+}
