@@ -70,7 +70,45 @@ class _HiveTaskState extends State<HiveTask> {
                 title.clear();
                 setState(() {});
               },
-              child: Text("Save"))
+              child: const Text("Save")),
+          Expanded(
+              child: ValueListenableBuilder(
+            valueListenable: taskBox.listenable(),
+            builder: (context, Box<String> box, _) {
+              if (box.isEmpty) {
+                return const Center(
+                  child: Text("No task yet"),
+                );
+              }
+
+              return ListView.builder(
+                itemCount: box.length,
+                itemBuilder: (context, index) {
+                  final task = box.getAt(index);
+
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.all(22),
+                    color: Colors.grey[200],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(task ?? ""),
+                        IconButton(
+                            onPressed: () {
+                              box.deleteAt(index);
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ))
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ))
         ],
       ),
     );
