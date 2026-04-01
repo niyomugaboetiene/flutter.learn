@@ -19,7 +19,6 @@ class TaskAdapter extends TypeAdapter<Task> {
     return Task(
       title: fields[0] as String?,
       description: fields[1] as String?,
-      isDone: fields[2] as bool?,
     );
   }
 

@@ -13,9 +13,9 @@ class Task {
   String? description;
 
   @HiveField(2)
-  bool? isDone;
+  bool? isDone = true;
 
-  Task({required this.title, required this.description, required this.isDone});
+  Task({required this.title, required this.description});
 }
 
 class HiveTask extends StatefulWidget {
@@ -27,5 +27,8 @@ class HiveTask extends StatefulWidget {
 
 class _HiveTaskState extends State<HiveTask> {
   var task = Hive.box<Task>('MyTasks');
+  final TextEditingController title = TextEditingController();
+  final TextEditingController description = TextEditingController();
 
+  
 }
