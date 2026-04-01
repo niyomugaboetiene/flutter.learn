@@ -26,9 +26,53 @@ class HiveTask extends StatefulWidget {
 }
 
 class _HiveTaskState extends State<HiveTask> {
-  var task = Hive.box<Task>('MyTasks');
+  var taskBox = Hive.box('MyTasks');
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
 
-  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hive + Text fields'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextField(
+            controller: title,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter your task title",
+                labelText: "Title"),
+          ),
+          TextField(
+            controller: description,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter your task description",
+                labelText: "Description"),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                var titleTask = title.text;
+                if (titleTask.isNotEmpty) {
+                  taskBox.add(titleTask);
+                }
+
+                var descriptionTask = description.text;
+
+                if (descriptionTask.isNotEmpty) {
+                  taskBox.add(descriptionTask);
+                }
+
+                description.clear();
+                title.clear();
+                setState(() {});
+              },
+              child: Text("Save"))
+        ],
+      ),
+    );
+  }
 }
