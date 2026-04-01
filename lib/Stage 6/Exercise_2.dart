@@ -57,7 +57,7 @@ class _HiveTaskState extends State<HiveTask> {
           ElevatedButton(
               onPressed: () {
                 var titleTask = title.text;
-               var descriptionTask = description.text;
+                var descriptionTask = description.text;
                 if (titleTask.isNotEmpty && descriptionTask.isNotEmpty) {
                   taskBox.add(
                     Tasks(
