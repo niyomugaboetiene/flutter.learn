@@ -72,14 +72,15 @@ class _HiveTaskState extends State<HiveTask> {
                 setState(() {});
               },
               child: const Text("Save")),
+
           Expanded(
               child: ValueListenableBuilder(
-            valueListenable: taskBox.listenable(),
-            builder: (context, Box<String> box, _) {
-              if (box.isEmpty) {
-                return const Center(
-                  child: Text("No task yet"),
-                );
+              valueListenable: taskBox.listenable(),
+              builder: (context, Box<Tasks> box, _) {
+                if (box.isEmpty) {
+                  return const Center(
+                    child: Text("No task yet"),
+                  );
               }
 
               return ListView.builder(
@@ -94,7 +95,7 @@ class _HiveTaskState extends State<HiveTask> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(task ?? ""),
+                        Text(task?.title ?? ""),
                         IconButton(
                             onPressed: () {
                               box.deleteAt(index);
@@ -109,7 +110,8 @@ class _HiveTaskState extends State<HiveTask> {
                 },
               );
             },
-          ))
+          )
+          )
         ],
       ),
     );
