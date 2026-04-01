@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 part 'Exercise_2.g.dart';
 
 @HiveType(typeId: 0)
-class Task {
+class Tasks {
   @HiveField(0)
   String? title;
 
@@ -15,7 +15,7 @@ class Task {
   @HiveField(2)
   bool? isDone = true;
 
-  Task({required this.title, required this.description});
+  Tasks({required this.title, required this.description});
 }
 
 class HiveTask extends StatefulWidget {
@@ -26,7 +26,7 @@ class HiveTask extends StatefulWidget {
 }
 
 class _HiveTaskState extends State<HiveTask> {
-  var taskBox = Hive.box('MyTasks');
+  var taskBox = Hive.box<String>('MyTasks');
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
 

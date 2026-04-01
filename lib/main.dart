@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 6/1.dart';
 import 'package:flutter_concepts/Stage 6/Theme.dart';
 import 'package:flutter_concepts/Stage%206/2.dart';
+import 'package:flutter_concepts/Stage 6/Exercise_2.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -37,10 +38,10 @@ void main() async {
   // await Hive.openBox('MyBox'); // open a box (storage)
 
   // Register my adapter
-  Hive.registerAdapter(TaskAdapter());
+  Hive.registerAdapter(TasksAdapter());
   // await Hive.openBox<Task>('task');
-  await Hive.openBox<Task>('MyTasks');
-  
+  await Hive.openBox<Tasks>('MyTasks');
+
   runApp(const MyApp());
 }
 
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: Themes(),
+      home: HiveTask(),
     );
   }
 }
