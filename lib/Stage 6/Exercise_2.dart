@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_concepts/Stage%206/2.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -13,9 +14,9 @@ class Tasks {
   String? description;
 
   @HiveField(2)
-  bool? isDone = true;
+  bool isDone;
 
-  Tasks({required this.title, required this.description});
+  Tasks({required this.title, required this.description, this.isDone = false});
 }
 
 class HiveTask extends StatefulWidget {
@@ -26,7 +27,7 @@ class HiveTask extends StatefulWidget {
 }
 
 class _HiveTaskState extends State<HiveTask> {
-  var taskBox = Hive.box<String>('MyTasks');
+  var taskBox = Hive.box<Tasks>('MyTasks');
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
 
@@ -56,15 +57,15 @@ class _HiveTaskState extends State<HiveTask> {
           ElevatedButton(
               onPressed: () {
                 var titleTask = title.text;
-                if (titleTask.isNotEmpty) {
-                  taskBox.add(titleTask);
+               var descriptionTask = description.text;
+                if (titleTask.isNotEmpty && descriptionTask.isNotEmpty) {
+                  taskBox.add(
+                    Tasks(
+                    title: titleTask,
+                    description: descriptionTask
+                    ));
                 }
 
-                var descriptionTask = description.text;
-
-                if (descriptionTask.isNotEmpty) {
-                  taskBox.add(descriptionTask);
-                }
 
                 description.clear();
                 title.clear();
