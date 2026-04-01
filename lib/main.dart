@@ -38,7 +38,9 @@ void main() async {
 
   // Register my adapter
   Hive.registerAdapter(TaskAdapter());
-  await Hive.openBox<Task>('task');
+  // await Hive.openBox<Task>('task');
+  await Hive.openBox<Task>('MyTasks');
+  
   runApp(const MyApp());
 }
 
