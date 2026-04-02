@@ -16,7 +16,7 @@ class Tasks {
   @HiveField(2)
   bool isDone;
 
-  Tasks({required this.title, required this.description, this.isDone = true});
+  Tasks({required this.title, required this.description, this.isDone = false });
 }
 
 class HiveTask extends StatefulWidget {
@@ -70,8 +70,6 @@ class _HiveTaskState extends State<HiveTask> {
               onPressed: () {
                 var titleTask = title.text;
                 var descriptionTask = description.text;
-                editingTask!.title = titleTask;
-                editingTask!.description = descriptionTask;
 
                 if (titleTask.isEmpty || descriptionTask.isEmpty) return;
 
@@ -83,11 +81,13 @@ class _HiveTaskState extends State<HiveTask> {
 
                   editingIndex = null;
                   editingTask = null;
+
                 } else {
                   taskBox.add(
-                      Tasks(title: titleTask, description: descriptionTask));
+                      Tasks(title: titleTask, description: descriptionTask)
+                    );
                 }
-                
+
                 description.clear();
                 title.clear();
                 setState(() {});
