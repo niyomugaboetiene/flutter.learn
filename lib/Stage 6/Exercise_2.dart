@@ -99,75 +99,113 @@ class _HiveTaskState extends State<HiveTask> {
               }
 
               return ListView.builder(
-                itemCount: box.length,
-                itemBuilder: (context, index) {
-                  final task = box.getAt(index);
+  itemCount: box.length,
+  itemBuilder: (context, index) {
+    final task = box.getAt(index);
 
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    padding: const EdgeInsets.all(22),
-                    color: Colors.grey[200],
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                         mainAxisAlignment: MainAxisAlignment.start,  
-                        children: [
-                         Text(task?.title ?? ""),
-                           Transform.scale(
-                            scale: 0.5,
-                            child:  Checkbox(
-                             value: task?.isDone ?? false,
-                              onChanged: (value) {
-                                if (task != null) {
-                                  task.isDone = value ?? false;
-                                  box.putAt(index, task);
-                                }
-                              }),
-                           )
-                        ]),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: (task?.isDone ?? false)
-                                    ? Colors.green
-                                    : Colors.red,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                (task?.isDone ?? false) ? "Done" : "Pending",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  box.deleteAt(index);
-                                },
-                                icon: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  box.deleteAt(index);
-                                },
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: Colors.green,
-                                )),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              );
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 4,
+            color: Colors.black12,
+            offset: Offset(0, 2),
+          )
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          
+          Transform.scale(
+            scale: 0.8,
+            child: Checkbox(
+              value: task?.isDone ?? false,
+              onChanged: (value) {
+                if (task != null) {
+                  task.isDone = value ?? false;
+                  box.putAt(index, task);
+                }
+              },
+            ),
+          ),
+
+          const SizedBox(width: 10),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  task?.title ?? "",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    decoration: (task?.isDone ?? false)
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  task?.description ?? "",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(width: 8),
+
+          // ✅ Status badge (cleaner)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: (task?.isDone ?? false)
+                  ? Colors.green
+                  : Colors.orange,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              (task?.isDone ?? false) ? "Done" : "Pending",
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+
+          const SizedBox(width: 6),
+
+          IconButton(
+            onPressed: () {
+              box.deleteAt(index);
             },
-          ))
+            icon: const Icon(Icons.delete, color: Colors.red),
+          ),
+
+          IconButton(
+            onPressed: () {
+              box.deleteAt(index); 
+            },
+            icon: const Icon(Icons.edit, color: Colors.green),
+          ),
+        ],
+      ),
+    );
+  },
+);
+            },
+          )
+          )
         ],
       ),
     );
