@@ -78,12 +78,17 @@ class _HiveTaskState extends State<HiveTask> {
                 if (editingTask != null && editingIndex != null) {
                   editingTask!.title = titleTask;
                   editingTask!.description = descriptionTask;
-                }
-                if (titleTask.isNotEmpty && descriptionTask.isNotEmpty) {
-                  taskBox.add(
-                      Tasks(title: titleTask, description: descriptionTask));
-                }
 
+                  taskBox.putAt(editingIndex!, editingTask!);
+
+                  editingIndex = null;
+                  editingTask = null;
+                } else {
+                  taskBox.add(
+                      Tasks(title: titleTask, description: descriptionTask)
+                      );
+                }
+                
                 description.clear();
                 title.clear();
                 setState(() {});
