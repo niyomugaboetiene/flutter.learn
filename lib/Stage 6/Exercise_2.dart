@@ -123,7 +123,16 @@ class _HiveTaskState extends State<HiveTask> {
                               Icons.edit,
                               color: Colors.green,
                             )
-                            )
+                            ),
+
+                           Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                                color: (task?.isDone ?? false) ? Colors.green : Colors.red,
+                                borderRadius: BorderRadius.circular(12),
+                                
+                            ),
+                           )
                            ],
                         )
                         
