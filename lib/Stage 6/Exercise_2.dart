@@ -164,7 +164,6 @@ class _HiveTaskState extends State<HiveTask> {
 
           const SizedBox(width: 8),
 
-          // ✅ Status badge (cleaner)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
