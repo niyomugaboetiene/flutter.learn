@@ -85,10 +85,9 @@ class _HiveTaskState extends State<HiveTask> {
                   editingTask = null;
                 } else {
                   taskBox.add(
-                      Tasks(title: titleTask, description: descriptionTask)
-                      );
+                      Tasks(title: titleTask, description: descriptionTask));
                 }
-                
+
                 description.clear();
                 title.clear();
                 setState(() {});
@@ -203,7 +202,13 @@ class _HiveTaskState extends State<HiveTask> {
                         ),
                         IconButton(
                           onPressed: () {
-                            box.deleteAt(index);
+                            if (task != null) {
+                              title.text = task.title ?? "";
+                              description.text = task.description ?? "";
+
+                              editingTask = task;
+                              editingIndex = index;
+                            }
                           },
                           icon: const Icon(Icons.edit, color: Colors.green),
                         ),
