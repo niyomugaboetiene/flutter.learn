@@ -101,14 +101,32 @@ class _HiveTaskState extends State<HiveTask> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(task?.title ?? ""),
-                        IconButton(
+
+                        Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                            IconButton(
                             onPressed: () {
                               box.deleteAt(index);
                             },
                             icon: Icon(
                               Icons.delete,
                               color: Colors.red,
-                            ))
+                            )
+                            ),
+
+                            IconButton(
+                            onPressed: () {
+                              box.deleteAt(index);
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.green,
+                            )
+                            )
+                           ],
+                        )
+                        
                       ],
                     ),
                   );
