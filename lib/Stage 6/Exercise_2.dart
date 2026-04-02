@@ -115,8 +115,8 @@ class _HiveTaskState extends State<HiveTask> {
                               value: task?.isDone ?? false,
                               onChanged: (value) {
                                 if (task != null) {
-                                  var newValue = task.isDone = value ?? false;
-                                  box.putAt(index, newValue);
+                                  task.isDone = value ?? false;
+                                  box.putAt(index, task);
                                 }
                               }),
                           Text(task?.title ?? ""),
