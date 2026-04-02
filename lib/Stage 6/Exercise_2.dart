@@ -110,7 +110,17 @@ class _HiveTaskState extends State<HiveTask> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(task?.title ?? ""),
+                        Column(children: [
+                          Checkbox(
+                              value: task?.isDone ?? false,
+                              onChanged: (value) {
+                                if (task != null) {
+                                  var newValue = task.isDone = value ?? false;
+                                  box.putAt(index, newValue);
+                                }
+                              }),
+                          Text(task?.title ?? ""),
+                        ]),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -136,8 +146,7 @@ class _HiveTaskState extends State<HiveTask> {
                                   Icons.delete,
                                   color: Colors.red,
                                 )),
-                           
-                              IconButton(
+                            IconButton(
                                 onPressed: () {
                                   box.deleteAt(index);
                                 },
@@ -145,7 +154,6 @@ class _HiveTaskState extends State<HiveTask> {
                                   Icons.edit,
                                   color: Colors.green,
                                 )),
-                            
                           ],
                         )
                       ],
