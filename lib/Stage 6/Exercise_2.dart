@@ -136,7 +136,8 @@ class _HiveTaskState extends State<HiveTask> {
                                   Icons.delete,
                                   color: Colors.red,
                                 )),
-                            IconButton(
+                           
+                              IconButton(
                                 onPressed: () {
                                   box.deleteAt(index);
                                 },
