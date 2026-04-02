@@ -110,16 +110,21 @@ class _HiveTaskState extends State<HiveTask> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(children: [
-                          Checkbox(
-                              value: task?.isDone ?? false,
+                        Column(
+                         mainAxisAlignment: MainAxisAlignment.start,  
+                        children: [
+                         Text(task?.title ?? ""),
+                           Transform.scale(
+                            scale: 0.5,
+                            child:  Checkbox(
+                             value: task?.isDone ?? false,
                               onChanged: (value) {
                                 if (task != null) {
                                   task.isDone = value ?? false;
                                   box.putAt(index, task);
                                 }
                               }),
-                          Text(task?.title ?? ""),
+                           )
                         ]),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
