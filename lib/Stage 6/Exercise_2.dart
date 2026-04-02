@@ -50,6 +50,8 @@ class _HiveTaskState extends State<HiveTask> {
                 hintText: "Enter your task title",
                 labelText: "Title"),
           ),
+        
+         const SizedBox(height: 15,),
           TextField(
             controller: description,
             decoration: InputDecoration(
