@@ -92,7 +92,7 @@ class _HiveTaskState extends State<HiveTask> {
                 title.clear();
                 setState(() {});
               },
-              child: const Text("Save")),
+              child: Text(editingTask != null ? "Update" : "Save")),
           const SizedBox(
             height: 12,
           ),
