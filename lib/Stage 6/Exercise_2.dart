@@ -16,7 +16,7 @@ class Tasks {
   @HiveField(2)
   bool isDone;
 
-  Tasks({required this.title, required this.description, this.isDone = false});
+  Tasks({required this.title, required this.description, this.isDone = true});
 }
 
 class HiveTask extends StatefulWidget {
@@ -40,9 +40,13 @@ class _HiveTaskState extends State<HiveTask> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-           const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           Text("To Do App", style: TextStyle(color: Colors.blue, fontSize: 20)),
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           TextField(
             controller: title,
             decoration: InputDecoration(
@@ -50,8 +54,9 @@ class _HiveTaskState extends State<HiveTask> {
                 hintText: "Enter your task title",
                 labelText: "Title"),
           ),
-        
-         const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           TextField(
             controller: description,
             decoration: InputDecoration(
@@ -65,27 +70,22 @@ class _HiveTaskState extends State<HiveTask> {
                 var descriptionTask = description.text;
                 if (titleTask.isNotEmpty && descriptionTask.isNotEmpty) {
                   taskBox.add(
-                    Tasks(
-                    title: titleTask,
-                    description: descriptionTask
-                    ));
+                      Tasks(title: titleTask, description: descriptionTask));
                 }
-
 
                 description.clear();
                 title.clear();
                 setState(() {});
               },
               child: const Text("Save")),
-
           Expanded(
               child: ValueListenableBuilder(
-              valueListenable: taskBox.listenable(),
-              builder: (context, Box<Tasks> box, _) {
-                if (box.isEmpty) {
-                  return const Center(
-                    child: Text("No task yet"),
-                  );
+            valueListenable: taskBox.listenable(),
+            builder: (context, Box<Tasks> box, _) {
+              if (box.isEmpty) {
+                return const Center(
+                  child: Text("No task yet"),
+                );
               }
 
               return ListView.builder(
@@ -101,49 +101,47 @@ class _HiveTaskState extends State<HiveTask> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(task?.title ?? ""),
-
                         Row(
-                           mainAxisAlignment: MainAxisAlignment.end,
-                           children: [
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
                             IconButton(
-                            onPressed: () {
-                              box.deleteAt(index);
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            )
-                            ),
-
+                                onPressed: () {
+                                  box.deleteAt(index);
+                                },
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                )),
                             IconButton(
-                            onPressed: () {
-                              box.deleteAt(index);
-                            },
-                            icon: Icon(
-                              Icons.edit,
-                              color: Colors.green,
-                            )
-                            ),
-
-                           Container(
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                                color: (task?.isDone ?? false) ? Colors.green : Colors.red,
+                                onPressed: () {
+                                  box.deleteAt(index);
+                                },
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: Colors.green,
+                                )),
+                            Container(
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: (task?.isDone ?? false)
+                                    ? Colors.green
+                                    : Colors.red,
                                 borderRadius: BorderRadius.circular(12),
-                                
-                            ),
-                           )
-                           ],
+                              ),
+                              child: Text(
+                                (task?.isDone ?? false) ? "Done" : "Pending",
+                                style: TextStyle(color: Colors.white, fontSize: 12),
+                              ),
+                            )
+                          ],
                         )
-                        
                       ],
                     ),
                   );
                 },
               );
             },
-          )
-          )
+          ))
         ],
       ),
     );
