@@ -40,6 +40,9 @@ class _HiveTaskState extends State<HiveTask> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+           const SizedBox(height: 15,),
+          Text("To Do App", style: TextStyle(color: Colors.blue, fontSize: 20)),
+          const SizedBox(height: 15,),
           TextField(
             controller: title,
             decoration: InputDecoration(
