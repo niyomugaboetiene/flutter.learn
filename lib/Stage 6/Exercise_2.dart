@@ -114,6 +114,20 @@ class _HiveTaskState extends State<HiveTask> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
+                            Container(
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: (task?.isDone ?? false)
+                                    ? Colors.green
+                                    : Colors.red,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                (task?.isDone ?? false) ? "Done" : "Pending",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                            ),
                             IconButton(
                                 onPressed: () {
                                   box.deleteAt(index);
@@ -130,20 +144,7 @@ class _HiveTaskState extends State<HiveTask> {
                                   Icons.edit,
                                   color: Colors.green,
                                 )),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: (task?.isDone ?? false)
-                                    ? Colors.green
-                                    : Colors.red,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                (task?.isDone ?? false) ? "Done" : "Pending",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                            )
+                            
                           ],
                         )
                       ],
