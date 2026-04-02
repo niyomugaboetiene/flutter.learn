@@ -78,6 +78,16 @@ class _HiveTaskState extends State<HiveTask> {
                 setState(() {});
               },
               child: const Text("Save")),
+          const SizedBox(
+            height: 12,
+          ),
+          Text(
+            "Recents",
+            style: TextStyle(color: Colors.blue, fontSize: 20, wordSpacing: 12),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
           Expanded(
               child: ValueListenableBuilder(
             valueListenable: taskBox.listenable(),
@@ -130,7 +140,8 @@ class _HiveTaskState extends State<HiveTask> {
                               ),
                               child: Text(
                                 (task?.isDone ?? false) ? "Done" : "Pending",
-                                style: TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
                               ),
                             )
                           ],
