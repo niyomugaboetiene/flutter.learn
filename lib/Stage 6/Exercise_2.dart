@@ -30,6 +30,8 @@ class _HiveTaskState extends State<HiveTask> {
   var taskBox = Hive.box<Tasks>('MyTasks');
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
+  Tasks? editingTask;
+  int? editingIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,15 @@ class _HiveTaskState extends State<HiveTask> {
               onPressed: () {
                 var titleTask = title.text;
                 var descriptionTask = description.text;
+                editingTask!.title = titleTask;
+                editingTask!.description = descriptionTask;
+
+                if (titleTask.isEmpty || descriptionTask.isEmpty) return;
+
+                if (editingTask != null && editingIndex != null) {
+                  editingTask!.title = titleTask;
+                  editingTask!.description = descriptionTask;
+                }
                 if (titleTask.isNotEmpty && descriptionTask.isNotEmpty) {
                   taskBox.add(
                       Tasks(title: titleTask, description: descriptionTask));
@@ -99,112 +110,105 @@ class _HiveTaskState extends State<HiveTask> {
               }
 
               return ListView.builder(
-  itemCount: box.length,
-  itemBuilder: (context, index) {
-    final task = box.getAt(index);
+                itemCount: box.length,
+                itemBuilder: (context, index) {
+                  final task = box.getAt(index);
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 4,
-            color: Colors.black12,
-            offset: Offset(0, 2),
-          )
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          
-          Transform.scale(
-            scale: 0.8,
-            child: Checkbox(
-              value: task?.isDone ?? false,
-              onChanged: (value) {
-                if (task != null) {
-                  task.isDone = value ?? false;
-                  box.putAt(index, task);
-                }
-              },
-            ),
-          ),
-
-          const SizedBox(width: 10),
-
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  task?.title ?? "",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    decoration: (task?.isDone ?? false)
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  task?.description ?? "",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey[600],
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(width: 8),
-
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: (task?.isDone ?? false)
-                  ? Colors.green
-                  : Colors.orange,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              (task?.isDone ?? false) ? "Done" : "Pending",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-
-          const SizedBox(width: 6),
-
-          IconButton(
-            onPressed: () {
-              box.deleteAt(index);
+                  return Container(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Colors.black12,
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Transform.scale(
+                          scale: 0.8,
+                          child: Checkbox(
+                            value: task?.isDone ?? false,
+                            onChanged: (value) {
+                              if (task != null) {
+                                task.isDone = value ?? false;
+                                box.putAt(index, task);
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                task?.title ?? "",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  decoration: (task?.isDone ?? false)
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                task?.description ?? "",
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: (task?.isDone ?? false)
+                                ? Colors.green
+                                : Colors.orange,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            (task?.isDone ?? false) ? "Done" : "Pending",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        IconButton(
+                          onPressed: () {
+                            box.deleteAt(index);
+                          },
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            box.deleteAt(index);
+                          },
+                          icon: const Icon(Icons.edit, color: Colors.green),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
             },
-            icon: const Icon(Icons.delete, color: Colors.red),
-          ),
-
-          IconButton(
-            onPressed: () {
-              box.deleteAt(index); 
-            },
-            icon: const Icon(Icons.edit, color: Colors.green),
-          ),
-        ],
-      ),
-    );
-  },
-);
-            },
-          )
-          )
+          ))
         ],
       ),
     );
