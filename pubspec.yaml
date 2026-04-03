@@ -32,10 +32,17 @@ dependencies:
     sdk: flutter
   http: ^1.1.0
   shared_preferences: ^2.2.2
+  # for hive: noSQL database
   hive: ^2.2.3
   hive_flutter: ^1.1.0 # make hive work in flutter easily
   path_provider: ^2.0.17 # helps to store data in device storage
 
+  # for Drift-> sql database
+  drift: ^2.7.0
+  drift_flutter: ^2.7.0
+  sqlite3_flutter_libs: ^0.5.9
+
+  flutter_hooks: ^0.18.6 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
