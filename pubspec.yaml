@@ -39,7 +39,7 @@ dependencies:
 
   # for Drift-> sql database
   drift: ^2.14.0 # this is the main library for interacting with flutter
-  drift_flutter: ^2.14.0 # conect drift to flutter environment: flutter helper for drift
+  drift_flutter: ^0.2.0 # conect drift to flutter environment: flutter helper for drift
   sqlite3_flutter_libs: ^0.5.20 # it is actual sqlite engine  which allow drift to interact with SQLite database
 
   flutter_hooks: ^0.18.6  # makes UI cleaner and readable
