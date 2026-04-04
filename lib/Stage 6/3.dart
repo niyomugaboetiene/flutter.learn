@@ -6,11 +6,12 @@ import 'package:path/path.dart' as p;
 
 part '3.g.dart';
 
+// configure where and how to store database in the device
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
-    final dbFolder = await getApplicationCacheDirectory();
-    final file = File(p.join(dbFolder.path, 'db.sqlit'));
-    return NativeDatabase(file);
+    final dbFolder = await getApplicationDocumentsDirectory(); // get location where the db is stored
+    final file = File(p.join(dbFolder.path, 'db.sqlite')); // create a file to store our database
+    return NativeDatabase(file); // allows to perform query executor: INSERT, UPDATE,DELETE, ...
   });
 }
 
