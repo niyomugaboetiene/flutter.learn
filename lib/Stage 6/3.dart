@@ -29,13 +29,14 @@ class Tasks extends Table {
 // create a database class
 @DriftDatabase(tables: [Tasks])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  AppDatabase() : super(_openConnection()); // allows you to parse the query executor
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 1; // for managing database migration
 
   // Perform crud Operation
   // 1. insert
+  // TasksCompanion is helper class allows you to pass data into tasks table from Tasks class
   Future<void> insetTask(TasksCompanion task) => into(tasks).insert(task);
 
   // 2. Select
@@ -45,6 +46,7 @@ class AppDatabase extends _$AppDatabase {
   Future<bool> updateTask(Task task) => update(tasks).replace(task);
 
   // 4. delete task
+  // where is filter for deleting only specified id
   Future<int> deleteTask(int id) => (delete(tasks)..where((t) => t.id.equals(id))).go();
 }
 
