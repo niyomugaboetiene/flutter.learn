@@ -35,9 +35,14 @@ class AppDatabase extends _$AppDatabase {
 
   // Perform crud Operation
   // 1. insert
-   Future<void> insetTask(TasksCompanion task) => into(tasks).insert(task);
+  Future<void> insetTask(TasksCompanion task) => into(tasks).insert(task);
+
   // 2. Select
-  
+  Future<List<Task>> getAllTask() => select(tasks).get();
 
+  // 3. update
+  Future<bool> updateTask(Task task) => update(tasks).replace(task);
+
+  // 4. delete task
+  Future<int> deleteTask(int id) => (delete(tasks)..where((t) => t.id.equals(id))).go();
 }
-
