@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 
 part '3.g.dart';
+
+
 // Create a table structure
 class Task extends Table {
   IntColumn get id => integer().autoIncrement()();
