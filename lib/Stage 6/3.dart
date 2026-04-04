@@ -46,3 +46,4 @@ class AppDatabase extends _$AppDatabase {
   // 4. delete task
   Future<int> deleteTask(int id) => (delete(tasks)..where((t) => t.id.equals(id))).go();
 }
+
