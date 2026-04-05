@@ -46,10 +46,10 @@ void main() async {
   // await Hive.openBox<Tasks>('MyTasks');
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CounterModel(),
-      child: const MyApp(),
-    )
+       MultiProvider(providers: [
+        ChangeNotifierProvider(create: (_) => CounterModel()),
+        ChangeNotifierProvider(create: (_) => InputFieldModel()),
+       ])
     );
 }
 
