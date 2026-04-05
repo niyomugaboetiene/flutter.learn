@@ -24,6 +24,7 @@ import 'package:flutter/material.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'Stage 7/1_Provider.dart';
+import 'Stage 7/1_Screen.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: HiveTask(),
+      home: ConsumerScreen(),
     );
   }
 }
