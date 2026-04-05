@@ -29,14 +29,14 @@ class ConsumerScreen extends StatelessWidget {
              
              FloatingActionButton(
                onPressed: () {
-               context.read<CounterModel>().increment();
+               context.read<CounterModel>().reset();
              },
               child: Text("reset"),
              ),
              
              FloatingActionButton(
                onPressed: () {
-               context.read<CounterModel>().increment();
+               context.read<CounterModel>().decrement();
              },
               child: Text("remove"),
              ),
