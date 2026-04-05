@@ -25,6 +25,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Stage 7/1_Provider.dart';
 import 'Stage 7/1_Screen.dart';
+import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
 
 // void main() {
 //   runApp(const MyApp());
