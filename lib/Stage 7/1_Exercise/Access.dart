@@ -10,19 +10,28 @@ class Access extends StatelessWidget {
     final inputName = context.watch<InputFieldModel>();
 
     return Scaffold(
-      appBar: AppBar(title: Text("Input Field + Provider"),),
-
+      appBar: AppBar(
+        title: Text("Input Field + Provider"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-
         children: [
           TextField(
             onChanged: (value) {
               context.read<InputFieldModel>().updateName(value);
             },
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.greenAccent,
+            ),
+            child: Consumer<InputFieldModel>(builder: (_, provider, __) {
+              return Text("Hello ${provider.name}");
+            }),
           )
         ],
       ),
-    )
+    );
   }
 }
