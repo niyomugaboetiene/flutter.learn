@@ -51,7 +51,9 @@ void main() async {
        MultiProvider(providers: [
         ChangeNotifierProvider(create: (_) => CounterModel()),
         ChangeNotifierProvider(create: (_) => InputFieldModel()),
-       ])
+       ],
+       child: MyApp(),
+       )
     );
 }
 
