@@ -16,13 +16,17 @@ class ConsumerScreen extends StatelessWidget {
         backgroundColor: Colors.purpleAccent,
       ),
       body: Center(child: Text('${counter.count}')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-        context.read<CounterModel>().increment();
-      },
-
-      child: Text("Add"),
-      ),
+      
+      floatingActionButton: Column(
+        children: [
+             FloatingActionButton(
+               onPressed: () {
+               context.read<CounterModel>().increment();
+             },
+              child: Text("Add"),
+             ),
+         ],
+      )
     );
   }
 }
