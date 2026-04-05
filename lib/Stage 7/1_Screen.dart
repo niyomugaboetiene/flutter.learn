@@ -13,6 +13,7 @@ class ConsumerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Counter + Provider"),
+        backgroundColor: Colors.purpleAccent,
       ),
       body: Center(child: Text('${counter.count}')),
       floatingActionButton: FloatingActionButton(
