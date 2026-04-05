@@ -13,4 +13,5 @@ class CounterModel extends ChangeNotifier {
     count--;
     notifyListeners(); // for rebuild the UI
   }
+  
 }

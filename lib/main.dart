@@ -16,12 +16,14 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 5/1.dart';
 // import 'Stage 5/WeatherApp.dart';
 // import 'package:flutter_concepts/Stage 6/1.dart';
-import 'package:flutter_concepts/Stage 6/Theme.dart';
-import 'package:flutter_concepts/Stage%206/2.dart';
-import 'package:flutter_concepts/Stage 6/Exercise_2.dart';
+// import 'package:flutter_concepts/Stage 6/Theme.dart';
+// import 'package:flutter_concepts/Stage%206/2.dart';
+// import 'package:flutter_concepts/Stage 6/Exercise_2.dart';
 
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:hive/hive.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+import 'Stage 7/1_Provider.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -30,19 +32,24 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   // * Hive configuration
 
-  WidgetsFlutterBinding
-      .ensureInitialized(); // ensure flutter in fully initialized before the app runs
+  // WidgetsFlutterBinding
+  //     .ensureInitialized(); // ensure flutter in fully initialized before the app runs
 
-  await Hive.initFlutter(); // initialize Hive for flutter
+  // await Hive.initFlutter(); // initialize Hive for flutter
 
   // await Hive.openBox('MyBox'); // open a box (storage)
 
   // Register my adapter
-  Hive.registerAdapter(TasksAdapter());
+  // Hive.registerAdapter(TasksAdapter());
   // await Hive.openBox<Task>('task');
-  await Hive.openBox<Tasks>('MyTasks');
+  // await Hive.openBox<Tasks>('MyTasks');
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CounterModel(),
+      child: const MyApp(),
+    )
+    );
 }
 
 class MyApp extends StatelessWidget {
