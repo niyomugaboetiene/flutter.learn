@@ -24,6 +24,7 @@ class HomeScreen extends ConsumerWidget {
           style: TextStyle(fontSize: 20),
         ),
       ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(counterProvider.notifier).state++;
