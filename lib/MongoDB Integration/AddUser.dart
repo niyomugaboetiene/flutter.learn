@@ -42,8 +42,22 @@ class AddUserScreen extends StatefulWidget {
 }
 
 class _AddUserState extends State<AddUserScreen> {
+  TextEditingController full_name = TextEditingController();
+  TextEditingController gender = TextEditingController();
+  TextEditingController roll = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController trade = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController location = TextEditingController();
+  TextEditingController classes = TextEditingController();
+  TextEditingController passwrod = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text("Add Student"),),
+      body: Column(
+        
+      ),
+    );
   }
 }
