@@ -4,7 +4,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 // step 1. create provider that will start from 0
-final counterProvider = StateProvider<int>((ref) => 0); 
+final counterProvider = StateProvider<int>((ref) => 0);
+
+// ? best approach
+// create state class
+class CounterState {
+  final int count;
+
+  CounterState(this.count);
+}
+
+// * create notifier
+class CounterNotifier extends StateNotifier<CounterState> {
+  CounterNotifier() : super(CounterState(0));
+
+  void increment() {
+    state = CounterState(state.count + 1);
+  }
+}
+
+// 
 
 // ConsumerWidget => widget which can listen(access) provider
 class HomeScreen extends ConsumerWidget {
@@ -24,7 +43,6 @@ class HomeScreen extends ConsumerWidget {
           style: TextStyle(fontSize: 20),
         ),
       ),
-      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(counterProvider.notifier).state++;
