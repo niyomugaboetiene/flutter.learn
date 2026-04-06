@@ -6,7 +6,7 @@ class Adduser {
   static const BaseUrl = "http://localhost:5000";
 
   //     student_id, full_name,  gender, roll, email, trade, phone, location, class, password, last_login, is_approved
-  static Future getUser(
+  static Future<void> getUser(
       String full_name,
       String gender,
       String roll,
@@ -59,8 +59,13 @@ class _AddUserState extends State<AddUserScreen> {
 
   void addUser() async {
     await Adduser.getUser(
-         full_name, gender, roll, email, trade, phone,
-        location, classes, password
+         full_name.text, 
+         gender.text, 
+         roll.text, 
+         email.text, 
+         trade.text, 
+         phone.text,
+        location.text, classes.text, password.text
     );
   }
 
