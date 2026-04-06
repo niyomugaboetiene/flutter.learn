@@ -17,8 +17,20 @@ class Adduser {
       String password) async {
     final response = await http.post(Uri.parse("$BaseUrl/register"),
         headers: {"Content-Type": "application/json"},
-        body: jsonDecode({
-          full_name
+        body: jsonEncode({
+          "full_name": full_name,
+          "gender": gender,
+          "roll": roll,
+          "email": email,
+          "trade": trade,
+          "phone": phone,
+          "location": location,
+          "class": classes,
+          "password": password
         }));
+
+    return jsonDecode(response.body);
   }
 }
+
+
