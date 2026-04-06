@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 // step 1. create provider that will start from 0
 final counterProvider = StateProvider<int>((ref) => 0); 
 
+// ConsumerWidget => widget which can listen(access) provider
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
