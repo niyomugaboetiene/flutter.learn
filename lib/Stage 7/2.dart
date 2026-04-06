@@ -23,7 +23,8 @@ class CounterNotifier extends StateNotifier<CounterState> {
   }
 }
 
-// 
+// ! create provider: best approach
+final counterProv = StateNotifierProvider<CounterNotifier, CounterState>((ref) => CounterNotifier());
 
 // ConsumerWidget => widget which can listen(access) provider
 class HomeScreen extends ConsumerWidget {
