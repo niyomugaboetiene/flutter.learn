@@ -52,21 +52,23 @@ class _AddUserState extends State<AddUserScreen> {
   final TextEditingController classes = TextEditingController();
   final TextEditingController password = TextEditingController();
 
-@override
+  @override
   void initState() {
     super.initState();
   }
 
   void addUser() async {
-    await Adduser.getUser(
-         full_name.text, 
-         gender.text, 
-         roll.text, 
-         email.text, 
-         trade.text, 
-         phone.text,
-        location.text, classes.text, password.text
-    );
+    if (full_name.text.isEmpty ||
+        gender.text.isEmpty ||
+        roll.text.isEmpty ||
+        trade.text.isEmpty ||
+        phone.text.isEmpty) {
+      print("Fill out missing fields");
+      return;
+    }
+
+    await Adduser.getUser(full_name.text, gender.text, roll.text, email.text,
+        trade.text, phone.text, location.text, classes.text, password.text);
   }
 
   @override
@@ -75,7 +77,59 @@ class _AddUserState extends State<AddUserScreen> {
       appBar: AppBar(
         title: Text("Add Student"),
       ),
-      body: Column(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+          
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(
+              hintText: "Enter your full name"
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
