@@ -24,9 +24,10 @@ import 'package:flutter/material.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'Stage 7/1_Provider.dart';
-import 'Stage 7/1_Screen.dart';
+// import 'Stage 7/1_Screen.dart';
 import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
-import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
+// import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
+import 'MongoDB Integration/AddUser.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: Access(),
+      home: AddUserScreen(),
     );
   }
 }
