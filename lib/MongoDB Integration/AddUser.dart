@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
 class Adduser {
   static const BaseUrl = "http://localhost:5000";
@@ -33,4 +34,16 @@ class Adduser {
   }
 }
 
+class AddUserScreen extends StatefulWidget {
+  const AddUserScreen({super.key});
 
+  @override
+  State<AddUserScreen> createState() => _AddUserState();
+}
+
+class _AddUserState extends State<AddUserScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
