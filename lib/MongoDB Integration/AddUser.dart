@@ -82,52 +82,44 @@ class _AddUserState extends State<AddUserScreen> {
         children: [
           TextField(
             controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            decoration: InputDecoration(hintText: "Enter your full name"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: gender,
+            decoration: InputDecoration(hintText: "Enter your full gender"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: roll,
+            decoration: InputDecoration(hintText: "Enter your  roll"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: email,
+            decoration: InputDecoration(hintText: "Enter your email"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: trade,
+            decoration: InputDecoration(hintText: "Enter your trade"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: phone,
+            decoration: InputDecoration(hintText: "Enter your phone"),
           ),
-          
           TextField(
-            controller: full_name,
-            decoration: InputDecoration(
-              hintText: "Enter your full name"
-            ),
+            controller: location,
+            decoration: InputDecoration(hintText: "Enter your District"),
           ),
+          TextField(
+            controller: classes,
+            decoration: InputDecoration(hintText: "Enter your class"),
+          ),
+          TextField(
+            controller: password,
+            decoration: InputDecoration(hintText: "Enter your password"),
+          ),
+          ElevatedButton(
+              onPressed:  addUser,
+              child: Text("Add ")
+          )
         ],
       ),
     );
