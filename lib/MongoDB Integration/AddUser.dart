@@ -73,56 +73,60 @@ class _AddUserState extends State<AddUserScreen> {
 
     await Adduser.getUser(full_name.text, gender.text, roll.text, email.text,
         trade.text, phone.text, location.text, classes.text, password.text);
+
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(("Student Added successfully"))));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Student"),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TextField(
-            controller: full_name,
-            decoration: InputDecoration(hintText: "Enter your full name"),
+        appBar: AppBar(
+          title: Text("Add Student"),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TextField(
+                controller: full_name,
+                decoration: InputDecoration(hintText: "Enter your full name"),
+              ),
+              TextField(
+                controller: gender,
+                decoration: InputDecoration(hintText: "Enter your full gender"),
+              ),
+              TextField(
+                controller: roll,
+                decoration: InputDecoration(hintText: "Enter your  roll"),
+              ),
+              TextField(
+                controller: email,
+                decoration: InputDecoration(hintText: "Enter your email"),
+              ),
+              TextField(
+                controller: trade,
+                decoration: InputDecoration(hintText: "Enter your trade"),
+              ),
+              TextField(
+                controller: phone,
+                decoration: InputDecoration(hintText: "Enter your phone"),
+              ),
+              TextField(
+                controller: location,
+                decoration: InputDecoration(hintText: "Enter your District"),
+              ),
+              TextField(
+                controller: classes,
+                decoration: InputDecoration(hintText: "Enter your class"),
+              ),
+              TextField(
+                controller: password,
+                decoration: InputDecoration(hintText: "Enter your password"),
+              ),
+              ElevatedButton(onPressed: addUser, child: Text("Add "))
+            ],
           ),
-          TextField(
-            controller: gender,
-            decoration: InputDecoration(hintText: "Enter your full gender"),
-          ),
-          TextField(
-            controller: roll,
-            decoration: InputDecoration(hintText: "Enter your  roll"),
-          ),
-          TextField(
-            controller: email,
-            decoration: InputDecoration(hintText: "Enter your email"),
-          ),
-          TextField(
-            controller: trade,
-            decoration: InputDecoration(hintText: "Enter your trade"),
-          ),
-          TextField(
-            controller: phone,
-            decoration: InputDecoration(hintText: "Enter your phone"),
-          ),
-          TextField(
-            controller: location,
-            decoration: InputDecoration(hintText: "Enter your District"),
-          ),
-          TextField(
-            controller: classes,
-            decoration: InputDecoration(hintText: "Enter your class"),
-          ),
-          TextField(
-            controller: password,
-            decoration: InputDecoration(hintText: "Enter your password"),
-          ),
-          ElevatedButton(onPressed: addUser, child: Text("Add "))
-        ],
-      ),
-    );
+        ));
   }
 }
