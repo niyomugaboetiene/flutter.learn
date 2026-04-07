@@ -27,7 +27,7 @@ import 'Stage 7/1_Provider.dart';
 // import 'Stage 7/1_Screen.dart';
 import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
 // import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
-import 'MongoDB Integration/AddUser.dart';
+import 'MongoDB Integration/AddStudent.dart';
 
 // void main() {
 //   runApp(const MyApp());
