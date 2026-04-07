@@ -16,7 +16,7 @@ class Adduser {
       String location,
       String classes,
       String password) async {
-    final response = await http.post(Uri.parse("$BaseUrl/register"),
+    final response = await http.post(Uri.parse("$BaseUrl/student/register"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "full_name": full_name,
