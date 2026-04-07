@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class Adduser {
-  static const BaseUrl = "http://localhost:5000/student/register";
+  static const BaseUrl = "http://localhost:5000";
 
   //     student_id, full_name,  gender, roll, email, trade, phone, location, class, password, last_login, is_approved
   static Future<Map<String, dynamic>> getUser(
@@ -16,7 +16,7 @@ class Adduser {
       String location,
       String classes,
       String password) async {
-    final response = await http.post(Uri.parse(BaseUrl),
+    final response = await http.post(Uri.parse("$BaseUrl/student/register"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "full_name": full_name,
@@ -62,20 +62,26 @@ class _AddUserState extends State<AddUserScreen> {
   }
 
   void addUser() async {
-    if (full_name.text.isEmpty ||
-        gender.text.isEmpty ||
-        roll.text.isEmpty ||
-        trade.text.isEmpty ||
-        phone.text.isEmpty) {
-      print("Fill out missing fields");
-      return;
+    try {
+      if (full_name.text.isEmpty ||
+          gender.text.isEmpty ||
+          roll.text.isEmpty ||
+          trade.text.isEmpty ||
+          phone.text.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fill out some missing fields")));
+        return;
+      }
+
+      await Adduser.getUser(full_name.text, gender.text, roll.text, email.text,
+          trade.text, phone.text, location.text, classes.text, password.text);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(("Student Added successfully"))));
+    } catch (err) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Failed to add user")));
     }
-
-    await Adduser.getUser(full_name.text, gender.text, roll.text, email.text,
-        trade.text, phone.text, location.text, classes.text, password.text);
-
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(("Student Added successfully"))));
   }
 
   @override
