@@ -6,7 +6,7 @@ class Adduser {
   static const BaseUrl = "http://localhost:5000";
 
   //     student_id, full_name,  gender, roll, email, trade, phone, location, class, password, last_login, is_approved
-  static Future<void> getUser(
+  static Future<Map<String, dynamic>> getUser(
       String full_name,
       String gender,
       String roll,
@@ -30,7 +30,11 @@ class Adduser {
           "password": password
         }));
 
-    return jsonDecode(response.body);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Failed to add user");
+    }
   }
 }
 
@@ -116,10 +120,7 @@ class _AddUserState extends State<AddUserScreen> {
             controller: password,
             decoration: InputDecoration(hintText: "Enter your password"),
           ),
-          ElevatedButton(
-              onPressed:  addUser,
-              child: Text("Add ")
-          )
+          ElevatedButton(onPressed: addUser, child: Text("Add "))
         ],
       ),
     );
