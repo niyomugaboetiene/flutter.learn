@@ -26,7 +26,7 @@ class Adduser {
           "trade": trade,
           "phone": phone,
           "location": location,
-          "class": classes,
+          "classe": classes,
           "password": password
         }));
 
@@ -67,7 +67,11 @@ class _AddUserState extends State<AddUserScreen> {
           gender.text.isEmpty ||
           roll.text.isEmpty ||
           trade.text.isEmpty ||
-          phone.text.isEmpty) {
+          phone.text.isEmpty ||
+          email.text.isEmpty ||
+          classes.text.isEmpty ||
+          password.text.isEmpty ||
+          location.text.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Fill out some missing fields")));
         return;
@@ -77,10 +81,12 @@ class _AddUserState extends State<AddUserScreen> {
           trade.text, phone.text, location.text, classes.text, password.text);
 
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(("Student Added successfully"))));
+          SnackBar(content: Text("Student Added successfully", style: TextStyle(color: Colors.white),), backgroundColor: Colors.green,));
     } catch (err) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Failed to add user")));
+          .showSnackBar(SnackBar(content: Text("Failed to add user", style: TextStyle(color: Colors.white)), backgroundColor: Colors.red,));
+
+      throw Exception(err);
     }
   }
 
