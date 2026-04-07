@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class Adduser {
-  static const BaseUrl = "http://localhost:5000";
+  static const BaseUrl = "http://localhost:5000/student/register";
 
   //     student_id, full_name,  gender, roll, email, trade, phone, location, class, password, last_login, is_approved
   static Future<Map<String, dynamic>> getUser(
@@ -16,7 +16,7 @@ class Adduser {
       String location,
       String classes,
       String password) async {
-    final response = await http.post(Uri.parse("$BaseUrl/student/register"),
+    final response = await http.post(Uri.parse(BaseUrl),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "full_name": full_name,
