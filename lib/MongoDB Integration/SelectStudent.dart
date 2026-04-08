@@ -65,7 +65,14 @@ class StudentScreen extends StatefulWidget {
   State<StudentScreen> createState() => _StudentScreenState();
 }
 
-
 class _StudentScreenState extends State<StudentScreen> {
-    
+  late Future<List<Student>> futureStudent;
+
+  @override
+  void initState() {
+    super.initState();
+    futureStudent = fetchStudent();
+  }
+
+  
 }
