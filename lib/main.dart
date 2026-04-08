@@ -28,6 +28,7 @@ import 'Stage 7/1_Provider.dart';
 import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
 // import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
 import 'MongoDB Integration/AddStudent.dart';
+import 'MongoDB Integration/SelectStudent.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: AddUserScreen(),
+      home: StudentScreen(),
     );
   }
 }

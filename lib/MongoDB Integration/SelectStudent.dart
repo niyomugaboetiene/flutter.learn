@@ -39,7 +39,7 @@ class Student {
   }
 }
 
-Future<List<Student>> fetchStudent() async {
+Future<Student> fetchStudent() async {
   const BaseUrl = "http://localhost:5000";
 
   try {
@@ -47,9 +47,8 @@ Future<List<Student>> fetchStudent() async {
         await http.get(Uri.parse('${BaseUrl}/student/studentList'));
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      final List student = jsonDecode(response.body);
-
-      return student.map((json) => Student.fromJson(json)).toList();
+      final  student = jsonDecode(response.body);
+      return Student.fromJson(student);
     } else {
       throw Exception("Failed to load user");
     }
@@ -66,7 +65,7 @@ class StudentScreen extends StatefulWidget {
 }
 
 class _StudentScreenState extends State<StudentScreen> {
-  late Future<List<Student>> futureStudent;
+  late Future<Student> futureStudent;
 
   @override
   void initState() {
@@ -77,43 +76,41 @@ class _StudentScreenState extends State<StudentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Student List"),),
-        body: FutureBuilder<List<Student>>(
-            future: futureStudent, 
-            builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator(),);
-                }
-
-                if (snapshot.hasError) {
-                    return Center(child: Text("$Error {snapshot.error}"),);
-                }
-
-                final students = snapshot.data;
-
-                return ListView.builder(
-                    itemCount: students?.length,
-                    itemBuilder: (context, index) {
-                        final student = students?[index];
-
-                        return ListTile(
-                            title: Text("${student?.full_name}"),
-                            subtitle: Column(
-                                children: [
-                                    Text("${student?.email}"),
-                                    Text("${student?.gender}"),
-                                    Text("${student?.roll}"),
-                                    Text("${student?.phone}"),
-                                    Text("${student?.location}"),
-                                    Text("${student?.trade}"),
-                                    Text("${student?.classes}"),
-                                ],
-                            ),
-                        )
-                    }
-                    )
+      appBar: AppBar(
+        title: Text("Student List"),
+      ),
+      body: FutureBuilder<Student>(
+          future: futureStudent,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
-            ),
-    )
+
+            if (snapshot.hasError) {
+              return Center(
+                child: Text("Error ${snapshot.error}"),
+              );
+            }
+
+            final students = snapshot.data!;
+                  return ListTile(
+                    title: Text("${students.full_name}"),
+                    subtitle: Column(
+                      children: [
+                        Text("${students.email}"),
+                        Text("${students.gender}"),
+                        Text("${students.roll}"),
+                        Text("${students.phone}"),
+                        Text("${students.location}"),
+                        Text("${students.trade}"),
+                        Text("${students.classes}"),
+                      ],
+                    ),
+                  );
+              
+          }),
+    );
   }
 }
