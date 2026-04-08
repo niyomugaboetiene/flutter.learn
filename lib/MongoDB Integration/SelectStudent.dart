@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Student {
   String full_name;
@@ -11,8 +14,8 @@ class Student {
   String classes;
   String password;
 
-  Student(
-      {required this.full_name,
+  Student({
+      required this.full_name,
       required this.gender,
       required this.roll,
       required this.email,
@@ -20,7 +23,8 @@ class Student {
       required this.phone,
       required this.location,
       required this.classes,
-      required this.password});
+      required this.password
+    });
 
   factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
@@ -35,4 +39,17 @@ class Student {
         password: json['password']
     );
   }
+}
+
+Future <List<Student>> fetchStudent() async {
+    const BaseUrl = "http://localhost:5000";
+
+    try {
+         final response = await http.get(
+            Uri.parse('${BaseUrl}/student/studentList'));
+
+        if (response.statusCode == 200 || response.statusCode == 201) {
+            final List student = jsonDecode(response.body);
+        }
+    }
 }
