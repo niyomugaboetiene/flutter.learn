@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Student {
-  String full_name;
-  String gender;
-  String roll;
-  String email;
-  String trade;
-  String phone;
-  String location;
-  String classes;
-  String password;
+  String? full_name;
+  String? gender;
+  String? roll;
+  String? email;
+  String? trade;
+  String? phone;
+  String? location;
+  String? classes;
+  String? password;
 
   Student(
       {required this.full_name,
@@ -34,21 +34,24 @@ class Student {
         trade: json['trade'],
         phone: json['phone'],
         location: json['location'],
-        classes: json['classes'],
+        classes: json['class'],
         password: json['password']);
   }
 }
 
-Future<Student> fetchStudent() async {
+Future<List<Student>> fetchStudent() async {
   const BaseUrl = "http://localhost:5000";
 
   try {
     final response =
-        await http.get(Uri.parse('${BaseUrl}/student/studentList'));
+        await http.get(Uri.parse('$BaseUrl/student/studentList'));
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      final  student = jsonDecode(response.body);
-      return Student.fromJson(student);
+      final decoded = jsonDecode(response.body);
+
+      final List student = decoded['student'] ?? [];
+
+      return student.map((json) => Student.fromJson(json)).toList();
     } else {
       throw Exception("Failed to load user");
     }
@@ -65,7 +68,7 @@ class StudentScreen extends StatefulWidget {
 }
 
 class _StudentScreenState extends State<StudentScreen> {
-  late Future<Student> futureStudent;
+  late Future<List<Student>> futureStudent;
 
   @override
   void initState() {
@@ -79,7 +82,7 @@ class _StudentScreenState extends State<StudentScreen> {
       appBar: AppBar(
         title: Text("Student List"),
       ),
-      body: FutureBuilder<Student>(
+      body: FutureBuilder<List<Student>>(
           future: futureStudent,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -94,22 +97,33 @@ class _StudentScreenState extends State<StudentScreen> {
               );
             }
 
-            final students = snapshot.data!;
-                  return ListTile(
-                    title: Text("${students.full_name}"),
-                    subtitle: Column(
-                      children: [
-                        Text("${students.email}"),
-                        Text("${students.gender}"),
-                        Text("${students.roll}"),
-                        Text("${students.phone}"),
-                        Text("${students.location}"),
-                        Text("${students.trade}"),
-                        Text("${students.classes}"),
-                      ],
+            final students = snapshot.data ?? [];
+
+            return ListView.builder(
+                itemCount: students.length,
+                itemBuilder: (context, index) {
+                  final student = students[index];
+
+                  return Card(
+                    margin: EdgeInsets.all(8),
+                    child: ListTile(
+                      title: Text(student.full_name ?? "no name"),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 5),
+                          Text("Email: ${student.email ?? "no email"}"),
+                          Text("Gender: ${student.gender ?? "no gender"}"),
+                          Text("Roll: ${student.roll ?? "no roll"}"),
+                          Text("Phone: ${student.phone ?? "no phone"}"),
+                          Text("Location: ${student.location ?? "no location"}"),
+                          Text("Trade: ${student.trade ?? "no trade"}"),
+                          Text("Class: ${student.classes ?? "no class"}"),
+                        ],
+                      ),
                     ),
                   );
-              
+                });
           }),
     );
   }
