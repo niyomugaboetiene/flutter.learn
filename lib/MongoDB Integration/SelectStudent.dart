@@ -104,25 +104,46 @@ class _StudentScreenState extends State<StudentScreen> {
                 itemBuilder: (context, index) {
                   final student = students[index];
 
-                  return Card(
-                    margin: EdgeInsets.all(8),
-                    child: ListTile(
-                      title: Text(student.full_name ?? "no name"),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 5),
-                          Text("Email: ${student.email ?? "no email"}"),
-                          Text("Gender: ${student.gender ?? "no gender"}"),
-                          Text("Roll: ${student.roll ?? "no roll"}"),
-                          Text("Phone: ${student.phone ?? "no phone"}"),
-                          Text("Location: ${student.location ?? "no location"}"),
-                          Text("Trade: ${student.trade ?? "no trade"}"),
-                          Text("Class: ${student.classes ?? "no class"}"),
-                        ],
-                      ),
-                    ),
-                  );
+return Card(
+  margin: EdgeInsets.all(8),
+  child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // 🔝 Top row with buttons
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            IconButton(
+              onPressed: () {
+                print("Edit ${student.full_name}");
+              },
+              icon: Icon(Icons.edit, color: Colors.blue),
+            ),
+            IconButton(
+              onPressed: () {
+                print("Delete ${student.full_name}");
+              },
+              icon: Icon(Icons.delete, color: Colors.red),
+            ),
+          ],
+        ),
+
+        // 👇 Student info below the buttons
+        Text(student.full_name ?? "No name", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        SizedBox(height: 5),
+        Text("Email: ${student.email ?? "No email"}"),
+        Text("Gender: ${student.gender ?? "No gender"}"),
+        Text("Roll: ${student.roll ?? "No roll"}"),
+        Text("Phone: ${student.phone ?? "No phone"}"),
+        Text("Location: ${student.location ?? "No location"}"),
+        Text("Trade: ${student.trade ?? "No trade"}"),
+        Text("Class: ${student.classes ?? "No class"}"),
+      ],
+    ),
+  ),
+);
                 });
           }),
     );
