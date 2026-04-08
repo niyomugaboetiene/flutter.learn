@@ -14,8 +14,8 @@ class Student {
   String classes;
   String password;
 
-  Student({
-      required this.full_name,
+  Student(
+      {required this.full_name,
       required this.gender,
       required this.roll,
       required this.email,
@@ -23,8 +23,7 @@ class Student {
       required this.phone,
       required this.location,
       required this.classes,
-      required this.password
-    });
+      required this.password});
 
   factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
@@ -36,20 +35,25 @@ class Student {
         phone: json['phone'],
         location: json['location'],
         classes: json['classes'],
-        password: json['password']
-    );
+        password: json['password']);
   }
 }
 
-Future <List<Student>> fetchStudent() async {
-    const BaseUrl = "http://localhost:5000";
+Future<List<Student>> fetchStudent() async {
+  const BaseUrl = "http://localhost:5000";
 
-    try {
-         final response = await http.get(
-            Uri.parse('${BaseUrl}/student/studentList'));
+  try {
+    final response =
+        await http.get(Uri.parse('${BaseUrl}/student/studentList'));
 
-        if (response.statusCode == 200 || response.statusCode == 201) {
-            final List student = jsonDecode(response.body);
-        }
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final List student = jsonDecode(response.body);
+
+      return student.map((json) => Student.fromJson(json)).toList();
+    } else {
+      throw Exception("Failed to load user");
     }
+  } catch (err) {
+    throw Exception(err);
+  }
 }
