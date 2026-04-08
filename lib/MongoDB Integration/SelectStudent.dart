@@ -111,7 +111,6 @@ return Card(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // 🔝 Top row with buttons
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -130,7 +129,6 @@ return Card(
           ],
         ),
 
-        // 👇 Student info below the buttons
         Text(student.full_name ?? "No name", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
         SizedBox(height: 5),
         Text("Email: ${student.email ?? "No email"}"),
@@ -140,12 +138,12 @@ return Card(
         Text("Location: ${student.location ?? "No location"}"),
         Text("Trade: ${student.trade ?? "No trade"}"),
         Text("Class: ${student.classes ?? "No class"}"),
-      ],
-    ),
-  ),
-);
-                });
-          }),
+         ],
+       ),
+        ),
+        );
+      });
+     }),
     );
   }
 }
