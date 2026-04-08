@@ -57,3 +57,15 @@ Future<List<Student>> fetchStudent() async {
     throw Exception(err);
   }
 }
+
+class StudentScreen extends StatefulWidget {
+  const StudentScreen({super.key});
+
+  @override
+  State<StudentScreen> createState() => _StudentScreenState();
+}
+
+
+class _StudentScreenState extends State<StudentScreen> {
+    
+}
