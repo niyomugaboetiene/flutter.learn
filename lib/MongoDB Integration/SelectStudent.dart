@@ -88,6 +88,30 @@ class _StudentScreenState extends State<StudentScreen> {
                 if (snapshot.hasError) {
                     return Center(child: Text("$Error {snapshot.error}"),);
                 }
+
+                final students = snapshot.data;
+
+                return ListView.builder(
+                    itemCount: students?.length,
+                    itemBuilder: (context, index) {
+                        final student = students?[index];
+
+                        return ListTile(
+                            title: Text("${student?.full_name}"),
+                            subtitle: Column(
+                                children: [
+                                    Text("${student?.email}"),
+                                    Text("${student?.gender}"),
+                                    Text("${student?.roll}"),
+                                    Text("${student?.phone}"),
+                                    Text("${student?.location}"),
+                                    Text("${student?.trade}"),
+                                    Text("${student?.classes}"),
+                                ],
+                            ),
+                        )
+                    }
+                    )
             }
             ),
     )
