@@ -123,7 +123,7 @@ class _StudentScreenState extends State<StudentScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              UpdateScreen(_id: student.id)));
+                                              UpdateScreen(id: student.id ?? "")));
                                 },
                                 icon: Icon(Icons.edit, color: Colors.blue),
                               ),
