@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Student {
+  String? id;
   String? full_name;
   String? gender;
   String? roll;
@@ -15,7 +16,8 @@ class Student {
   String? password;
 
   Student(
-      {required this.full_name,
+      {required this.id,
+      required this.full_name,
       required this.gender,
       required this.roll,
       required this.email,
@@ -27,6 +29,7 @@ class Student {
 
   factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
+        id: json['_id'],
         full_name: json['full_name'],
         gender: json['gender'],
         roll: json['roll'],
@@ -43,8 +46,7 @@ Future<List<Student>> fetchStudent() async {
   const BaseUrl = "http://localhost:5000";
 
   try {
-    final response =
-        await http.get(Uri.parse('$BaseUrl/student/studentList'));
+    final response = await http.get(Uri.parse('$BaseUrl/student/studentList'));
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       final decoded = jsonDecode(response.body);
@@ -104,46 +106,52 @@ class _StudentScreenState extends State<StudentScreen> {
                 itemBuilder: (context, index) {
                   final student = students[index];
 
-return Card(
-  margin: EdgeInsets.all(8),
-  child: Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            IconButton(
-              onPressed: () {
-                print("Edit ${student.full_name}");
-              },
-              icon: Icon(Icons.edit, color: Colors.blue),
-            ),
-            IconButton(
-              onPressed: () {
-                print("Delete ${student.full_name}");
-              },
-              icon: Icon(Icons.delete, color: Colors.red),
-            ),
-          ],
-        ),
-
-        Text(student.full_name ?? "No name", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        SizedBox(height: 5),
-        Text("Email: ${student.email ?? "No email"}"),
-        Text("Gender: ${student.gender ?? "No gender"}"),
-        Text("Roll: ${student.roll ?? "No roll"}"),
-        Text("Phone: ${student.phone ?? "No phone"}"),
-        Text("Location: ${student.location ?? "No location"}"),
-        Text("Trade: ${student.trade ?? "No trade"}"),
-        Text("Class: ${student.classes ?? "No class"}"),
-         ],
-       ),
-        ),
-        );
-      });
-     }),
+                  return Card(
+                    margin: EdgeInsets.all(8),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              UpdateScreen(_id: student.id)));
+                                },
+                                icon: Icon(Icons.edit, color: Colors.blue),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  print("Delete ${student.full_name}");
+                                },
+                                icon: Icon(Icons.delete, color: Colors.red),
+                              ),
+                            ],
+                          ),
+                          Text(student.full_name ?? "No name",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16)),
+                          SizedBox(height: 5),
+                          Text("Email: ${student.email ?? "No email"}"),
+                          Text("Gender: ${student.gender ?? "No gender"}"),
+                          Text("Roll: ${student.roll ?? "No roll"}"),
+                          Text("Phone: ${student.phone ?? "No phone"}"),
+                          Text(
+                              "Location: ${student.location ?? "No location"}"),
+                          Text("Trade: ${student.trade ?? "No trade"}"),
+                          Text("Class: ${student.classes ?? "No class"}"),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+          }),
     );
   }
 }
