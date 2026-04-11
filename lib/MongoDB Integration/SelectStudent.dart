@@ -118,8 +118,8 @@ class _StudentScreenState extends State<StudentScreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               IconButton(
-                                onPressed: () {
-                                  Navigator.push(
+                                onPressed: () async {
+                                  await Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => UpdateScreen(
