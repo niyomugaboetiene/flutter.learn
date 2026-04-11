@@ -79,6 +79,21 @@ class _StudentScreenState extends State<StudentScreen> {
     futureStudent = fetchStudent();
   }
 
+  Future<void> deleteStudent(String id) async {
+    const BaseUrl = "http://localhost:5000";
+    final response =
+        await http.delete(Uri.parse("$BaseUrl/student/delete/$id"));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        futureStudent = fetchStudent();
+      });
+    }
+
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("Student deleted successfully")));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,9 +147,7 @@ class _StudentScreenState extends State<StudentScreen> {
                                 icon: Icon(Icons.edit, color: Colors.blue),
                               ),
                               IconButton(
-                                onPressed: () {
-                                  print("Delete ${student.full_name}");
-                                },
+                                onPressed: () async {},
                                 icon: Icon(Icons.delete, color: Colors.red),
                               ),
                             ],
