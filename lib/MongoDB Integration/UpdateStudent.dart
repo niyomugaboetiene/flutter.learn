@@ -67,6 +67,11 @@ class _UpdateScreenState extends State<UpdateScreen> {
           TextField(controller: location, decoration: InputDecoration(labelText: "location"),),
           TextField(controller: classes, decoration: InputDecoration(labelText: "classes"),),
           TextField(controller: password, decoration: InputDecoration(labelText: "password"),),
+
+          ElevatedButton(
+            onPressed: updateUser, 
+            child: Text("Update")
+            )
         ],
       ),
     );
