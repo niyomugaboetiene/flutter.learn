@@ -88,10 +88,12 @@ class _StudentScreenState extends State<StudentScreen> {
       setState(() {
         futureStudent = fetchStudent();
       });
-    }
 
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Student deleted successfully")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Student deleted successfully")));
+    } else {
+      throw Exception("");
+    }
   }
 
   @override
