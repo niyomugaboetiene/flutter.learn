@@ -54,17 +54,21 @@ class _UpdateScreenState extends State<UpdateScreen> {
     final response = await http.get(Uri.parse("$BaseUrl/student/${widget.id}"));
 
     if (response.statusCode == 200) {
-         final data = jsonDecode(response.body);
-        setState(() {
-          full_name.text = data['full_name'] ?? "";
-          gender.text = data['gender'] ?? "";
-          roll.text = data['roll'] ?? "";
-          email.text = data['email'] ?? "";
-          trade.text = data['trade'] ?? "";
-          phone.text = data['phone'] ?? "";
-          location.text = data['location'] ?? "";
-          password.text = data['password'] ?? "";
+      final decoded = jsonDecode(response.body);
+      final data = decoded['student'];
+      
+      setState(() {
+        full_name.text = data['full_name'] ?? "";
+        gender.text = data['gender'] ?? "";
+        roll.text = data['roll'] ?? "";
+        email.text = data['email'] ?? "";
+        trade.text = data['trade'] ?? "";
+        phone.text = data['phone'] ?? "";
+        location.text = data['location'] ?? "";
+        password.text = data['password'] ?? "";
       });
+    } else {
+      throw Exception("Failed to update user");
     }
   }
 
