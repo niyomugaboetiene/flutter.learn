@@ -151,12 +151,20 @@ class _StudentScreenState extends State<StudentScreen> {
                               IconButton(
                                 onPressed: () async {
                                   final confrimation = await showDialog(
-                                      context: context, 
+                                      context: context,
                                       builder: (context) => AlertDialog(
-                                        title: Text("Confrim delete"),
-                                        content: Text("Are you sure you want to delete student"),
-                                      )
-                                      );
+                                            title: Text("Confrim delete"),
+                                            content: Text(
+                                                "Are you sure you want to delete student"),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                        context, false);
+                                                  },
+                                                  child: Text(("Cancel")))
+                                            ],
+                                          ));
                                 },
                                 icon: Icon(Icons.delete, color: Colors.red),
                               ),
