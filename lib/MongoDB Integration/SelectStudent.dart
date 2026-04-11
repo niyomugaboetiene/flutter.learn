@@ -92,7 +92,7 @@ class _StudentScreenState extends State<StudentScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Student deleted successfully")));
     } else {
-      throw Exception("");
+      throw Exception("Failed to update a student");
     }
   }
 
@@ -149,7 +149,15 @@ class _StudentScreenState extends State<StudentScreen> {
                                 icon: Icon(Icons.edit, color: Colors.blue),
                               ),
                               IconButton(
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  final confrimation = await showDialog(
+                                      context: context, 
+                                      builder: (context) => AlertDialog(
+                                        title: Text("Confrim delete"),
+                                        content: Text("Are you sure you want to delete student"),
+                                      )
+                                      );
+                                },
                                 icon: Icon(Icons.delete, color: Colors.red),
                               ),
                             ],
