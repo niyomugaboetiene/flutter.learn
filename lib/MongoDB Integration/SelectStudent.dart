@@ -162,9 +162,19 @@ class _StudentScreenState extends State<StudentScreen> {
                                                     Navigator.pop(
                                                         context, false);
                                                   },
-                                                  child: Text(("Cancel")))
+                                                  child: Text(("No"))),
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                        context, true);
+                                                  },
+                                                  child: Text("Yes"))
                                             ],
                                           ));
+
+                                  if (confrimation == true) {
+                                    await deleteStudent(student.id ?? "");
+                                  } 
                                 },
                                 icon: Icon(Icons.delete, color: Colors.red),
                               ),
