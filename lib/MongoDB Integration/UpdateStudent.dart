@@ -50,28 +50,74 @@ class _UpdateScreenState extends State<UpdateScreen> {
     }
   }
 
+  Future<void> fetchUser() async {
+    final response = await http.get(Uri.parse("$BaseUrl/student/${widget.id}"));
+
+    final data = jsonDecode(response.body);
+
+    setState(() {
+      full_name.text = data['full_name'] ?? "";
+      gender.text = data['gender'] ?? "";
+      roll.text = data['roll'] ?? "";
+      email.text = data['email'] ?? "";
+      trade.text = data['trade'] ?? "";
+      phone.text = data['phone'] ?? "";
+      location.text = data['location'] ?? "";
+      password.text = data['password'] ?? "";
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Update student"),),
+      appBar: AppBar(
+        title: Text("Update student"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          TextField(controller: full_name, decoration: InputDecoration(labelText: "Full name"),),
-          TextField(controller: gender, decoration: InputDecoration(labelText: "gender"),),
-          TextField(controller: roll, decoration: InputDecoration(labelText: "roll"),),
-          TextField(controller: email, decoration: InputDecoration(labelText: "email"),),
-          TextField(controller: trade, decoration: InputDecoration(labelText: "trade"),),
-          TextField(controller: phone, decoration: InputDecoration(labelText: "phone"),),
-          TextField(controller: location, decoration: InputDecoration(labelText: "location"),),
-          TextField(controller: classes, decoration: InputDecoration(labelText: "classes"),),
-          TextField(controller: password, decoration: InputDecoration(labelText: "password"),),
-
-          ElevatedButton(
-            onPressed: updateUser, 
-            child: Text("Update")
-            )
+          TextField(
+            controller: full_name,
+            decoration: InputDecoration(labelText: "Full name"),
+          ),
+          TextField(
+            controller: gender,
+            decoration: InputDecoration(labelText: "gender"),
+          ),
+          TextField(
+            controller: roll,
+            decoration: InputDecoration(labelText: "roll"),
+          ),
+          TextField(
+            controller: email,
+            decoration: InputDecoration(labelText: "email"),
+          ),
+          TextField(
+            controller: trade,
+            decoration: InputDecoration(labelText: "trade"),
+          ),
+          TextField(
+            controller: phone,
+            decoration: InputDecoration(labelText: "phone"),
+          ),
+          TextField(
+            controller: location,
+            decoration: InputDecoration(labelText: "location"),
+          ),
+          TextField(
+            controller: classes,
+            decoration: InputDecoration(labelText: "classes"),
+          ),
+          TextField(
+            controller: password,
+            decoration: InputDecoration(labelText: "password"),
+          ),
+          ElevatedButton(onPressed: updateUser, child: Text("Update"))
         ],
       ),
     );
