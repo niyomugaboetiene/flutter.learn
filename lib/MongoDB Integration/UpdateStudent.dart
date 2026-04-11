@@ -70,6 +70,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
   @override
   void initState() {
     super.initState();
+    fetchUser();
   }
 
   @override
