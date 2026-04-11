@@ -122,8 +122,12 @@ class _StudentScreenState extends State<StudentScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpdateScreen(id: student.id ?? "")));
+                                          builder: (context) => UpdateScreen(
+                                              id: student.id ?? "")));
+
+                                  setState(() {
+                                    futureStudent = fetchStudent();
+                                  });
                                 },
                                 icon: Icon(Icons.edit, color: Colors.blue),
                               ),
