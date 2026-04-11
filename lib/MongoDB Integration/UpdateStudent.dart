@@ -27,11 +27,23 @@ class _UpdateScreenState extends State<UpdateScreen> {
   Future<void> updateUser() async {
     final response =
         await http.put(Uri.parse("$BaseUrl/student/update/${widget.id}"),
-        headers: { "Content-Type" : "application/json" },
-        body: jsonEncode({
-          
-        })
-        );
+            headers: {"Content-Type": "application/json"},
+            body: jsonEncode({
+              "full_name": full_name.text,
+              "gender": gender.text,
+              "roll": roll.text,
+              "email": email.text,
+              "trade": trade.text,
+              "phone": phone.text,
+              "location": location.text,
+              "class": classes.text,
+              "password": password.text
+            }));
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Updated successfully")));
+    }
   }
 
   @override
