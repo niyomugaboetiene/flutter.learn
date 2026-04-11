@@ -43,11 +43,24 @@ class _UpdateScreenState extends State<UpdateScreen> {
     if (response.statusCode == 200 || response.statusCode == 201) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Updated successfully")));
+
+      Navigator.pop(context);
+    } else {
+      throw Exception("Failed to update the user");
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text("Update student"),),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextField(controller: full_name, decoration: InputDecoration(labelText: "Full name"),)
+        ],
+      ),
+    );
   }
 }
