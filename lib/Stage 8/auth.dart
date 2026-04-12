@@ -100,14 +100,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (error != null) {
       showMessage(error);
+      return null; // to stop execution
     }
 
     try {
       if (isLogin) {
-        _auth.login(email, password);
+        await _auth.login(email, password);
         showMessage("Login successfully");
       } else {
-        _auth.signUp(email, password);
+        await _auth.signUp(email, password);
         showMessage("Register successfully");
       }
     } on FirebaseAuthException catch (e) {
