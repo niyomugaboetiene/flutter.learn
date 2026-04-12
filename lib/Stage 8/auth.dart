@@ -49,10 +49,27 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isLogin = true;
 
+  String? validateInput(String email, String password) {
+    if (email.isEmpty || password.isEmpty) {
+      return "Pasword or email is empty";
+    }
+
+    if (!email.contains("@") || !email.contains(".")) {
+      return "please enter a valid email";
+    }
+
+    if (password.length < 6) {
+      return "password must be at least > 6";
+    }
+
+    return null;
+  }
+
   void submit() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
 
+    String? error = validateInput(email, password);
     if (isLogin) {
       _auth.login(email, password);
     } else {
