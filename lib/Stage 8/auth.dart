@@ -160,9 +160,20 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-
 // Gretting screen
 
 class GreetingScreen extends StatelessWidget {
-  
+  const GreetingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Hello"),
+      ),
+      body: Container(
+        child: Text("Welcome you're almost in !!!!"),
+      ),
+    );
+  }
 }
