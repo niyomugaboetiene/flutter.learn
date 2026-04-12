@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_concepts/Stage 1/1.dart';
 // import 'package:flutter_concepts/Stage 1/Exercise_1.dart';
@@ -49,14 +50,20 @@ void main() async {
   // await Hive.openBox<Task>('task');
   // await Hive.openBox<Tasks>('MyTasks');
 
+  // * configure firebase
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+  
   runApp(
-       MultiProvider(providers: [
-        ChangeNotifierProvider(create: (_) => CounterModel()),
-        ChangeNotifierProvider(create: (_) => InputFieldModel()),
-       ],
-       child: MyApp(),
-       )
-    );
+      //  MultiProvider(providers: [
+      //   ChangeNotifierProvider(create: (_) => CounterModel()),
+      //   ChangeNotifierProvider(create: (_) => InputFieldModel()),
+      //  ],
+      //  child: MyApp(),
+      //  )
+
+      MyApp());
 }
 
 class MyApp extends StatelessWidget {
