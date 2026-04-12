@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_concepts/firebase_options.dart';
 // import 'package:flutter_concepts/Stage 1/1.dart';
 // import 'package:flutter_concepts/Stage 1/Exercise_1.dart';
 // import 'package:flutter_concepts/Stage 1/2.dart';
@@ -23,10 +24,10 @@ import 'package:flutter/material.dart';
 
 // import 'package:hive/hive.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
-import 'package:provider/provider.dart';
-import 'Stage 7/1_Provider.dart';
+// import 'package:provider/provider.dart';
+// import 'Stage 7/1_Provider.dart';
 // import 'Stage 7/1_Screen.dart';
-import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
+// import 'package:flutter_concepts/Stage 7/1_Exercise/Provider.dart';
 // import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
 // import 'MongoDB Integration/AddStudent.dart';
 import 'MongoDB Integration/SelectStudent.dart';
@@ -53,8 +54,9 @@ void main() async {
   // * configure firebase
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   
+
   runApp(
       //  MultiProvider(providers: [
       //   ChangeNotifierProvider(create: (_) => CounterModel()),
