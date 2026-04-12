@@ -83,6 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
 
             ElevatedButton(onPressed: submit, child: Text(isLogin ? "Login" : "SignUp"))
+
+            TextButton(onPressed: isLogin = !isLogin, child: Text(isLogin ? "Create account" : "Already have account ? login"));
           ],
         ),
       ),
