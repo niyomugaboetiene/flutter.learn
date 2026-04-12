@@ -70,6 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
     String password = passwordController.text.trim();
 
     String? error = validateInput(email, password);
+
+    if (error != null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+    }
+
     if (isLogin) {
       _auth.login(email, password);
     } else {
@@ -92,10 +97,12 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             TextField(
               controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: "Email"),
             ),
             TextField(
               controller: passwordController,
+              obscureText: true,
               decoration: InputDecoration(labelText: "Password"),
             ),
             ElevatedButton(
