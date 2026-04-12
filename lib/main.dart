@@ -66,7 +66,7 @@ void main() async {
       //  child: MyApp(),
       //  )
 
-      MyApp());
+     const  MyApp());
 }
 
 class MyApp extends StatelessWidget {
