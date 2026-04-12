@@ -48,4 +48,44 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthService _auth = AuthService();
 
   final isLogin = true;
+
+  void submit() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
+    if (isLogin) {
+      _auth.login(email, password);
+    } else {
+      _auth.signUp(email, password);
+    }
+
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(isLogin ? "Login" : "Sign In"),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(labelText: "Password"),
+            ),
+
+            ElevatedButton(onPressed: submit, child: Text(isLogin ? "Login" : "SignUp"))
+          ],
+        ),
+      ),
+    );
+  }
 }
