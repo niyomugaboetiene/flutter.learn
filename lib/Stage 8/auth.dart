@@ -2,6 +2,7 @@
 // firebase project it it like my backend server on cloud
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -29,4 +30,13 @@ class AuthService {
       return null;
     }
   }
+}
+
+// ? Login page
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> 
 }
