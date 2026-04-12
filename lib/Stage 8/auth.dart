@@ -77,16 +77,20 @@ class _LoginScreenState extends State<LoginScreen> {
       showMessage(error);
     }
 
-    if (isLogin) {
-      _auth.login(email, password);
-      showMessage("Login successfully");
-    } else {
-      _auth.signUp(email, password);
-      showMessage("Register successfully");
+    try {
+      if (isLogin) {
+        _auth.login(email, password);
+        showMessage("Login successfully");
+      } else {
+        _auth.signUp(email, password);
+        showMessage("Register successfully");
+      }
+    } on FirebaseAuthException catch (e) {
+      showMessage((e.code));
     }
-
     setState(() {});
   }
+
 
   @override
   Widget build(BuildContext context) {
