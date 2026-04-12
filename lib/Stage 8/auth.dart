@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthService {
+  // provide firebase authentication service
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<User?> signUp(String email, String password) async {
@@ -20,6 +21,7 @@ class AuthService {
 
   Future<User?> login(String email, String password) async {
     try {
+      // UserCredentails is object returned by firebase and metadata
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
