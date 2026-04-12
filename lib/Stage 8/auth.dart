@@ -13,9 +13,8 @@ class AuthService {
           email: email, password: password);
 
       return result.user;
-    } catch (err) {
-      print("Sign up error $err");
-      return null;
+    } on FirebaseAuthException catch (err) {
+      throw err;
     }
   }
 
@@ -25,9 +24,8 @@ class AuthService {
           email: email, password: password);
 
       return result.user;
-    } catch (err) {
-      print("Error $err");
-      return null;
+    } on FirebaseAuthException catch (e) {
+      throw e;
     }
   }
 }
@@ -65,6 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return null;
   }
 
+  void showMessage(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }
+
   void submit() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
@@ -72,13 +74,15 @@ class _LoginScreenState extends State<LoginScreen> {
     String? error = validateInput(email, password);
 
     if (error != null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+      showMessage(error);
     }
 
     if (isLogin) {
       _auth.login(email, password);
+      showMessage("Login successfully");
     } else {
       _auth.signUp(email, password);
+      showMessage("Register successfully");
     }
 
     setState(() {});
