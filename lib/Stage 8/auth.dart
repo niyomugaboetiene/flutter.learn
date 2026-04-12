@@ -109,6 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (isLogin) {
         await _auth.login(email, password);
         showMessage("Login successfully");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => GreetingScreen()));
       } else {
         await _auth.signUp(email, password);
         showMessage("Register successfully");
@@ -156,4 +158,11 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+
+// Gretting screen
+
+class GreetingScreen extends StatelessWidget {
+  
 }
