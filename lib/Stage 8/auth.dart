@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final AuthService _auth = AuthService();
 
-  final isLogin = true;
+  bool isLogin = true;
 
   void submit() async {
     String email = emailController.text.trim();
@@ -81,10 +81,17 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: passwordController,
               decoration: InputDecoration(labelText: "Password"),
             ),
-
-            ElevatedButton(onPressed: submit, child: Text(isLogin ? "Login" : "SignUp"))
-
-            TextButton(onPressed: isLogin = !isLogin, child: Text(isLogin ? "Create account" : "Already have account ? login"));
+            ElevatedButton(
+                onPressed: submit, child: Text(isLogin ? "Login" : "SignUp")),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    isLogin = !isLogin;
+                  });
+                },
+                child: Text(isLogin
+                    ? "Create account"
+                    : "Already have account ? login"))
           ],
         ),
       ),
