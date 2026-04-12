@@ -67,6 +67,31 @@ class _LoginScreenState extends State<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
+  String handleFirebaseError(FirebaseAuthException e) {
+    switch (e.code) {
+      case "email-already-in-use":
+        return "this email is already used by another person";
+
+      case "invalid-email":
+        return "Email format is invalid";
+
+      case "weak-password":
+        return "Password is too weak (min 6 chars)";
+
+      case "user-not-found":
+        return "No account found with this email";
+
+      case "wrong-password":
+        return "Incorrect password";
+
+      case "invalid-credential":
+        return "Invalid email or password";
+
+      default:
+        return "some thing went wrong ${e.message}";
+    }
+  }
+
   void submit() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
@@ -86,11 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
         showMessage("Register successfully");
       }
     } on FirebaseAuthException catch (e) {
-      showMessage((e.code));
+      showMessage(handleFirebaseError(e));
     }
     setState(() {});
   }
-
 
   @override
   Widget build(BuildContext context) {
