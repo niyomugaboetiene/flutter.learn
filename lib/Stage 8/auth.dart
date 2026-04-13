@@ -179,6 +179,8 @@ class GreetingScreen extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   FirebaseAuth.instance.signOut();
+
+                  Navigator.pop(context);
                 },
                 child: Text("Logout"))
           ],
