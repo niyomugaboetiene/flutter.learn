@@ -104,6 +104,7 @@ class _AddUserScreen extends State<AddUser> {
           ),
           TextField(
             controller: emailController,
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(labelText: "Email"),
           ),
           ElevatedButton(onPressed: addUser, child: Text("add User"))
