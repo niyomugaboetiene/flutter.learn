@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: ListScreen(),
+      home: AddUser(),
     );
   }
 }

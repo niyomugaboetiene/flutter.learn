@@ -164,6 +164,7 @@ class _ListScreenState extends State<ListScreen> {
                 return ListTile(
                   title: Text(data["name"] ?? ""),
                   subtitle: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(data["age"] ?? ""),
                       Text(data["email"] ?? ""),
