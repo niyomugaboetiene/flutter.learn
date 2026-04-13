@@ -110,8 +110,8 @@ class _LoginScreenState extends State<LoginScreen> {
         User? user = await _auth.login(email, password);
         if (user != null) {
           showMessage("Login successfully");
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => GreetingScreen()));
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (context) => GreetingScreen()));
         }
       } else {
         await _auth.signUp(email, password);
