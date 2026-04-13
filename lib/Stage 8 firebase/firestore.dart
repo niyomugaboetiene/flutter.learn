@@ -59,6 +59,37 @@ class _AddUserScreen extends State<AddUser> {
         "age": ageController.text,
         "email": emailController.text
       });
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User added sucessfully")));
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Add user"),),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              labelText: "Name"
+            ),
+          ),          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              labelText: "Name"
+            ),
+          ),          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              labelText: "Name"
+            ),
+          ),
+        ],
+      ),
+    )
   }
 }
