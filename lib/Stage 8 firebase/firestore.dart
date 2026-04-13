@@ -166,8 +166,8 @@ class _ListScreenState extends State<ListScreen> {
                   subtitle: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(data["age"] ?? ""),
-                      Text(data["email"] ?? ""),
+                      Text("${data["age"] ?? ""}"),
+                      Text("${data["email"] ?? ""}"),
                     ],
                   ),
                 );
