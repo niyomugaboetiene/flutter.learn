@@ -31,7 +31,7 @@ import 'package:flutter_concepts/firebase_options.dart';
 // import 'package:flutter_concepts/Stage 7/1_Exercise/Access.dart';
 // import 'MongoDB Integration/AddStudent.dart';
 // import 'MongoDB Integration/SelectStudent.dart';
-import 'package:flutter_concepts/Stage 8/auth.dart';
+import 'package:flutter_concepts/Stage%208%20firebase/auth.dart';
 
 // void main() {
 //   runApp(const MyApp());
