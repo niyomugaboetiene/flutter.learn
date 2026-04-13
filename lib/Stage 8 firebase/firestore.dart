@@ -6,8 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // add user
 Future<void> addUser() async {
   await FirebaseFirestore.instance
-      .collection("users")
-      .add({'name': 'etiene', 'age': 12, 'email': "et@gmail.com"});
+      .collection("users").doc("user_123")
+      .set({'name': 'etiene', 'age': 12, 'email': "et@gmail.com"});
 }
 
 // select users/ read
