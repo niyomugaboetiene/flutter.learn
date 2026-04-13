@@ -100,11 +100,7 @@ class _AddUserScreen extends State<AddUser> {
             controller: emailController,
             decoration: InputDecoration(labelText: "Email"),
           ),
-          ElevatedButton(
-              onPressed: () async {
-                await addUser;
-              },
-              child: Text("add User"))
+          ElevatedButton(onPressed: addUser, child: Text("add User"))
         ],
       ),
     );
