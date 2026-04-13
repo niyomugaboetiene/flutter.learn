@@ -5,12 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // add user
-Future<void> addUser() async {
-  await FirebaseFirestore.instance
-      .collection("users")
-      .doc("user_123")
-      .set({'name': 'etiene', 'age': 12, 'email': "et@gmail.com"});
-}
+// Future<void> addUser() async {
+//   await FirebaseFirestore.instance
+//       .collection("users")
+//       .doc("user_123")
+//       .set({'name': 'etiene', 'age': 12, 'email': "et@gmail.com"});
+// }
 
 // select users/ read
 Future<void> getUsers() async {
@@ -70,6 +70,8 @@ class _AddUserScreen extends State<AddUser> {
       });
 
       showMessage("User added successfully");
+    } else {
+      showMessage("Please fill out all fields");
     }
   }
 
@@ -98,7 +100,11 @@ class _AddUserScreen extends State<AddUser> {
             controller: emailController,
             decoration: InputDecoration(labelText: "Email"),
           ),
-          ElevatedButton(onPressed: addUser, child: Text("add User"))
+          ElevatedButton(
+              onPressed: () async {
+                await addUser;
+              },
+              child: Text("add User"))
         ],
       ),
     );
