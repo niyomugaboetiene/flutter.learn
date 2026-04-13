@@ -69,12 +69,11 @@ class _AddUserScreen extends State<AddUser> {
         "email": emailController.text
       });
 
-      if (!mounted) {
-        return null;
-      }
+      if (!mounted) return;
 
       showMessage("User added successfully");
     } else {
+      if (!mounted) return;
       showMessage("Please fill out all fields");
     }
   }
