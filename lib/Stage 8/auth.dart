@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     if (password.length < 6) {
-      return "password must be at least > 6";
+      return "password must be at least 6 characters";
     }
 
     return null;
@@ -107,10 +107,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       if (isLogin) {
-        await _auth.login(email, password);
-        showMessage("Login successfully");
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => GreetingScreen()));
+        User? user = await _auth.login(email, password);
+        if (user != null) {
+            showMessage("Login successfully");
+            Navigator.push(
+               context, MaterialPageRoute(builder: (context) => GreetingScreen()));
+        }
       } else {
         await _auth.signUp(email, password);
         showMessage("Register successfully");
