@@ -132,4 +132,31 @@ class _ListScreenState extends State<ListScreen> {
   Future<QuerySnapshot> fetchUsers() async {
     return await FirebaseFirestore.instance.collection("users").get();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Student list"),),
+
+      body: FutureBuilder<QuerySnapshot>(
+        future: futureUsers,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator(),);
+          }
+
+          if (snapshot.hasError) {
+            return Center(child: Text("${snapshot.error}"),);
+          }
+
+          final users = snapshot.data;
+
+          return ListView.builder(
+            itemBuilder: (context, user),
+            
+          )
+        }
+        ),
+    );
+  }
 }
