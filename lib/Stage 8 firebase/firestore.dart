@@ -136,38 +136,42 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Student list"),),
-
+      appBar: AppBar(
+        title: Text("Student list"),
+      ),
       body: FutureBuilder<QuerySnapshot>(
-        future: futureUsers,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator(),);
-          }
-
-          if (snapshot.hasError) {
-            return Center(child: Text("${snapshot.error}"),);
-          }
-
-          var users = snapshot.data!.docs;
-
-          return ListView(
-            children: users.map((doc) {
-              var data = doc.data() as Map<String, dynamic>;
-
-              return ListTile(
-                title: Text(data["name"]),
-                subtitle: Column(
-                    children: [
-                      Text(data["age"]),
-                      Text(data["email"]),
-                    ],
-                ),
+          future: futureUsers,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
               );
-            }),
-          );
-        }
-        ),
-    )
+            }
+
+            if (snapshot.hasError) {
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            }
+
+            var users = snapshot.data!.docs;
+
+            return ListView(
+              children: users.map((doc) {
+                var data = doc.data() as Map<String, dynamic>;
+
+                return ListTile(
+                  title: Text(data["name"] ?? ""),
+                  subtitle: Column(
+                    children: [
+                      Text(data["age"] ?? ""),
+                      Text(data["email"] ?? ""),
+                    ],
+                  ),
+                );
+              }).toList(),
+            );
+          }),
+    );
   }
 }
