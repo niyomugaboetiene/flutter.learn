@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: LoginScreen(),
+      home: LoginCheck(),
     );
   }
 }

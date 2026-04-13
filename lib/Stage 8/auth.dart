@@ -178,9 +178,7 @@ class GreetingScreen extends StatelessWidget {
             Text("Welcome you're almost in !!!!"),
             ElevatedButton(
                 onPressed: () async {
-                  FirebaseAuth.instance.signOut();
-
-                  Navigator.pop(context);
+                  await FirebaseAuth.instance.signOut();
                 },
                 child: Text("Logout"))
           ],
@@ -198,6 +196,11 @@ class LoginCheck extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
         if (snapshot.hasData) {
           return GreetingScreen();
         } else {
