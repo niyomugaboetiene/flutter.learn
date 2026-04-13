@@ -109,9 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
       if (isLogin) {
         User? user = await _auth.login(email, password);
         if (user != null) {
-            showMessage("Login successfully");
-            Navigator.push(
-               context, MaterialPageRoute(builder: (context) => GreetingScreen()));
+          showMessage("Login successfully");
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => GreetingScreen()));
         }
       } else {
         await _auth.signUp(email, password);
@@ -125,50 +125,39 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) => {
-       if (snapshot.hasData) {
-        return GreetingScreen()
-       } else {
-        return LoginScreen();
-       }
-    },)
-    Scaffold(
-      appBar: AppBar(
-        title: Text(isLogin ? "Login" : "Sign In"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: "Email"),
-            ),
-            TextField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: "Password"),
-            ),
-            ElevatedButton(
-                onPressed: submit, child: Text(isLogin ? "Login" : "SignUp")),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    isLogin = !isLogin;
-                  });
-                },
-                child: Text(isLogin
-                    ? "Create account"
-                    : "Already have account ? login"))
-          ],
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(isLogin ? "Login" : "Sign In"),
         ),
-      )
-    );
+        body: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(labelText: "Email"),
+              ),
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(labelText: "Password"),
+              ),
+              ElevatedButton(
+                  onPressed: submit, child: Text(isLogin ? "Login" : "SignUp")),
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isLogin = !isLogin;
+                    });
+                  },
+                  child: Text(isLogin
+                      ? "Create account"
+                      : "Already have account ? login"))
+            ],
+          ),
+        ));
   }
 }
 
@@ -186,6 +175,24 @@ class GreetingScreen extends StatelessWidget {
       body: Container(
         child: Text("Welcome you're almost in !!!!"),
       ),
+    );
+  }
+}
+
+class LoginCheck extends StatelessWidget {
+  const LoginCheck({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return GreetingScreen();
+        } else {
+          return LoginScreen();
+        }
+      },
     );
   }
 }
