@@ -173,7 +173,16 @@ class GreetingScreen extends StatelessWidget {
         title: Text("Hello"),
       ),
       body: Container(
-        child: Text("Welcome you're almost in !!!!"),
+        child: Column(
+          children: [
+            Text("Welcome you're almost in !!!!"),
+            ElevatedButton(
+                onPressed: () async {
+                  FirebaseAuth.instance.signOut();
+                },
+                child: Text("Logout"))
+          ],
+        ),
       ),
     );
   }
