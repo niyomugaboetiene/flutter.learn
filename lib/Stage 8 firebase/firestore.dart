@@ -68,28 +68,28 @@ class _AddUserScreen extends State<AddUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add user"),),
+      appBar: AppBar(
+        title: Text("Add user"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TextField(
             controller: nameController,
-            decoration: InputDecoration(
-              labelText: "Name"
-            ),
-          ),          TextField(
-            controller: nameController,
-            decoration: InputDecoration(
-              labelText: "Name"
-            ),
-          ),          TextField(
-            controller: nameController,
-            decoration: InputDecoration(
-              labelText: "Name"
-            ),
+            decoration: InputDecoration(labelText: "Name"),
           ),
+          TextField(
+            controller: ageController,
+            decoration: InputDecoration(labelText: "Age"),
+          ),
+          TextField(
+            controller: emailController,
+            decoration: InputDecoration(labelText: "Email"),
+          ),
+
+          ElevatedButton(onPressed: addUser, child: Text("add User"))
         ],
       ),
-    )
+    );
   }
 }
