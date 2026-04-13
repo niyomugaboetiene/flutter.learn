@@ -51,19 +51,25 @@ class _AddUserScreen extends State<AddUser> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController idController = TextEditingController();
 
+  void showMessage(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }
+
   Future<void> addUser() async {
     if (nameController.text.isNotEmpty &&
         ageController.text.isNotEmpty &&
         idController.text.isNotEmpty &&
         emailController.text.isNotEmpty) {
-      await FirebaseFirestore.instance.collection("users").doc(idController.text).set({
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(idController.text)
+          .set({
         "name": nameController.text,
         "age": ageController.text,
         "email": emailController.text
       });
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("User added sucessfully")));
+      showMessage("User added successfully");
     }
   }
 
@@ -92,7 +98,6 @@ class _AddUserScreen extends State<AddUser> {
             controller: emailController,
             decoration: InputDecoration(labelText: "Email"),
           ),
-
           ElevatedButton(onPressed: addUser, child: Text("add User"))
         ],
       ),
