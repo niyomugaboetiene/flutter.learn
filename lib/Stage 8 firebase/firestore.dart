@@ -124,13 +124,12 @@ class _ListScreenState extends State<ListScreen> {
   late Future<QuerySnapshot> futureUsers;
 
   @override
-  void initSState() {
+  void initState() {
     super.initState();
     futureUsers = fetchUsers();
   }
 
-  Future<void> fetchUsers() async {
-    QuerySnapshot snapshot =
-        await FirebaseFirestore.instance.collection("users").get();
+  Future<QuerySnapshot> fetchUsers() async {
+    return await FirebaseFirestore.instance.collection("users").get();
   }
 }
