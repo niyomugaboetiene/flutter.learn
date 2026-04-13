@@ -52,9 +52,9 @@ class _AddUserScreen extends State<AddUser> {
   final TextEditingController idController = TextEditingController();
 
   Future<void> addUser() async {
-    if (nameController.text.isNotEmpty ||
-        ageController.text.isNotEmpty ||
-        idController.text.isNotEmpty ||
+    if (nameController.text.isNotEmpty &&
+        ageController.text.isNotEmpty &&
+        idController.text.isNotEmpty &&
         emailController.text.isNotEmpty) {
       await FirebaseFirestore.instance.collection("users").doc(idController.text).set({
         "name": nameController.text,
