@@ -73,7 +73,7 @@ class _AddUserScreen extends State<AddUser> {
 
       showMessage("User added successfully");
 
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => ListScreen()));
     } else {
       if (!mounted) return;
