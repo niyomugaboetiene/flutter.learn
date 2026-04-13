@@ -49,12 +49,14 @@ class _AddUserScreen extends State<AddUser> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController idController = TextEditingController();
 
   Future<void> addUser() async {
     if (nameController.text.isNotEmpty ||
         ageController.text.isNotEmpty ||
+        idController.text.isNotEmpty ||
         emailController.text.isNotEmpty) {
-      await FirebaseFirestore.instance.collection("users").doc("1").set({
+      await FirebaseFirestore.instance.collection("users").doc(idController.text).set({
         "name": nameController.text,
         "age": ageController.text,
         "email": emailController.text
@@ -74,6 +76,10 @@ class _AddUserScreen extends State<AddUser> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          TextField(
+            controller: idController,
+            decoration: InputDecoration(labelText: "Id"),
+          ),
           TextField(
             controller: nameController,
             decoration: InputDecoration(labelText: "Name"),
