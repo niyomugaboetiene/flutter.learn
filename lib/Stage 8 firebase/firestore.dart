@@ -2,6 +2,7 @@
 // it contains: collection, documents
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 // add user
 Future<void> addUser() async {
@@ -33,4 +34,31 @@ Future<void> updateUser() async {
 
 Future<void> deleteUser() async {
   await FirebaseFirestore.instance.collection("users").doc("user_123").delete();
+}
+
+// Add user screen
+
+class AddUser extends StatefulWidget {
+  const AddUser({super.key});
+
+  @override
+  State<AddUser> createState() => _AddUserScreen();
+}
+
+class _AddUserScreen extends State<AddUser> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  Future<void> addUser() async {
+    if (nameController.text.isNotEmpty ||
+        ageController.text.isNotEmpty ||
+        emailController.text.isNotEmpty) {
+      await FirebaseFirestore.instance.collection("users").doc("1").set({
+        "name": nameController.text,
+        "age": ageController.text,
+        "email": emailController.text
+      });
+    }
+  }
 }
