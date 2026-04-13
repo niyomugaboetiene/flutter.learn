@@ -149,14 +149,25 @@ class _ListScreenState extends State<ListScreen> {
             return Center(child: Text("${snapshot.error}"),);
           }
 
-          final users = snapshot.data;
+          var users = snapshot.data!.docs;
 
-          return ListView.builder(
-            itemBuilder: (context, user),
-            
-          )
+          return ListView(
+            children: users.map((doc) {
+              var data = doc.data() as Map<String, dynamic>;
+
+              return ListTile(
+                title: Text(data["name"]),
+                subtitle: Column(
+                    children: [
+                      Text(data["age"]),
+                      Text(data["email"]),
+                    ],
+                ),
+              );
+            }),
+          );
         }
         ),
-    );
+    )
   }
 }
