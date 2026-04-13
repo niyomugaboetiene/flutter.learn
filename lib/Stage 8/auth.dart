@@ -125,7 +125,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) => {
+       if (snapshot.hasData) {
+        return GreetingScreen()
+       } else {
+        return LoginScreen();
+       }
+    },)
+    Scaffold(
       appBar: AppBar(
         title: Text(isLogin ? "Login" : "Sign In"),
       ),
@@ -157,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     : "Already have account ? login"))
           ],
         ),
-      ),
+      )
     );
   }
 }
