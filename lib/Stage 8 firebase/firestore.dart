@@ -72,6 +72,9 @@ class _AddUserScreen extends State<AddUser> {
       if (!mounted) return;
 
       showMessage("User added successfully");
+
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ListScreen()));
     } else {
       if (!mounted) return;
       showMessage("Please fill out all fields");
@@ -108,4 +111,15 @@ class _AddUserScreen extends State<AddUser> {
       ),
     );
   }
+}
+
+class ListScreen extends StatefulWidget {
+  const ListScreen({super.key});
+
+  @override
+  State<ListScreen> createState() => _ListScreenState();
+}
+
+class _ListScreenState extends State<ListScreen> {
+  late futureList;
 }
