@@ -142,7 +142,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Student list"),
+        title: Text("User list"),
       ),
       body: FutureBuilder<QuerySnapshot>(
           future: futureUsers,
