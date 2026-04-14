@@ -37,7 +37,6 @@ Future<void> deleteUser() async {
 }
 
 // Add user screen
-
 class AddUser extends StatefulWidget {
   const AddUser({super.key});
 
@@ -58,33 +57,18 @@ class _AddUserScreen extends State<AddUser> {
   Future<void> addUser() async {
     try {
 
-       await FirebaseFirestore.instance
+      if (nameController.text.isNotEmpty &&
+          ageController.text.isNotEmpty &&
+          idController.text.isNotEmpty &&
+          emailController.text.isNotEmpty) {
+        await FirebaseFirestore.instance
             .collection("users")
-            .doc("1")
+            .doc(idController.text)
             .set({
-          // "name": nameController.text,
-          // "age": ageController.text,
-          // "email": emailController.text
-          "name": "test",
-          "age": 20,
-          "email": "net@gmail.com"
+          "name": nameController.text,
+          "age": ageController.text,
+          "email": emailController.text
         });
-
-      // if (nameController.text.isNotEmpty &&
-      //     ageController.text.isNotEmpty &&
-      //     idController.text.isNotEmpty &&
-      //     emailController.text.isNotEmpty) {
-      //   await FirebaseFirestore.instance
-      //       .collection("users")
-      //       .doc(idController.text)
-      //       .set({
-          // "name": nameController.text,
-          // "age": ageController.text,
-          // "email": emailController.text
-      //               "name": "test",
-      //     "age": 20,
-      //     "email": "net@gmail.com"
-      //   });
 
         if (!mounted) return;
 
@@ -92,10 +76,10 @@ class _AddUserScreen extends State<AddUser> {
 
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ListScreen()));
-      // } else {
-      //   if (!mounted) return;
-      //   showMessage("Please fill out all fields");
-      // }
+      } else {
+        if (!mounted) return;
+        showMessage("Please fill out all fields");
+      }
     } on FirebaseException catch (e) {
       print(e);
     }
