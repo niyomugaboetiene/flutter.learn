@@ -105,10 +105,7 @@ class _AddUserScreen extends State<AddUser> {
             decoration: InputDecoration(labelText: "Email"),
           ),
           ElevatedButton(
-              onPressed: () {
-                print("clicked");
-                addUser();
-              },
+              onPressed: () { addUser(); },
               child: Text("add User"))
         ],
       ),
