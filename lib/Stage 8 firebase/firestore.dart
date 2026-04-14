@@ -268,9 +268,51 @@ class _UpdateScreenState extends State<UpdateScreen> {
       Navigator.pop(context);
     } catch (e) {
       print(e);
-       ScaffoldMessenger.of(context)
+      ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Failed to update user")));
-
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Add user"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            TextField(
+              controller: ageController,
+              decoration: InputDecoration(labelText: "Age"),
+            ),
+            TextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              ElevatedButton(
+                  onPressed: () {
+                    addUser();
+                  },
+                  child: isLoading
+                      ? CircularProgressIndicator()
+                      : Text("Add User")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ListScreen()));
+                  },
+                  child: Text("View"))
+            ])
+          ],
+        ));
   }
 }
