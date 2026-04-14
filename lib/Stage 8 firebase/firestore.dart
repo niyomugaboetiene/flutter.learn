@@ -57,21 +57,34 @@ class _AddUserScreen extends State<AddUser> {
 
   Future<void> addUser() async {
     try {
-      if (nameController.text.isNotEmpty &&
-          ageController.text.isNotEmpty &&
-          idController.text.isNotEmpty &&
-          emailController.text.isNotEmpty) {
-        await FirebaseFirestore.instance
+
+       await FirebaseFirestore.instance
             .collection("users")
-            .doc(idController.text)
+            .doc("1")
             .set({
           // "name": nameController.text,
           // "age": ageController.text,
           // "email": emailController.text
-                    "name": "test",
+          "name": "test",
           "age": 20,
           "email": "net@gmail.com"
         });
+
+      // if (nameController.text.isNotEmpty &&
+      //     ageController.text.isNotEmpty &&
+      //     idController.text.isNotEmpty &&
+      //     emailController.text.isNotEmpty) {
+      //   await FirebaseFirestore.instance
+      //       .collection("users")
+      //       .doc(idController.text)
+      //       .set({
+          // "name": nameController.text,
+          // "age": ageController.text,
+          // "email": emailController.text
+      //               "name": "test",
+      //     "age": 20,
+      //     "email": "net@gmail.com"
+      //   });
 
         if (!mounted) return;
 
@@ -79,10 +92,10 @@ class _AddUserScreen extends State<AddUser> {
 
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ListScreen()));
-      } else {
-        if (!mounted) return;
-        showMessage("Please fill out all fields");
-      }
+      // } else {
+      //   if (!mounted) return;
+      //   showMessage("Please fill out all fields");
+      // }
     } on FirebaseException catch (e) {
       print(e);
     }
