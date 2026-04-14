@@ -113,9 +113,7 @@ class _AddUserScreen extends State<AddUser> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: "Email"),
             ),
-            Row(
-              mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-              children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               ElevatedButton(
                   onPressed: () {
                     addUser();
@@ -123,8 +121,7 @@ class _AddUserScreen extends State<AddUser> {
                   child: isLoading
                       ? CircularProgressIndicator()
                       : Text("Add User")),
-         
-                 ElevatedButton(
+              ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -134,8 +131,7 @@ class _AddUserScreen extends State<AddUser> {
                   child: Text("View"))
             ])
           ],
-        )
-    );
+        ));
   }
 }
 
@@ -187,36 +183,50 @@ class _ListScreenState extends State<ListScreen> {
                 var data = doc.data() as Map<String, dynamic>;
 
                 return Card(
-                  elevation: 3,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                  child: SingleChildScrollView(
-                    child: ListTile(
-                  title: Text(
-                    data["name"] ?? "",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Age: ${data["age"] ?? ""}"),
-                        SizedBox(height: 2),
-                        Text("Email: ${data["email"] ?? ""}"),
-                         Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {}, icon: Icon(Icons.edit, color: Colors.green,)),
-                            IconButton(
-                                onPressed: () {}, icon: Icon(Icons.delete, color: Colors.red,)),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                  ) 
-                );
+                    elevation: 3,
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                    child: SingleChildScrollView(
+                      child: ListTile(
+                        title: Text(
+                          data["name"] ?? "",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Age: ${data["age"] ?? ""}"),
+                              SizedBox(height: 2),
+                              Text("Email: ${data["email"] ?? ""}"),
+                              Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UpdateScreen(
+                                                        id: data['id'])));
+                                      },
+                                      icon: Icon(
+                                        Icons.edit,
+                                        color: Colors.green,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      )),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ));
               }).toList(),
             );
           }),
