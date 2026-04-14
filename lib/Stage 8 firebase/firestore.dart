@@ -113,7 +113,9 @@ class _AddUserScreen extends State<AddUser> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: "Email"),
             ),
-            Row(children: [
+            Row(
+              mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+              children: [
               ElevatedButton(
                   onPressed: () {
                     addUser();
