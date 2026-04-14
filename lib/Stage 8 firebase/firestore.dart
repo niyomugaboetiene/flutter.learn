@@ -311,12 +311,9 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         : Text("Add User")),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ListScreen()));
+                      Navigator.pop(context);
                     },
-                    child: Text("View"))
+                    child: Text("back"))
               ])
             ],
           ));
