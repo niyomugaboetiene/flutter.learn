@@ -206,7 +206,7 @@ class _ListScreenState extends State<ListScreen> {
                          Row(
                           children: [
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.edit)),
+                                onPressed: () {}, icon: Icon(Icons.edit, color: Colors.green,)),
                             IconButton(
                                 onPressed: () {}, icon: Icon(Icons.delete)),
                           ],
