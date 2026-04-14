@@ -186,7 +186,10 @@ class _ListScreenState extends State<ListScreen> {
               children: users.map((doc) {
                 var data = doc.data() as Map<String, dynamic>;
 
-                return ListTile(
+                return Card(
+                  elevation: 3,
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                  child: ListTile(
                   title: Text(
                     data["name"] ?? "",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -199,18 +202,18 @@ class _ListScreenState extends State<ListScreen> {
                         Text("Age: ${data["age"] ?? ""}"),
                         SizedBox(height: 2),
                         Text("Email: ${data["email"] ?? ""}"),
-                        Expanded(
-                            child: Row(
+                         Row(
                           children: [
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.update)),
+                                onPressed: () {}, icon: Icon(Icons.edit)),
                             IconButton(
                                 onPressed: () {}, icon: Icon(Icons.delete)),
                           ],
-                        ))
+                        )
                       ],
                     ),
                   ),
+                ),
                 );
               }).toList(),
             );
