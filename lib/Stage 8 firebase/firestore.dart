@@ -170,17 +170,24 @@ class _ListScreenState extends State<ListScreen> {
             return ListView(
               children: users.map((doc) {
                 var data = doc.data() as Map<String, dynamic>;
-
-                return ListTile(
-                  title: Text(data["name"] ?? ""),
-                  subtitle: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("${data["age"] ?? ""}"),
-                      Text("${data["email"] ?? ""}"),
-                    ],
-                  ),
-                );
+ 
+           return ListTile(
+             title: Text(
+               data["name"] ?? "",
+                style: TextStyle(fontWeight: FontWeight.bold),
+             ),
+              subtitle: Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Text("Age: ${data["age"] ?? ""}"),
+                 SizedBox(height: 2),
+                 Text("Email: ${data["email"] ?? ""}"),
+                ],
+               ),
+               ),
+             );
               }).toList(),
             );
           }),
