@@ -234,10 +234,16 @@ class _ListScreenState extends State<ListScreen> {
   }
 }
 
-
 // * update screen
 class UpdateScreen extends StatefulWidget {
   final String id;
 
-  const UpdateScreen({ super.key, required this.id})
+  const UpdateScreen({super.key, required this.id});
+
+  @override
+  State<UpdateScreen> createState() => _UpdateScreenState();
+}
+
+class _UpdateScreenState extends State<UpdateScreen> {
+  
 }
