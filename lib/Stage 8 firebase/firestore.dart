@@ -250,7 +250,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
   final TextEditingController emailController = TextEditingController();
 
   bool isloading = false;
-  Future<void> UpdateUser() async {
+  Future<void> updateUser() async {
     try {
       setState(() {
         isloading = true;
@@ -308,7 +308,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     },
                     child: isloading
                         ? CircularProgressIndicator()
-                        : Text("Add User")),
+                        : Text("update User")),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
