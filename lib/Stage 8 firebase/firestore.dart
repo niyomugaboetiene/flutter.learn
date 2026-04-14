@@ -75,7 +75,7 @@ class _AddUserScreen extends State<AddUser> {
         showMessage("User added successfully");
 
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ListScreen()));
+            context, MaterialPageRoute(builder: (context) => const ListScreen()));
       } else {
         if (!mounted) return;
         showMessage("Please fill out all fields");
