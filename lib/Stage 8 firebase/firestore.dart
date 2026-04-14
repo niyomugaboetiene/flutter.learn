@@ -117,7 +117,7 @@ class _AddUserScreen extends State<AddUser> {
               onPressed: () {
                 addUser();
               },
-              child: Text(isLoading ? CircularProgressIndicator() : Text("Add User")))
+              child: isLoading ? CircularProgressIndicator() : Text("Add User"))
         ],
       ),
     );
