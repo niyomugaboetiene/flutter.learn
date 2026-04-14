@@ -54,47 +54,42 @@ class _AddUserScreen extends State<AddUser> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
-Future<void> addUser() async {
-  print("START");
+  bool isLoading = false;
+  Future<void> addUser() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
 
-  if (nameController.text.trim().isEmpty ||
-      ageController.text.trim().isEmpty ||
-      emailController.text.trim().isEmpty) {
-    print("VALIDATION FAILED");
-    showMessage("Please fill out all fields");
-    return;
+      if (nameController.text.trim().isNotEmpty &&
+          ageController.text.trim().isNotEmpty &&
+          emailController.text.trim().isNotEmpty) {
+        await FirebaseFirestore.instance.collection("users").add({
+          "name": nameController.text.trim(),
+          "age": int.tryParse(ageController.text.trim()) ?? 0,
+          "email": emailController.text.trim()
+        });
+
+        setState(() {
+          isLoading = false;
+        });
+
+        if (!mounted) return;
+
+        showMessage("User added successfully");
+
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ListScreen()));
+      } else {
+        if (!mounted) return;
+        showMessage("Please fill out all fields");
+      }
+    } on FirebaseException catch (e) {
+      print("ERROR: $e");
+      if (!mounted) return;
+      showMessage("Error ${e.message}");
+    }
   }
-
-  print("BEFORE FIREBASE");
-
-  try {
-    await FirebaseFirestore.instance.collection("users").add({
-      "name": nameController.text.trim(),
-      "age": int.tryParse(ageController.text.trim()) ?? 0,
-      "email": emailController.text.trim()
-    });
-
-    print("AFTER FIREBASE");
-
-    if (!mounted) return;
-
-    showMessage("User added successfully");
-
-    print("BEFORE NAVIGATION");
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const ListScreen()),
-    );
-
-    print("AFTER NAVIGATION");
-  } catch (e) {
-    print("ERROR: $e");
-
-    if (!mounted) return;
-    showMessage("Error: $e");
-  }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +117,7 @@ Future<void> addUser() async {
               onPressed: () {
                 addUser();
               },
-              child: Text("Add User"))
+              child: Text(isLoading ? CircularProgressIndicator() : Text("Add User")))
         ],
       ),
     );
