@@ -246,5 +246,18 @@ class UpdateScreen extends StatefulWidget {
 
 class _UpdateScreenState extends State<UpdateScreen> {
   final TextEditingController nameController = TextEditingController();
-  final 
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  Future<void> UpdateUser() async {
+    try {
+      await FirebaseFirestore.instance.collection("users").doc(widget.id).update({
+           "name": nameController.text,
+           "age": int.tryParse(ageController.text),
+           "email": emailController.text
+      });
+
+      
+    } catch (e) {}
+  }
 }
