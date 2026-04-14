@@ -56,9 +56,10 @@ class _AddUserScreen extends State<AddUser> {
 
   Future<void> addUser() async {
     try {
-      if (nameController.text.isNotEmpty &&
-          ageController.text.isNotEmpty &&
-          emailController.text.isNotEmpty) {
+      if (nameController.text.trim().isNotEmpty &&
+          ageController.text.trim().isNotEmpty &&
+          emailController.text.trim().isNotEmpty) {
+      
         await FirebaseFirestore.instance
             .collection("users").add({
           "name": nameController.text.trim(),
@@ -106,7 +107,7 @@ class _AddUserScreen extends State<AddUser> {
           ),
           ElevatedButton(
               onPressed: () { addUser(); },
-              child: Text("add User"))
+              child: Text("Add User"))
         ],
       ),
     );
