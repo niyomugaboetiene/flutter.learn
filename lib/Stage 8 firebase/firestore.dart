@@ -233,3 +233,11 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 }
+
+
+// * update screen
+class UpdateScreen extends StatefulWidget {
+  final String id;
+
+  const UpdateScreen({ super.key, required this.id})
+}
