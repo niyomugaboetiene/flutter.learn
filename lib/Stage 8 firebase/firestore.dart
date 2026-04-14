@@ -61,9 +61,9 @@ class _AddUserScreen extends State<AddUser> {
           emailController.text.isNotEmpty) {
         await FirebaseFirestore.instance
             .collection("users").add({
-          "name": nameController.text,
-          "age": ageController.text,
-          "email": emailController.text
+          "name": nameController.text.trim(),
+          "age": int.tryParse(ageController.text.trim()) ?? 0,
+          "email": emailController.text.trim()
         });
 
         if (!mounted) return;
