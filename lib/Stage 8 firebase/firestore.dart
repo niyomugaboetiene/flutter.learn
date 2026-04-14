@@ -254,7 +254,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
     try {
       setState(() {
         isloading = true;
-
       });
       await FirebaseFirestore.instance
           .collection("users")
@@ -267,7 +266,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
 
       setState(() {
         isloading = false;
-
       });
       if (!mounted) return;
 
@@ -281,47 +279,46 @@ class _UpdateScreenState extends State<UpdateScreen> {
           .showSnackBar(SnackBar(content: Text("Failed to update user")));
     }
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Add user"),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(labelText: "Name"),
-            ),
-            TextField(
-              controller: ageController,
-              decoration: InputDecoration(labelText: "Age"),
-            ),
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: "Email"),
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              ElevatedButton(
-                  onPressed: () {
-                    addUser();
-                  },
-                  child: isLoading
-                      ? CircularProgressIndicator()
-                      : Text("Add User")),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ListScreen()));
-                  },
-                  child: Text("View"))
-            ])
-          ],
-        ));
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text("Add user"),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: "Name"),
+              ),
+              TextField(
+                controller: ageController,
+                decoration: InputDecoration(labelText: "Age"),
+              ),
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(labelText: "Email"),
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                ElevatedButton(
+                    onPressed: () {
+                      updateUser();
+                    },
+                    child: isloading
+                        ? CircularProgressIndicator()
+                        : Text("Add User")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ListScreen()));
+                    },
+                    child: Text("View"))
+              ])
+            ],
+          ));
+    }
   }
-}
