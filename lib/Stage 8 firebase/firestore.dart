@@ -54,34 +54,47 @@ class _AddUserScreen extends State<AddUser> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
-  Future<void> addUser() async {
-    try {
-      if (nameController.text.trim().isNotEmpty &&
-          ageController.text.trim().isNotEmpty &&
-          emailController.text.trim().isNotEmpty) {
-      
-        await FirebaseFirestore.instance
-            .collection("users").add({
-          "name": nameController.text.trim(),
-          "age": int.tryParse(ageController.text.trim()) ?? 0,
-          "email": emailController.text.trim()
-        });
+Future<void> addUser() async {
+  print("START");
 
-        if (!mounted) return;
-
-        showMessage("User added successfully");
-
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ListScreen()));
-      } else {
-        if (!mounted) return;
-        showMessage("Please fill out all fields");
-      }
-    } on FirebaseException catch (e) {
-      if (!mounted) return;
-      showMessage("Error ${e.message}");
-    }
+  if (nameController.text.trim().isEmpty ||
+      ageController.text.trim().isEmpty ||
+      emailController.text.trim().isEmpty) {
+    print("VALIDATION FAILED");
+    showMessage("Please fill out all fields");
+    return;
   }
+
+  print("BEFORE FIREBASE");
+
+  try {
+    await FirebaseFirestore.instance.collection("users").add({
+      "name": nameController.text.trim(),
+      "age": int.tryParse(ageController.text.trim()) ?? 0,
+      "email": emailController.text.trim()
+    });
+
+    print("AFTER FIREBASE");
+
+    if (!mounted) return;
+
+    showMessage("User added successfully");
+
+    print("BEFORE NAVIGATION");
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const ListScreen()),
+    );
+
+    print("AFTER NAVIGATION");
+  } catch (e) {
+    print("ERROR: $e");
+
+    if (!mounted) return;
+    showMessage("Error: $e");
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +119,9 @@ class _AddUserScreen extends State<AddUser> {
             decoration: InputDecoration(labelText: "Email"),
           ),
           ElevatedButton(
-              onPressed: () { addUser(); },
+              onPressed: () {
+                addUser();
+              },
               child: Text("Add User"))
         ],
       ),
