@@ -189,7 +189,8 @@ class _ListScreenState extends State<ListScreen> {
                 return Card(
                   elevation: 3,
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                  child: ListTile(
+                  child: SingleChildScrollView(
+                    child: ListTile(
                   title: Text(
                     data["name"] ?? "",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -214,6 +215,7 @@ class _ListScreenState extends State<ListScreen> {
                     ),
                   ),
                 ),
+                  ) 
                 );
               }).toList(),
             );
