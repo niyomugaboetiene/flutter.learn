@@ -249,8 +249,13 @@ class _UpdateScreenState extends State<UpdateScreen> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
+  bool isloading = false;
   Future<void> UpdateUser() async {
     try {
+      setState(() {
+        isloading = true;
+
+      });
       await FirebaseFirestore.instance
           .collection("users")
           .doc(widget.id)
@@ -260,6 +265,10 @@ class _UpdateScreenState extends State<UpdateScreen> {
         "email": emailController.text
       });
 
+      setState(() {
+        isloading = false;
+
+      });
       if (!mounted) return;
 
       ScaffoldMessenger.of(context)
