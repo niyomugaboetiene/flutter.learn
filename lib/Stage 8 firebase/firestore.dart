@@ -265,7 +265,12 @@ class _UpdateScreenState extends State<UpdateScreen> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("User updated successfully")));
 
-      
-    } catch (e) {}
+      Navigator.pop(context);
+    } catch (e) {
+      print(e);
+       ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Failed to update user")));
+
+    }
   }
 }
