@@ -208,7 +208,7 @@ class _ListScreenState extends State<ListScreen> {
                             IconButton(
                                 onPressed: () {}, icon: Icon(Icons.edit, color: Colors.green,)),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.delete)),
+                                onPressed: () {}, icon: Icon(Icons.delete, color: Colors.red,)),
                           ],
                         )
                       ],
