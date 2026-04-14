@@ -94,32 +94,45 @@ class _AddUserScreen extends State<AddUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add user"),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TextField(
-            controller: nameController,
-            decoration: InputDecoration(labelText: "Name"),
-          ),
-          TextField(
-            controller: ageController,
-            decoration: InputDecoration(labelText: "Age"),
-          ),
-          TextField(
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(labelText: "Email"),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                addUser();
-              },
-              child: isLoading ? CircularProgressIndicator() : Text("Add User"))
-        ],
-      ),
+        appBar: AppBar(
+          title: Text("Add user"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            TextField(
+              controller: ageController,
+              decoration: InputDecoration(labelText: "Age"),
+            ),
+            TextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            Row(children: [
+              ElevatedButton(
+                  onPressed: () {
+                    addUser();
+                  },
+                  child: isLoading
+                      ? CircularProgressIndicator()
+                      : Text("Add User")),
+         
+                 ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ListScreen()));
+                  },
+                  child: Text("View"))
+            ])
+          ],
+        )
     );
   }
 }
@@ -170,24 +183,33 @@ class _ListScreenState extends State<ListScreen> {
             return ListView(
               children: users.map((doc) {
                 var data = doc.data() as Map<String, dynamic>;
- 
-           return ListTile(
-             title: Text(
-               data["name"] ?? "",
-                style: TextStyle(fontWeight: FontWeight.bold),
-             ),
-              subtitle: Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text("Age: ${data["age"] ?? ""}"),
-                 SizedBox(height: 2),
-                 Text("Email: ${data["email"] ?? ""}"),
-                ],
-               ),
-               ),
-             );
+
+                return ListTile(
+                  title: Text(
+                    data["name"] ?? "",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Age: ${data["age"] ?? ""}"),
+                        SizedBox(height: 2),
+                        Text("Email: ${data["email"] ?? ""}"),
+                        Expanded(
+                            child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.update)),
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.delete)),
+                          ],
+                        ))
+                      ],
+                    ),
+                  ),
+                );
               }).toList(),
             );
           }),
