@@ -251,11 +251,19 @@ class _UpdateScreenState extends State<UpdateScreen> {
 
   Future<void> UpdateUser() async {
     try {
-      await FirebaseFirestore.instance.collection("users").doc(widget.id).update({
-           "name": nameController.text,
-           "age": int.tryParse(ageController.text),
-           "email": emailController.text
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(widget.id)
+          .update({
+        "name": nameController.text,
+        "age": int.tryParse(ageController.text),
+        "email": emailController.text
       });
+
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User updated successfully")));
 
       
     } catch (e) {}
