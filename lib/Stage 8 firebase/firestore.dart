@@ -56,7 +56,6 @@ class _AddUserScreen extends State<AddUser> {
 
   Future<void> addUser() async {
     try {
-
       if (nameController.text.isNotEmpty &&
           ageController.text.isNotEmpty &&
           idController.text.isNotEmpty &&
@@ -74,14 +73,15 @@ class _AddUserScreen extends State<AddUser> {
 
         showMessage("User added successfully");
 
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const ListScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ListScreen()));
       } else {
         if (!mounted) return;
         showMessage("Please fill out all fields");
       }
     } on FirebaseException catch (e) {
-      print(e);
+      if (!mounted) return;
+      showMessage("Error ${e.message}");
     }
   }
 
