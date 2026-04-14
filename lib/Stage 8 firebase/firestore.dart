@@ -245,5 +245,6 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
-  
+  final TextEditingController nameController = TextEditingController();
+  final 
 }
