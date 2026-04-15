@@ -372,7 +372,9 @@ class _DeleteUserState extends State<DeleteUserScreen> {
      
      Future<void> deleteUser() async {
       try {
-
+          
+      } catch (err) {
+        
       }
      }
 }
