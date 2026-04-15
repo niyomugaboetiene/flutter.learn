@@ -46,4 +46,12 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
       imageFile = File(pickedImage.path);
     });
   }
+
+  Future<void> handleUpload() async {
+    if (imageFile == null) return;
+
+    setState(() {
+      isLoading = true;
+    });
+  }
 }
