@@ -292,7 +292,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
           .doc(widget.id)
           .get();
 
-      if (data.exists) return;
+      if (!data.exists) return;
 
       final doc = data.data() as Map<String, dynamic>;
 
@@ -301,7 +301,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
       setState(() {
         nameController.text = doc['name'] ?? "";
         ageController.text = doc['age'].toString();
-        emailController.text = doc['emai;'] ?? "";
+        emailController.text = doc['email'] ?? "";
       });
     } catch (err) {
       print(err);
