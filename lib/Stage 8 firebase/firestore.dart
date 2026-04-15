@@ -365,9 +365,14 @@ class DeleteUserScreen extends StatefulWidget {
   const DeleteUserScreen({super.key, required this.id});
 
   @override
-  State<DeleteUserScreen> createState() = _DeleteUserState();
+  State<DeleteUserScreen> createState() => _DeleteUserState();
 }
 
 class _DeleteUserState extends State<DeleteUserScreen> {
-  
+     
+     Future<void> deleteUser() async {
+      try {
+
+      }
+     }
 }
