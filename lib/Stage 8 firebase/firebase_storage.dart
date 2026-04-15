@@ -87,7 +87,13 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
                 border: Border.all(color: Colors.grey)
               ),
               child: imageFile != null ? Image.file(imageFile!, fit: BoxFit.cover,) : Center(child: Text("No image seleted"),)
-            )
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton.icon(onPressed: pickImage, icon: Icon(Icons.image), label: Text("Pick image"),),
+
+            SizedBox(height: 10,),
           ],
         ),
         ),
