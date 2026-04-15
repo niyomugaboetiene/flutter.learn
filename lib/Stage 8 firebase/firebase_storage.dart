@@ -14,4 +14,14 @@ Future<String?> uploadImage() async {
 
   String filename = DateTime.now().millisecondsSinceEpoch.toString();
 
+  Reference ref =
+      FirebaseStorage.instance.ref().child('/uploads/$filename.jpg');
+
+  UploadTask uploadTask = ref.putFile(file);
+
+  TaskSnapshot snapshot = await uploadTask;
+
+  String downloadUrl = await snapshot.ref.getDownloadURL();
+
+  return downloadUrl;
 }
