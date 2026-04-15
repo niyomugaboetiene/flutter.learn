@@ -161,8 +161,8 @@ class _ListScreenState extends State<ListScreen> {
       appBar: AppBar(
         title: Text("User list"),
       ),
-      body: FutureBuilder<QuerySnapshot>(
-          future: futureUsers,
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection("users").snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
