@@ -1,27 +1,44 @@
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 
 // 1. upload image
 
-Future<String?> uploadImage() async {
-  final picker = ImagePicker();
-  final pickedFIle = await picker.pickImage(source: ImageSource.gallery);
+class ImageUploadScreen extends StatefulWidget {
+  const ImageUploadScreen({super.key});
 
-  if (pickedFIle == null) return null;
+  @override
+  State<ImageUploadScreen> createState() => _ImageUploadScreenState();
+}
 
-  File file = File(pickedFIle.path);
+class _ImageUploadScreenState extends State<ImageUploadScreen> {
+  File? imageFile;
+  bool isLoading = false;
+  String? imageUrl;
 
-  String filename = DateTime.now().millisecondsSinceEpoch.toString();
+  Future<String?> uploadImage(File file) async {
+    try {
+      String filename = DateTime.now().millisecondsSinceEpoch.toString();
 
-  Reference ref =
-      FirebaseStorage.instance.ref().child('/uploads/$filename.jpg');
+      Reference ref =
+          FirebaseStorage.instance.ref().child('/uploads/$filename.jpg');
 
-  UploadTask uploadTask = ref.putFile(file);
+      UploadTask uploadTask = ref.putFile(file);
 
-  TaskSnapshot snapshot = await uploadTask;
+      TaskSnapshot snapshot = await uploadTask;
 
-  String downloadUrl = await snapshot.ref.getDownloadURL();
+      String downloadUrl = await snapshot.ref.getDownloadURL();
 
-  return downloadUrl;
+      return downloadUrl;
+    } catch (err) {
+      print(err);
+      return null;
+    }
+  }
+
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedImage = 
+  }
 }
