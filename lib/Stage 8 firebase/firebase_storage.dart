@@ -101,7 +101,7 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
               label: isLoading ? SizedBox(
                 height: 18, 
                 width: 18, 
-                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white,),),
+                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),) : Text("Upload"),
             )
           ],
         ),
