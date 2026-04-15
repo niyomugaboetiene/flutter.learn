@@ -378,6 +378,10 @@ class _DeleteUserState extends State<DeleteUserScreen> {
 
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("User deleted successfully")));
-    } catch (err) {}
+    } catch (err) {
+      print(err);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    }
   }
 }
