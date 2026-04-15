@@ -369,12 +369,15 @@ class DeleteUserScreen extends StatefulWidget {
 }
 
 class _DeleteUserState extends State<DeleteUserScreen> {
-     
-     Future<void> deleteUser() async {
-      try {
-          
-      } catch (err) {
-        
-      }
-     }
+  Future<void> deleteUser() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(widget.id)
+          .delete();
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    } catch (err) {}
+  }
 }
