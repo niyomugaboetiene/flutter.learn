@@ -287,8 +287,26 @@ class _UpdateScreenState extends State<UpdateScreen> {
 
   Future<void> loadUser() async {
     try {
-       QuerySnapshot snapshot = await FirebaseFirestore.instance.collection("users").doc(widget.id).get();
-       
+      final data = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(widget.id)
+          .get();
+
+      if (data.exists) return;
+
+      final doc = data.data() as Map<String, dynamic>;
+
+      if (!mounted) return;
+
+      setState(() {
+        nameController.text = doc['name'] ?? "";
+        nameController.text = doc['age'] ?? "";
+        nameController.text = doc['emai;'] ?? "";
+      });
+    } catch (err) {
+       print(err);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Failed to update user")));
     }
   }
 
