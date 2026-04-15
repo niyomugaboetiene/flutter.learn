@@ -207,8 +207,7 @@ class _ListScreenState extends State<ListScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    UpdateScreen(
-                                                        id: doc.id)));
+                                                    UpdateScreen(id: doc.id)));
                                       },
                                       icon: Icon(
                                         Icons.edit,
@@ -280,10 +279,18 @@ class _UpdateScreenState extends State<UpdateScreen> {
     }
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    loadUser();
+  }
+
+  Future<void> loadUser() async {
+    try {
+       QuerySnapshot snapshot = await FirebaseFirestore.instance.collection("users").doc(widget.id).get();
+       
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -322,7 +329,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   child: Text("back"))
             ])
           ],
-        )
-        );
+        ));
   }
 }
