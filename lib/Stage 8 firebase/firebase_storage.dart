@@ -102,6 +102,14 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
                 height: 18, 
                 width: 18, 
                 child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),) : Text("Upload"),
+            ),
+
+            SizedBox(height: 20,),
+
+            if (imageUrl != null)
+            SelectableText(
+              "Download URL:\n$imageUrl",
+              style: TextStyle(fontSize: 20),
             )
           ],
         ),

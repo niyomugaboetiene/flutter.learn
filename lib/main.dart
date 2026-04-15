@@ -32,7 +32,8 @@ import 'package:flutter_concepts/firebase_options.dart';
 // import 'MongoDB Integration/AddStudent.dart';
 // import 'MongoDB Integration/SelectStudent.dart';
 // import 'package:flutter_concepts/Stage%208%20firebase/auth.dart';
-import 'package:flutter_concepts/Stage 8 firebase/firestore.dart';
+// import 'package:flutter_concepts/Stage 8 firebase/firestore.dart';
+import 'package:flutter_concepts/Stage 8 firebase/firebase_storage.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
       //   '/add': () =>  TextFields()
       // },
       title: 'My App',
-      home: AddUser(),
+      home: ImageUploadScreen(),
     );
   }
 }
