@@ -304,7 +304,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
         nameController.text = doc['emai;'] ?? "";
       });
     } catch (err) {
-       print(err);
+      print(err);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Failed to update user")));
     }
@@ -343,6 +343,10 @@ class _UpdateScreenState extends State<UpdateScreen> {
               ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
+
+                    setState(() {
+                      loadUser();
+                    });
                   },
                   child: Text("back"))
             ])
