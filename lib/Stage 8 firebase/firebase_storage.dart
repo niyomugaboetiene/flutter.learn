@@ -65,8 +65,32 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Upload successfully")));
     } else {
-        ScaffoldMessenger.of(context)
+      ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Upload failed")));
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Image uplaod"),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey)
+              ),
+              child: imageFile != null ? Image.file(imageFile!, fit: BoxFit.cover,) : Center(child: Text("No image seleted"),)
+            )
+          ],
+        ),
+        ),
+    );
   }
 }
