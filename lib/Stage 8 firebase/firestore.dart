@@ -155,6 +155,19 @@ class _ListScreenState extends State<ListScreen> {
     return await FirebaseFirestore.instance.collection("users").get();
   }
 
+// * delete user
+  Future<void> deleteUser(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection("users").doc(id).delete();
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    } catch (err) {
+      print(err);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -221,7 +234,25 @@ class _ListScreenState extends State<ListScreen> {
                                                   title: Text("Confrim delete"),
                                                   content: Text(
                                                       "Are you sure you want to delte this user"),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context, true);
+                                                        },
+                                                        child: Text("Yes")),
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context, false);
+                                                        },
+                                                        child: Text("No"))
+                                                  ],
                                                 ));
+
+                                        if (confrimation == true) {
+                                          await deleteUser(doc.id);
+                                        }
                                       },
                                       icon: Icon(
                                         Icons.delete,
@@ -315,20 +346,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
       print(err);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Failed to update user")));
-    }
-  }
-
-// * delete user
-  Future<void> deleteUser(String id) async {
-    try {
-      await FirebaseFirestore.instance.collection("users").doc(id).delete();
-
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
-    } catch (err) {
-      print(err);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
     }
   }
 
