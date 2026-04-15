@@ -300,8 +300,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
 
       setState(() {
         nameController.text = doc['name'] ?? "";
-        nameController.text = doc['age'] ?? "";
-        nameController.text = doc['emai;'] ?? "";
+        ageController.text = doc['age'].toString();
+        emailController.text = doc['emai;'] ?? "";
       });
     } catch (err) {
       print(err);
@@ -343,10 +343,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
               ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
-
-                    setState(() {
-                      loadUser();
-                    });
                   },
                   child: Text("back"))
             ])
