@@ -10,5 +10,8 @@ Future<String?> uploadImage() async {
 
   if (pickedFIle == null) return null;
 
-  File file = 
+  File file = File(pickedFIle.path);
+
+  String filename = DateTime.now().millisecondsSinceEpoch.toString();
+
 }
