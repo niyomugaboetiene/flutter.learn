@@ -214,7 +214,14 @@ class _ListScreenState extends State<ListScreen> {
                                         color: Colors.green,
                                       )),
                                   IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DeleteUserScreen(
+                                                        id: doc.id)));
+                                      },
                                       icon: Icon(
                                         Icons.delete,
                                         color: Colors.red,
@@ -349,4 +356,18 @@ class _UpdateScreenState extends State<UpdateScreen> {
           ],
         ));
   }
+}
+
+// ? delete User
+class DeleteUserScreen extends StatefulWidget {
+  final String id;
+
+  const DeleteUserScreen({super.key, required this.id});
+
+  @override
+  State<DeleteUserScreen> createState() = _DeleteUserState();
+}
+
+class _DeleteUserState extends State<DeleteUserScreen> {
+  
 }
