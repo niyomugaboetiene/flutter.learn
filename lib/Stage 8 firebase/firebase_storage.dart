@@ -53,5 +53,20 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     setState(() {
       isLoading = true;
     });
+
+    String? url = await uploadImage(imageFile!);
+
+    setState(() {
+      isLoading = false;
+      imageUrl = url;
+    });
+
+    if (url != null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Upload successfully")));
+    } else {
+        ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Upload failed")));
+    }
   }
 }
