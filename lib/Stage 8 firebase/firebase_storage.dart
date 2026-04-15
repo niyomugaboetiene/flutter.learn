@@ -98,7 +98,10 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
             ElevatedButton.icon(
               onPressed: isLoading ? null : handleUpload, 
               icon: Icon(Icons.cloud_upload),
-              label: isLoading ? SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white,),),
+              label: isLoading ? SizedBox(
+                height: 18, 
+                width: 18, 
+                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white,),),
             )
           ],
         ),
