@@ -208,7 +208,7 @@ class _ListScreenState extends State<ListScreen> {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     UpdateScreen(
-                                                        id: data['id'])));
+                                                        id: doc.id)));
                                       },
                                       icon: Icon(
                                         Icons.edit,
@@ -279,43 +279,50 @@ class _UpdateScreenState extends State<UpdateScreen> {
           .showSnackBar(SnackBar(content: Text("Failed to update user")));
     }
   }
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-          appBar: AppBar(
-            title: Text("Add user"),
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: InputDecoration(labelText: "Name"),
-              ),
-              TextField(
-                controller: ageController,
-                decoration: InputDecoration(labelText: "Age"),
-              ),
-              TextField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: "Email"),
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                ElevatedButton(
-                    onPressed: () {
-                      updateUser();
-                    },
-                    child: isloading
-                        ? CircularProgressIndicator()
-                        : Text("update User")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text("back"))
-              ])
-            ],
-          ));
-    }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Update user"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            TextField(
+              controller: ageController,
+              decoration: InputDecoration(labelText: "Age"),
+            ),
+            TextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              ElevatedButton(
+                  onPressed: () {
+                    updateUser();
+                  },
+                  child: isloading
+                      ? CircularProgressIndicator()
+                      : Text("update User")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("back"))
+            ])
+          ],
+        )
+        );
   }
+}
