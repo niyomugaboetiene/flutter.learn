@@ -7,4 +7,8 @@ import 'dart:io';
 Future<String?> uploadImage() async {
   final picker = ImagePicker();
   final pickedFIle = await picker.pickImage(source: ImageSource.gallery);
+
+  if (pickedFIle == null) return null;
+
+  File file = 
 }
