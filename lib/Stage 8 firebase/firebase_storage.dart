@@ -94,6 +94,12 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
             ElevatedButton.icon(onPressed: pickImage, icon: Icon(Icons.image), label: Text("Pick image"),),
 
             SizedBox(height: 10,),
+
+            ElevatedButton.icon(
+              onPressed: isLoading ? null : handleUpload, 
+              icon: Icon(Icons.cloud_upload),
+              label: isLoading ? SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white,),),
+            )
           ],
         ),
         ),
