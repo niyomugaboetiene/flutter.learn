@@ -41,6 +41,9 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     final picker = ImagePicker();
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
-    if (pickedImage.)
+    if (pickedImage == null) return;
+    setState(() {
+      imageFile = File(pickedImage.path);
+    });
   }
 }
