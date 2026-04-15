@@ -214,13 +214,14 @@ class _ListScreenState extends State<ListScreen> {
                                         color: Colors.green,
                                       )),
                                   IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    DeleteUserScreen(
-                                                        id: doc.id)));
+                                      onPressed: () async {
+                                        final confrimation = await showDialog(
+                                            context: context,
+                                            builder: (context) => AlertDialog(
+                                                  title: Text("Confrim delete"),
+                                                  content: Text(
+                                                      "Are you sure you want to delte this user"),
+                                                ));
                                       },
                                       icon: Icon(
                                         Icons.delete,
@@ -317,6 +318,20 @@ class _UpdateScreenState extends State<UpdateScreen> {
     }
   }
 
+// * delete user
+  Future<void> deleteUser(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection("users").doc(id).delete();
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    } catch (err) {
+      print(err);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -355,33 +370,5 @@ class _UpdateScreenState extends State<UpdateScreen> {
             ])
           ],
         ));
-  }
-}
-
-// ? delete User
-class DeleteUserScreen extends StatefulWidget {
-  final String id;
-
-  const DeleteUserScreen({super.key, required this.id});
-
-  @override
-  State<DeleteUserScreen> createState() => _DeleteUserState();
-}
-
-class _DeleteUserState extends State<DeleteUserScreen> {
-  Future<void> deleteUser() async {
-    try {
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(widget.id)
-          .delete();
-
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
-    } catch (err) {
-      print(err);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("User deleted successfully")));
-    }
   }
 }
