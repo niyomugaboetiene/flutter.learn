@@ -50,25 +50,29 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
   }
 
   Future<void> handleUpload() async {
-    if (imageFile == null) return;
+    try {
+      if (imageFile == null) return;
 
-    setState(() {
-      isLoading = true;
-    });
+      setState(() {
+        isLoading = true;
+      });
 
-    String? url = await uploadImage(imageFile!);
+      String? url = await uploadImage(imageFile!);
 
-    setState(() {
-      isLoading = false;
-      imageUrl = url;
-    });
+      setState(() {
+        isLoading = false;
+        imageUrl = url;
+      });
 
-    if (url != null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Upload successfully")));
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Upload failed")));
+      if (url != null) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Upload successfully")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Upload failed")));
+      }
+    } catch (err) {
+      print(err);
     }
   }
 
