@@ -21,8 +21,10 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     try {
       String filename = DateTime.now().millisecondsSinceEpoch.toString();
 
+      String extension = file.path.split('.').last;
+      
       Reference ref =
-          FirebaseStorage.instance.ref().child('/uploads/$filename.jpg');
+          FirebaseStorage.instance.ref().child('uploads/$filename.$extension');
 
       UploadTask uploadTask = ref.putFile(file);
 
@@ -81,39 +83,50 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
         child: Column(
           children: [
             Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey)
-              ),
-              child: imageFile != null ? Image.file(imageFile!, fit: BoxFit.cover,) : Center(child: Text("No image seleted"),)
-            ),
-
+                height: 200,
+                width: double.infinity,
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.grey)),
+                child: imageFile != null
+                    ? Image.file(
+                        imageFile!,
+                        fit: BoxFit.cover,
+                      )
+                    : Center(
+                        child: Text("No image seleted"),
+                      )),
             SizedBox(height: 20),
-
-            ElevatedButton.icon(onPressed: pickImage, icon: Icon(Icons.image), label: Text("Pick image"),),
-
-            SizedBox(height: 10,),
-
             ElevatedButton.icon(
-              onPressed: isLoading ? null : handleUpload, 
-              icon: Icon(Icons.cloud_upload),
-              label: isLoading ? SizedBox(
-                height: 18, 
-                width: 18, 
-                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),) : Text("Upload"),
+              onPressed: pickImage,
+              icon: Icon(Icons.image),
+              label: Text("Pick image"),
             ),
-
-            SizedBox(height: 20,),
-
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton.icon(
+              onPressed: isLoading ? null : handleUpload,
+              icon: Icon(Icons.cloud_upload),
+              label: isLoading
+                  ? SizedBox(
+                      height: 18,
+                      width: 18,
+                      child: CircularProgressIndicator(
+                          strokeWidth: 2, color: Colors.white),
+                    )
+                  : Text("Upload"),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             if (imageUrl != null)
-            SelectableText(
-              "Download URL:\n$imageUrl",
-              style: TextStyle(fontSize: 20),
-            )
+              SelectableText(
+                "Download URL:\n$imageUrl",
+                style: TextStyle(fontSize: 20),
+              )
           ],
         ),
-        ),
+      ),
     );
   }
 }
