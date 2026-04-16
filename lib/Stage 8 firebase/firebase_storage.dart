@@ -22,7 +22,7 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
       String filename = DateTime.now().millisecondsSinceEpoch.toString();
 
       String extension = file.path.split('.').last;
-      
+
       Reference ref =
           FirebaseStorage.instance.ref().child('uploads/$filename.$extension');
 
@@ -88,8 +88,8 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.grey)),
                 child: imageFile != null
-                    ? Image.file(
-                        imageFile!,
+                    ? Image.network(
+                        imageFile!.path,
                         fit: BoxFit.cover,
                       )
                     : Center(
